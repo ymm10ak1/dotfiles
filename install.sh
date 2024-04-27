@@ -64,8 +64,8 @@ create_symlink_config() {
     fi
 }
 
-command echo -e "\033[1;32mInstalling dotfiles...\033[0m"
+command echo -e "\033[1;36mInstalling dotfiles...\033[0m"
 create_symlink_dotfiles
-command echo -e "\033[1;32mInstalling config file...\033[0m"
+command echo -e "\033[1;36mInstalling config file...\033[0m"
 create_symlink_config
-command echo -e "\033[1;36mInstalling completed!\033[0m"
+command echo -e "\033[1;32mInstalling completed!\033[0m"
