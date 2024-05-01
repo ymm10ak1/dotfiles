@@ -71,35 +71,29 @@ return {
                     else
                         fallback()
                     end
-                end, { "i", "c" }),
+                end, { "i", "c", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     else
                         fallback()
                     end
-                end, { "i", "c" }),
+                end, { "i", "c", "s" }),
                 ["<C-j>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     else
                         fallback()
                     end
-                end, { "i", "c" }),
+                end, { "i", "c", "s" }),
                 ["<C-k>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     else
                         fallback()
                     end
-                end, { "i", "c" }),
-                ["<CR>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.confirm({ select = true })
-                    else
-                        fallback()
-                    end
-                end),
+                end, { "i", "c", "s" }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true })
             },
             window = {
                 -- completion = cmp.config.window.bordered(),
@@ -132,15 +126,6 @@ return {
                 }),
             },
         })
-
-        -- Set configuration for specific filetype.
-        -- cmp.setup.filetype("gitcommit", {
-        --     sources = cmp.config.sources({
-        --         { name = "git" }, -- You can specify the `git` source if [you were installed it]
-        --     }, {
-        --         { name = "buffer" },
-        --     }),
-        -- })
 
         -- `/, ?` cmdline setup
         cmp.setup.cmdline({ "/", "?" }, {

@@ -15,6 +15,7 @@ set hidden " バッファが編集中でもその他のファイルを開ける�
 set noswapfile
 set showcmd
 set clipboard=unnamed,unnamedplus
+
 " ========== keymap ==========
 let g:mapleader = "\<Space>"
 " バッファ移動
