@@ -15,9 +15,6 @@ opt.swapfile = false
 -- バックアップファイルを作成しない
 opt.backup = false
 
--- default shell
-opt.shell = "/bin/zsh"
-
 -- ｢※｣などの記号を表示するためには"double"を設定
 opt.ambiwidth = "single"
 -- 行番号表示
