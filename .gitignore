@@ -1,0 +1,17 @@
+# 最初にすべての階層のファイルを無視する
+# 階層は必要なだけ追加する
+/*
+/.**
+
+# 管理するファイル
+!/README.md
+!/.config/
+!/.config/nvim/
+!/.config/nvim/**
+!/scripts/
+!/scripts/**
+!/.vimrc
+!/install.sh
+!/install-packages.sh
+!/.tmux.conf
+!/.gitignore
