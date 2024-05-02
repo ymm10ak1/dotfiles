@@ -21,6 +21,7 @@ packages_install(){
                     sudo apt-get install -y $pkg
                 else
                     echo "$pkg is already installed"
+                fi
             done
 
             # nvm,nodejsのインストール
