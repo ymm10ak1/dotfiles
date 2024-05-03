@@ -15,8 +15,15 @@ packages_install(){
             sudo apt-get update -y
             sudo apt-get upgrade -y
 
-            # git,curl,exa,build-essential,xselのインストール
+            # git,curl,exa,xsel,build-essential,bat,ripgrepのインストール
             for pkg in "${INSTALL_LIST[@]}"; do 
+                if [[ "$pkg" = "ripgrep" ]]; then
+                    pkg="rg"
+                elif [[ "$pkg" = "build-essential" ]]; then
+                    pkg="gcc"
+                elif [[ "$pkg" = "bat" ]]; then
+                    pkg="batcat"
+                fi
                 if ! ( has $pkg ); then
                     sudo apt-get install -y $pkg
                 else
