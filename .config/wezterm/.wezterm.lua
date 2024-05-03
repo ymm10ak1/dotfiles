@@ -9,7 +9,7 @@ end
 
 local act = wezterm.action
 
--- ｢+｣ボタン押したときのタブのcwdをdefaultDomain(wsl2:Ubuntu22.04)の"~"(/home/ya10ma)にする
+-- ｢+｣ボタン押したときのタブのcwdをdefaultDomain(wsl2:Ubuntu22.04)の"~"にする
 wezterm.on('new-tab-button-click', function(window, pane, button, default_action)
     window:perform_action(
         act.SpawnCommandInNewTab{
