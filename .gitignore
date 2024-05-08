@@ -17,3 +17,4 @@
 !/install-packages.sh
 !/.tmux.conf
 !/.gitignore
+!/stylua.toml
