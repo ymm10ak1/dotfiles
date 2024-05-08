@@ -3,17 +3,17 @@ return {
         "lambdalisue/kensaku.vim",
         event = "VeryLazy",
         dependencies = {
-            "vim-denops/denops.vim"
+            "vim-denops/denops.vim",
         },
     },
     {
         "lambdalisue/kensaku-search.vim",
         event = "VeryLazy",
         dependencies = {
-            "lambdalisue/kensaku.vim"
+            "lambdalisue/kensaku.vim",
         },
-        config = function ()
+        config = function()
             vim.keymap.set("c", "<CR>", "<Plug>(kensaku-search-replace)<CR>")
-        end
-    }
+        end,
+    },
 }

@@ -1,5 +1,5 @@
 return {
-	"brenoprata10/nvim-highlight-colors",
-	event = { "BufRead", "BufNewFile" },
-	config = true,
+    "brenoprata10/nvim-highlight-colors",
+    event = { "BufRead", "BufNewFile" },
+    config = true,
 }

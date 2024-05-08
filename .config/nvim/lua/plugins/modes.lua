@@ -1,10 +1,10 @@
 return {
-    'mvllow/modes.nvim',
+    "mvllow/modes.nvim",
     enabled = false,
     event = "VeryLazy",
-    tag = 'v0.2.0',
-    config = function ()
-        require('modes').setup({
+    tag = "v0.2.0",
+    config = function()
+        require("modes").setup({
             colors = {
                 copy = "#f5c359",
                 delete = "#c75c6a",
@@ -21,5 +21,5 @@ return {
             -- Enable line number highlights to match cursorline
             set_number = true,
         })
-    end
+    end,
 }

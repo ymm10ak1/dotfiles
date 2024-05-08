@@ -93,7 +93,7 @@ return {
                         fallback()
                     end
                 end, { "i", "c", "s" }),
-                ["<CR>"] = cmp.mapping.confirm({ select = true })
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
             },
             window = {
                 -- completion = cmp.config.window.bordered(),

@@ -57,23 +57,6 @@ return {
                     })
                 end,
             })
-            -- require("mason-lspconfig").setup_handlers({
-            -- 	function(server_name)
-            -- 	    local opt = {
-            -- 	        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            -- 	    }
-            -- 	    if server_name == "lua_ls" then
-            -- 	        opt.settings = {
-            -- 	            Lua = {
-            -- 	                diagnostics = {
-            -- 	                    globals = { "vim" },
-            -- 	                },
-            -- 	            },
-            -- 	        }
-            -- 	    end
-            -- 	    require("lspconfig")[server_name].setup(opt)
-            -- 	end,
-            -- })
         end,
     },
     {
