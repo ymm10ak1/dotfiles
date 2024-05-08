@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep)
+INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -62,21 +62,28 @@ packages_install() {
       if ! (has "zoxide"); then
         echo "Install zoxide"
         curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-        local zshrc_dir="$HOME/.zshrc"
-        if ! (command -v zsh >/dev/null); then
-          if [ -e "$zshrc_dir" ]; then
-            echo 'eval "$(zoxide init --cmd cd zsh)"' >>$zshrc_dir
-          fi
-        fi
-        local bashrc_dir="$HOME/.bashrc"
-        if ! (command -v bash >/dev/null); then
-          if [ -e "$bashrc_dir" ]; then
-            echo 'eval "$(zoxide init --cmd cd bash)"' >>$bashrc_dir
-          fi
-        fi
       else
         echo "zoxide is already installed"
       fi
+      # rustのインストール
+      if ! (has "rustup"); then
+        echo "Install rust"
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+      else
+        echo "rust is already installed"
+      fi
+      # sheldonのインストール
+      if ! (has "sheldon"); then
+        echo "Install sheldon"
+        curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh |
+          bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+      else
+        echo "sheldon is already installed"
+      fi
+
+      # シェルをzshに変更
+      echo "Change zsh"
+      sudo chsh -s $(which zsh)
     fi
   fi
 }
