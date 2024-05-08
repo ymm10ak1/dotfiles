@@ -10,6 +10,8 @@
 !/.config/nvim/**
 !/.config/wezterm/
 !/.config/wezterm/**
+!/.config/sheldon/
+!/.config/sheldon/**
 !/scripts/
 !/scripts/**
 !/.vimrc
@@ -18,3 +20,4 @@
 !/.tmux.conf
 !/.gitignore
 !/stylua.toml
+!/.zshrc
