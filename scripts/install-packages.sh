@@ -65,6 +65,13 @@ packages_install() {
       else
         echo "zoxide is already installed"
       fi
+      # starshipのインストール
+      if ! (has "starship"); then
+        echo "Install starship"
+        curl -sS https://starship.rs/install.sh | sh
+      else
+        echo "starship is already installed"
+      fi
       # rustのインストール
       if ! (has "rustup"); then
         echo "Install rust"
