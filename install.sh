@@ -23,7 +23,7 @@ create_symlink_dotfiles() {
       [[ $(basename $file) == ".config" ]] && continue
       [[ $(basename $file) == "scripts" ]] && continue
       if [[ -L "$HOME/$(basename $file)" ]]; then
-        command rm -f "$HOME/$(basename $file)"
+        command unlink "$HOME/$(basename $file)"
       fi
       if [[ -e "$HOME/$(basename $file)" && ! -L "$HOME/$(basename $file)" ]]; then
         command mv "$HOME/$(basename $file)" "$backup_dir"
@@ -56,7 +56,7 @@ create_symlink_config() {
         [[ $(basename $file) = ".git" ]] && continue
         [[ $(basename $file) = "wezterm" ]] && continue
         if [[ -L "$home_config/$(basename $file)" ]]; then
-          command rm -f "$home_config/$(basename $file)"
+          command unlink "$home_config/$(basename $file)"
         fi
         if [[ -e "$home_config/$(basename $file)" && ! -L "$home_config/$(basename $file)" ]]; then
           command mv "$home_config/$(basename $file)" "$backup_config_dir"
