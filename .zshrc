@@ -1,3 +1,4 @@
+# エディタをvimにする
 export EDITOR=vim
 
 # 履歴
@@ -9,6 +10,15 @@ export SAVEHIST=2000
 setopt hist_ignore_dups
 # 履歴に追加されるコマンドがすでにあるなら古い方を削除
 setopt hist_ignore_all_dups
+
+# <TAB>で順に補完候補を切り替える
+setopt auto_menu
+
+# コマンドのスペルチェックを行う
+setopt correct
+
+# 上書きリダイレクトの禁止
+setopt no_clobber
 
 # alias
 alias ll='exa -aalF --icons --group-directories-first'
