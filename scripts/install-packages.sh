@@ -90,7 +90,7 @@ packages_install() {
 
       # シェルをzshに変更
       echo "Change zsh"
-      sudo chsh -s $(which zsh)
+      chsh -s $(which zsh)
     fi
   fi
 }
