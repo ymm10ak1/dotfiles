@@ -62,6 +62,14 @@ create_symlink_config() {
           command mv "$home_config/$(basename $file)" "$backup_config_dir"
         fi
         command ln -snfv $file $home_config
+      elif [[ -f $file ]]; then
+        if [[ -L "$home_config/$(basename $file)" ]]; then
+          command unlink "$home_config/$(basename $file)"
+        fi
+        if [[ -e "$home_config/$(basename $file)" && ! -L "$home_config/$(basename $file)" ]]; then
+          command mv "$home_config/$(basename $file)" "$backup_config_dir"
+        fi
+        command ln -snfv $file $home_config
       fi
     done
   else
