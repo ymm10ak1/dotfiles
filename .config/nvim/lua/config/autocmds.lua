@@ -1,7 +1,7 @@
 -- 特定のファイル(html,css,js,...)ではインデントを2にする
 local fileTypeIndent = vim.api.nvim_create_augroup("fileTypeIndent", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "html", "css", "js", "javascript", "ts", "typescript", "json", "markdown" },
+    pattern = { "html", "css", "js", "javascript", "ts", "typescript", "json", "markdown", "sh" },
     group = fileTypeIndent,
     callback = function()
         vim.opt_local.expandtab = true
