@@ -5,10 +5,6 @@ return {
     opts = {},
     config = function()
         --vim.opt.listchars:append "eol:↴"
-        require("ibl").setup({
-            whitespace = {
-                remove_blankline_trail = true,
-            },
-        })
+        require("ibl").setup({})
     end,
 }
