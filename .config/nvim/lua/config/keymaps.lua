@@ -19,9 +19,10 @@ keymap({ "n", "v" }, "H", "^", { noremap = true })
 -- バッファ移動
 keymap("n", "]b", ":bnext<CR>", opts)
 keymap("n", "[b", ":bprev<CR>", opts)
--- vimgrepの検索結果の移動
+-- Quickfixリスト移動、ウィンドウを閉じる
 keymap("n", "[q", ":cprevious<CR>", opts)
 keymap("n", "]q", ":cnext<CR>", opts)
+keymap("n", "qw", ":cclose<CR>", opts)
 -- タブ作成、削除、 移動
 keymap("n", "tn", ":tabnew<CR>", opts)
 keymap("n", "tx", ":tabclose<CR>", opts)
