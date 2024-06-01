@@ -25,6 +25,7 @@ return {
                     "dockerfile",
                     "python",
                     "json",
+                    "toml",
                 },
                 sync_install = false,
                 highlight = { enable = true },
