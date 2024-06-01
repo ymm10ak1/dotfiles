@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh)
+INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev)
 
 has() {
   type -p "$1" >/dev/null 2>&1
