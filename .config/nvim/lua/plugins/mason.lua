@@ -11,7 +11,7 @@ return {
             "MasonUpdate",
         },
         config = function()
-            require("mason").setup()
+            require("mason").setup({})
         end,
     },
     {
@@ -37,7 +37,10 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("mason-lspconfig").setup()
+            require("mason").setup({})
+            require("mason-lspconfig").setup({
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "tsserver" },
+            })
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- default handler
                     lspconfig[server_name].setup({
@@ -51,6 +54,10 @@ return {
                             Lua = {
                                 diagnostics = {
                                     globals = { "vim" },
+                                },
+                                format = {
+                                    -- styluaを適用するため無効
+                                    enable = false,
                                 },
                             },
                         },
@@ -68,6 +75,7 @@ return {
         },
         config = function()
             require("mason-null-ls").setup({
+                ensure_installed = { "stylua", "textlint", "clang_format", "prettier", "shfmt", "markdownlint" },
                 automatic_setup = true,
                 handlers = {},
             })
@@ -95,6 +103,8 @@ return {
                     null_ls.builtins.formatting.shfmt.with({
                         extra_args = { "-i", "2", "-ci" },
                     }),
+                    null_ls.builtins.diagnostics.markdownlint,
+                    null_ls.builtins.formatting.markdownlint,
                 },
             })
         end,
