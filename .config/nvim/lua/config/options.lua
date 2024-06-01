@@ -59,6 +59,9 @@ opt.showmatch = true
 -- 入力中のコマンドを表示する
 opt.showcmd = true
 
+-- 新しいウィンドウを右に開く
+opt.splitright = true
+
 -- ========== clipboard ==========
 opt.clipboard = "unnamedplus"
 g.clipboard = {
