@@ -13,9 +13,12 @@ return {
                 view_error = "notify",
                 view_warn = "notify",
                 view_history = "mini",
-                view_search = "virtualtext",
+                view_search = false,
             },
             lsp = {
+                progress = {
+                    enabled = false,
+                },
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

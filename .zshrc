@@ -20,6 +20,9 @@ setopt correct
 # 上書きリダイレクトの禁止
 setopt no_clobber
 
+# 日本語ファイル名等8ビットを通す
+setopt print_eight_bit
+
 # alias
 alias ll='exa -aalF --icons --group-directories-first'
 alias udaug='sudo apt update && sudo apt upgrade -y'
@@ -39,12 +42,7 @@ alias tst='tmux source ~/.tmux.conf'
 alias start='explorer.exe'
 
 # GOPATH
-export PATH=$PATH:/usr/local/go/bin
-
-# nvm node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export PATH=$PATH:/usr/local/go/bin
 
 # online-judge-tools path
 export PATH="$HOME/.local/bin:$PATH"
@@ -72,6 +70,9 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # .zshrc_localがあれば読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# mise
+eval "$($HOME/.local/bin/mise activate zsh)"
 
 # sheldon
 eval "$(sheldon source)"

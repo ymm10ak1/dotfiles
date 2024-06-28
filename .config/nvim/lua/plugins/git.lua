@@ -1,15 +1,16 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
-        event = { "BufReadPre", "BufReadPost", "BufNewFile" },
+        event = { "BufReadPost" },
         config = function()
             require("gitsigns").setup({})
         end,
     },
     {
         "sindrets/diffview.nvim",
-        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+        config = true,
     },
     {
         "kdheepak/lazygit.nvim",

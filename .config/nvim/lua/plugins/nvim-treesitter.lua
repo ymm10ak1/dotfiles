@@ -25,11 +25,12 @@ return {
                     "dockerfile",
                     "python",
                     "json",
+                    "toml",
                 },
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
-                autotag = { enable = true },
+                -- autotag = { enable = true },
                 endwise = { enable = true },
             })
         end,

@@ -10,10 +10,9 @@ return {
         -- エラーメッセージ表示(Diagnostic)
         keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
         -- 次のエラーメッセージを表示
-        keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+        -- keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
         -- 前のエラーメッセージを表示
-        keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-        -- keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>')
+        -- keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 
         -- Use LspAttach autocommand to only map the following keys
         -- after the language server attaches to the current buffer
@@ -27,9 +26,9 @@ return {
                 -- See `:help vim.lsp.*` for documentation on any of the below functions
                 local opts = { buffer = ev.buf }
                 -- ヒントを表示(hover)
-                keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+                -- keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
                 -- 定義ジャンプ
-                keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+                -- keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
                 -- 宣言ジャンプ
                 keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
                 -- 実装ジャンプ
@@ -37,7 +36,7 @@ return {
                 -- 参照元ジャンプ
                 keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
                 -- 型定義ジャンプ
-                keymap("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+                -- keymap("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
                 -- formatting
                 keymap("n", "<leader>f", function()
                     vim.lsp.buf.format({ async = true })
@@ -45,7 +44,7 @@ return {
                 -- rename
                 keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
                 -- ErronnWarnig/Hintが出ている箇所で実行可能な修正の候補の表示
-                keymap({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+                -- keymap({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
             end,
         })
     end,

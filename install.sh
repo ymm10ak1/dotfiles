@@ -17,18 +17,18 @@ create_symlink_dotfiles() {
   local dot_dir="${SCRIPT_DIR}"
   local backup_dir="$HOME/.dotbackup/$BACKUP_DATE"
   if [[ "$HOME" != "$dot_dir" ]]; then
-    for file in $dot_dir/.??*; do
-      [[ $(basename $file) == ".git" ]] && continue
-      [[ $(basename $file) == ".gitignore" ]] && continue
-      [[ $(basename $file) == ".config" ]] && continue
-      [[ $(basename $file) == "scripts" ]] && continue
-      if [[ -L "$HOME/$(basename $file)" ]]; then
-        command unlink "$HOME/$(basename $file)"
+    for file in "$dot_dir"/.??*; do
+      [[ $(basename "$file") == ".git" ]] && continue
+      [[ $(basename "$file") == ".gitignore" ]] && continue
+      [[ $(basename "$file") == ".config" ]] && continue
+      [[ $(basename "$file") == "scripts" ]] && continue
+      if [[ -L "$HOME/$(basename "$file")" ]]; then
+        command unlink "$HOME/$(basename "$file")"
       fi
-      if [[ -e "$HOME/$(basename $file)" && ! -L "$HOME/$(basename $file)" ]]; then
-        command mv "$HOME/$(basename $file)" "$backup_dir"
+      if [[ -e "$HOME/$(basename "$file")" && ! -L "$HOME/$(basename "$file")" ]]; then
+        command mv "$HOME/$(basename "$file")" "$backup_dir"
       fi
-      command ln -snfv $file $HOME
+      command ln -snfv "$file" "$HOME"
     done
   else
     command echo "same install src dest"
@@ -51,25 +51,25 @@ create_symlink_config() {
   local home_config="$HOME/.config"
   local backup_config_dir="$HOME/.dotbackup/$BACKUP_DATE/.config"
   if [[ "$HOME" != "$config_dir" ]]; then
-    for file in $config_dir/??*; do
-      if [ -d $file ]; then
-        [[ $(basename $file) = ".git" ]] && continue
-        [[ $(basename $file) = "wezterm" ]] && continue
-        if [[ -L "$home_config/$(basename $file)" ]]; then
-          command unlink "$home_config/$(basename $file)"
+    for file in "$config_dir"/??*; do
+      if [ -d "$file" ]; then
+        [[ $(basename "$file") = ".git" ]] && continue
+        [[ $(basename "$file") = "wezterm" ]] && continue
+        if [[ -L "$home_config/$(basename "$file")" ]]; then
+          command unlink "$home_config/$(basename "$file")"
         fi
-        if [[ -e "$home_config/$(basename $file)" && ! -L "$home_config/$(basename $file)" ]]; then
-          command mv "$home_config/$(basename $file)" "$backup_config_dir"
+        if [[ -e "$home_config/$(basename "$file")" && ! -L "$home_config/$(basename "$file")" ]]; then
+          command mv "$home_config/$(basename "$file")" "$backup_config_dir"
         fi
-        command ln -snfv $file $home_config
+        command ln -snfv "$file" "$home_config"
       elif [[ -f $file ]]; then
-        if [[ -L "$home_config/$(basename $file)" ]]; then
-          command unlink "$home_config/$(basename $file)"
+        if [[ -L "$home_config/$(basename "$file")" ]]; then
+          command unlink "$home_config/$(basename "$file")"
         fi
-        if [[ -e "$home_config/$(basename $file)" && ! -L "$home_config/$(basename $file)" ]]; then
-          command mv "$home_config/$(basename $file)" "$backup_config_dir"
+        if [[ -e "$home_config/$(basename "$file")" && ! -L "$home_config/$(basename "$file")" ]]; then
+          command mv "$home_config/$(basename "$file")" "$backup_config_dir"
         fi
-        command ln -snfv $file $home_config
+        command ln -snfv "$file" "$home_config"
       fi
     done
   else
@@ -87,8 +87,7 @@ run_script() {
 
 command echo -e "\033[1;36mInstalling packages...\033[0m"
 run_script "$SCRIPT_DIR/scripts/install-packages.sh"
-command echo -e "\033[1;36mInstalling dotfiles...\033[0m"
+command echo -e "\033[1;36mCreating symbolic link...\033[0m"
 create_symlink_dotfiles
-command echo -e "\033[1;36mInstalling config file...\033[0m"
 create_symlink_config
-command echo -e "\033[1;32mInstalling completed!\033[0m"
+command echo -e "\033[1;32mInstall completed!\033[0m"

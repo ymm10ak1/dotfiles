@@ -11,15 +11,15 @@ return {
             event = "InsertEnter",
             dependencies = { "rafamadriz/friendly-snippets" },
         },
-        { "saadparwaiz1/cmp_luasnip",            event = "InsertEnter" },
+        { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
         { "neovim/nvim-lspconfig" },
-        { "hrsh7th/cmp-nvim-lsp",                event = "InsertEnter" },
+        { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
         { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
-        { "hrsh7th/cmp-buffer",                  event = "InsertEnter" },
-        { "hrsh7th/cmp-path",                    event = "InsertEnter" },
-        { "hrsh7th/cmp-cmdline",                 event = "ModeChanged" },
-        { "dmitmel/cmp-cmdline-history",         event = "CmdlineEnter" },
-        { "onsails/lspkind.nvim",                event = "InsertEnter" },
+        { "hrsh7th/cmp-buffer", event = "InsertEnter" },
+        { "hrsh7th/cmp-path", event = "InsertEnter" },
+        { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineEnter" } },
+        { "dmitmel/cmp-cmdline-history", event = "CmdlineEnter" },
+        { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
     config = function()
         local cmp = require("cmp")
@@ -147,7 +147,12 @@ return {
             sources = cmp.config.sources({
                 { name = "path" },
             }, {
-                { name = "cmdline" },
+                {
+                    name = "cmdline",
+                    option = {
+                        ignore_cmds = { "Man", "!" },
+                    },
+                },
             }),
         })
     end,

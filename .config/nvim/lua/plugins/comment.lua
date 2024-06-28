@@ -1,8 +1,8 @@
 return {
     {
         "numToStr/Comment.nvim",
+        event = "VeryLazy",
         opts = {},
-        lazy = false,
     },
     {
         "folke/todo-comments.nvim",
