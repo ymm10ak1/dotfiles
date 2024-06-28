@@ -17,7 +17,7 @@ return {
         { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
         { "hrsh7th/cmp-buffer", event = "InsertEnter" },
         { "hrsh7th/cmp-path", event = "InsertEnter" },
-        { "hrsh7th/cmp-cmdline", event = "ModeChanged" },
+        { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineEnter" } },
         { "dmitmel/cmp-cmdline-history", event = "CmdlineEnter" },
         { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
@@ -147,7 +147,12 @@ return {
             sources = cmp.config.sources({
                 { name = "path" },
             }, {
-                { name = "cmdline" },
+                {
+                    name = "cmdline",
+                    option = {
+                        ignore_cmds = { "Man", "!" },
+                    },
+                },
             }),
         })
     end,

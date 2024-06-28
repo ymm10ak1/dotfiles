@@ -6,7 +6,7 @@ opt.encoding = "utf-8"
 -- 保存時の文字コード
 opt.fileencoding = "utf-8"
 -- 読み込み時の文字コードの自動判別。左側が優先される
-opt.fileencodings = { "utf-8", "euc-jp", "cp932" }
+opt.fileencodings = { "utf-8", "euc-jp", "cp932", "sjis" }
 
 -- 保存してないファイルがあるときでも別のファイルを開くことができる
 opt.hidden = true
@@ -29,6 +29,8 @@ opt.laststatus = 3
 opt.mouse = "a"
 -- テキストの折り返しを有効化
 opt.wrap = true
+-- 記号列(gitsignsの記号等を表示する列)を常に表示する
+opt.signcolumn = "yes"
 
 -- Tabキー押下時やインデントの際、半角スペースが挿入される
 opt.expandtab = true
@@ -53,7 +55,7 @@ opt.smartcase = true
 -- ヘルプの言語には日本語を優先
 opt.helplang = { "ja", "en" }
 -- コマンドラインモードで<Tab>キーでファイル名補完を有効にする
-opt.wildmenu = true
+opt.wildmenu = false
 -- 対応するカッコを表示
 opt.showmatch = true
 -- 入力中のコマンドを表示する
@@ -61,6 +63,8 @@ opt.showcmd = true
 
 -- 新しいウィンドウを右に開く
 opt.splitright = true
+-- 新しいウィンドウを下に開く
+opt.splitbelow = true
 
 -- ========== clipboard ==========
 opt.clipboard = "unnamedplus"

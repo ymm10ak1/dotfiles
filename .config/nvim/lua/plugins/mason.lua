@@ -86,6 +86,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "gbprod/none-ls-shellcheck.nvim",
         },
         config = function()
             local null_ls = require("null-ls")
@@ -105,6 +106,8 @@ return {
                     }),
                     null_ls.builtins.diagnostics.markdownlint,
                     null_ls.builtins.formatting.markdownlint,
+                    require("none-ls-shellcheck.diagnostics"),
+                    require("none-ls-shellcheck.code_actions"),
                 },
             })
         end,

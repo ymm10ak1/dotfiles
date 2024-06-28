@@ -24,24 +24,13 @@ packages_install() {
         elif [[ "$pkg" = "bat" ]]; then
           pkg="batcat"
         fi
-        if ! (has $pkg); then
-          sudo apt-get install -y $pkg
+        if ! (has "$pkg"); then
+          sudo apt-get install -y "$pkg"
         else
           echo "$pkg is already installed"
         fi
       done
 
-      # nvm,nodejsのインストール
-      if ! (command -v nvm >/dev/null); then
-        echo "nvm is already installed"
-      else
-        echo "Install nvm"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-        # nvmがインストールできたらnodejsのインストール
-        if ! (command -v nvm >/dev/null); then
-          nvm install --lts
-        fi
-      fi
       #denoのインストール
       if ! (has "deno"); then
         echo "Install deno"
@@ -87,10 +76,20 @@ packages_install() {
       else
         echo "sheldon is already installed"
       fi
+      # miseのインストール
+      if ! (has "mise"); then
+        echo "Install mise"
+        curl https://mise.run | sh
+        "$HOME/.local/bin/mise" --version
+      else
+        echo "mise is already installed"
+      fi
 
-      # シェルをzshに変更
-      echo "Change zsh"
-      chsh -s $(which zsh)
+      # シェルをbashからzshに変更
+      if [[ "$SHELL" =~ "bash" ]]; then
+        echo "Change zsh"
+        chsh -s "$(which zsh)"
+      fi
     fi
   fi
 }

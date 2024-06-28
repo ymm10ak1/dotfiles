@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
 })
 
--- vimgrepの後にcwを入力する(vim { pattern } { file } | cw)
+-- vimgrepの後にcw[indow]を入力すると検索結果の一覧が表示される(vim { pattern } { file } | cw)
 -- QuickFixCmdPost: QuickFixコマンドを実行した後
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     pattern = { "*grep*" },
