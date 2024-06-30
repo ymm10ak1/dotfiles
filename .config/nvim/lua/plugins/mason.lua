@@ -18,10 +18,10 @@ return {
         "williamboman/mason-lspconfig.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            { "williamboman/mason.nvim" },
-            { "neovim/nvim-lspconfig" },
-            { "hrsh7th/nvim-cmp" },
-            { "hrsh7th/cmp-nvim-lsp" },
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
             -- {
             --     "lukas-reineke/lsp-format.nvim",
             --     config = function()
@@ -37,9 +37,8 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "tsserver" },
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "tsserver", "ruff", "bashls" },
             })
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- default handler
@@ -75,7 +74,15 @@ return {
         },
         config = function()
             require("mason-null-ls").setup({
-                ensure_installed = { "stylua", "textlint", "clang_format", "prettier", "shfmt", "markdownlint" },
+                ensure_installed = {
+                    "stylua",
+                    "textlint",
+                    "clang_format",
+                    "prettier",
+                    "shfmt",
+                    "markdownlint",
+                    "shellcheck",
+                },
                 automatic_setup = true,
                 handlers = {},
             })
@@ -86,7 +93,6 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "gbprod/none-ls-shellcheck.nvim",
         },
         config = function()
             local null_ls = require("null-ls")
@@ -106,8 +112,6 @@ return {
                     }),
                     null_ls.builtins.diagnostics.markdownlint,
                     null_ls.builtins.formatting.markdownlint,
-                    require("none-ls-shellcheck.diagnostics"),
-                    require("none-ls-shellcheck.code_actions"),
                 },
             })
         end,
