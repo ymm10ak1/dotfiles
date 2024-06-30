@@ -13,6 +13,8 @@
 !/.config/wezterm/**
 !/.config/sheldon/
 !/.config/sheldon/**
+!/.config/mise/
+!/.config/mise/**
 !/scripts/
 !/scripts/**
 !/.vimrc
