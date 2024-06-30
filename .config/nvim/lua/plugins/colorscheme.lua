@@ -19,12 +19,6 @@ return {
         end,
     },
     {
-        "cocopon/iceberg.vim",
-        enabled = false,
-        lazy = false,
-        priority = 1000,
-    },
-    {
         "catppuccin/nvim",
         name = "catppuccin",
         enabled = false,
