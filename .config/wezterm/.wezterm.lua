@@ -23,8 +23,8 @@ end)
 
 return {
     wsl_domains = wsl_domains,
-    font = wezterm.font("HackGen Console NF"),
-    font_size = 13.0,
+    font = wezterm.font_with_fallback({ "HackGen Console NF" }),
+    font_size = 14.0,
     adjust_window_size_when_changing_font_size = true,
     color_scheme = "iceberg-dark",
     initial_cols = 120,
@@ -73,25 +73,25 @@ return {
             }),
         },
         -- pane移動
-        { key = "h", mods = "LEADER",    action = act.ActivatePaneDirection("Left") },
-        { key = "j", mods = "LEADER",    action = act.ActivatePaneDirection("Down") },
-        { key = "k", mods = "LEADER",    action = act.ActivatePaneDirection("Up") },
-        { key = "l", mods = "LEADER",    action = act.ActivatePaneDirection("Right") },
+        { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+        { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+        { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+        { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
         -- paneサイズ変更
-        { key = "H", mods = "LEADER",    action = act.AdjustPaneSize({ "Left", 5 }) },
-        { key = "J", mods = "LEADER",    action = act.AdjustPaneSize({ "Down", 5 }) },
-        { key = "K", mods = "LEADER",    action = act.AdjustPaneSize({ "Up", 5 }) },
-        { key = "L", mods = "LEADER",    action = act.AdjustPaneSize({ "Right", 5 }) },
+        { key = "H", mods = "LEADER", action = act.AdjustPaneSize({ "Left", 5 }) },
+        { key = "J", mods = "LEADER", action = act.AdjustPaneSize({ "Down", 5 }) },
+        { key = "K", mods = "LEADER", action = act.AdjustPaneSize({ "Up", 5 }) },
+        { key = "L", mods = "LEADER", action = act.AdjustPaneSize({ "Right", 5 }) },
         -- タブ削除
-        { key = "q", mods = "LEADER",    action = act.CloseCurrentTab({ confirm = true }) },
+        { key = "q", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
         -- ペイン削除
-        { key = "x", mods = "LEADER",    action = act.CloseCurrentPane({ confirm = true }) },
+        { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
         -- タブ移動
-        { key = "[", mods = "LEADER",    action = act.ActivateTabRelative(-1) },
-        { key = "]", mods = "LEADER",    action = act.ActivateTabRelative(1) },
+        { key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+        { key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
         -- Copy/Paste
-        { key = "C", mods = "CTRL",      action = act.CopyTo("Clipboard") },
-        { key = "V", mods = "CTRL",      action = act.PasteFrom("Clipboard") },
+        { key = "C", mods = "CTRL", action = act.CopyTo("Clipboard") },
+        { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
         -- Fullscrenn
         { key = "f", mods = "SHIFT|ALT", action = act.ToggleFullScreen },
     },
