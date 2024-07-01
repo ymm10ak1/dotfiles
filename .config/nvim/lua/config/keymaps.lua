@@ -7,8 +7,6 @@ local keymap = vim.keymap.set
 
 -- カレントウィンドウの下にターミナルを開き、ターミナルをインサートモードにする
 -- keymap("n", "<leader>tt", ":split | wincmd j | resize 10 |terminal<CR>i", opts)
--- <Ctrl-q>でvisual(矩形選択)モードに変更
-keymap("n", "<C-q>", "<C-v>", opts)
 -- インデントを1段浅く/深く
 keymap("n", "<", "<<", { noremap = true })
 keymap("n", ">", ">>", { noremap = true })
