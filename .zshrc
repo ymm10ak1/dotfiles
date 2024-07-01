@@ -70,5 +70,9 @@ eval "$(zoxide init --cmd cd zsh)"
 # mise
 eval "$($HOME/.local/bin/mise activate zsh)"
 
+# neovim
+[ -d /opt/nvim-linux64 ] && export PATH="$PATH:/opt/nvim-linux64/bin"
+
+
 # sheldon
 eval "$(sheldon source)"
