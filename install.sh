@@ -52,17 +52,13 @@ create_symlink_config() {
   local backup_config_dir="$HOME/.dotbackup/$BACKUP_DATE/.config"
   if [[ "$HOME" != "$config_dir" ]]; then
     for file in "$config_dir"/??*; do
-      if [ -d "$file" ]; then
+      # ディレクトリか通常のファイルの場合にシンボリックリンクを作る
+      if [[ -d "$file" || -f "$file" ]]; then
         [[ $(basename "$file") = ".git" ]] && continue
-        [[ $(basename "$file") = "wezterm" ]] && continue
-        if [[ -L "$home_config/$(basename "$file")" ]]; then
-          command unlink "$home_config/$(basename "$file")"
+        # wsl2の場合はweztermのシンボリックリンクは作らない
+        if [[ "$(uname -r)" == *microsoft* ]]; then
+          [[ $(basename "$file") = "wezterm" ]] && continue
         fi
-        if [[ -e "$home_config/$(basename "$file")" && ! -L "$home_config/$(basename "$file")" ]]; then
-          command mv "$home_config/$(basename "$file")" "$backup_config_dir"
-        fi
-        command ln -snfv "$file" "$home_config"
-      elif [[ -f $file ]]; then
         if [[ -L "$home_config/$(basename "$file")" ]]; then
           command unlink "$home_config/$(basename "$file")"
         fi
