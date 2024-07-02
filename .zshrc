@@ -1,3 +1,6 @@
+# 言語を日本語にする
+export LANG=ja_JP.UTF-8
+
 # エディタをvimにする
 export EDITOR=vim
 
