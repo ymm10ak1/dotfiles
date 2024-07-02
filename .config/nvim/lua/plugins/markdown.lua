@@ -8,6 +8,10 @@ return {
         "nvim-tree/nvim-web-devicons", -- Optional but recommended
     },
     config = function()
-        require("render-markdown").setup({})
+        require("render-markdown").setup({
+            -- Markdownをデフォルトではレンダリングしない
+            start_enabled = false,
+        })
+        vim.keymap.set("n", "<M-r>", "<cmd>RenderMarkdownToggle<CR>")
     end,
 }
