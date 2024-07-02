@@ -22,6 +22,7 @@ return {
         -- diagnostic
         keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
         keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+        keymap("n", "ge", "<cmd>Lspsaga show_workspace_diagnostics ++float<cr>")
         -- code action
         keymap("n", "ga", "<cmd>Lspsaga code_action<cr>")
         -- hover
