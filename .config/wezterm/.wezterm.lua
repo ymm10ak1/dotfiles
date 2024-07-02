@@ -23,7 +23,10 @@ end)
 
 return {
     wsl_domains = wsl_domains,
-    font = wezterm.font_with_fallback({ "HackGen Console NF" }),
+    font = wezterm.font_with_fallback({
+        "HackGen Console NF",
+        "JetBrains Mono",
+    }),
     font_size = 14.0,
     adjust_window_size_when_changing_font_size = true,
     color_scheme = "iceberg-dark",
