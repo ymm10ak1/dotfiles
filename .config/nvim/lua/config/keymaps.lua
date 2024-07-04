@@ -5,8 +5,6 @@ vim.g.mapleader = " " -- <leader>キーを半角スペース
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
--- カレントウィンドウの下にターミナルを開き、ターミナルをインサートモードにする
--- keymap("n", "<leader>tt", ":split | wincmd j | resize 10 |terminal<CR>i", opts)
 -- インデントを1段浅く/深く
 keymap("n", "<", "<<", { noremap = true })
 keymap("n", ">", ">>", { noremap = true })
@@ -36,5 +34,3 @@ keymap("n", "ss", ":<C-u>split<CR><C-w>w", opts)
 keymap("n", "sv", ":<C-u>vsplit<CR><C-w>w", opts)
 -- insertモード中、jjでnormalモードに変更
 keymap("i", "jj", "<Esc>", opts)
--- ターミナルモード時に<ESC>押すとnormal
-keymap("t", "<Esc>", "<C-\\><C-n><CR>", opts)

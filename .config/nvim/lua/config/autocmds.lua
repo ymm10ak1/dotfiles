@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = { "*" },
     callback = function()
+        local opts = { buffer = 0 }
+        -- escでノーマルモードに戻る
+        vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts)
         vim.cmd("startinsert")
         vim.opt_local.number = false
     end,
