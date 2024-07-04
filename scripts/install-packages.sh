@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev)
+INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev zip)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -17,14 +17,15 @@ packages_install() {
 
       # git,curl,exa,xsel,build-essential,bat,ripgrep等のインストール
       for pkg in "${INSTALL_LIST[@]}"; do
+        local pkg_name="$pkg"
         if [[ "$pkg" = "ripgrep" ]]; then
-          pkg="rg"
+          pkg_name="rg"
         elif [[ "$pkg" = "build-essential" ]]; then
-          pkg="gcc"
+          pkg_name="gcc"
         elif [[ "$pkg" = "bat" ]]; then
-          pkg="batcat"
+          pkg_name="batcat"
         fi
-        if ! (has "$pkg"); then
+        if ! (has "$pkg_name"); then
           sudo apt-get install -y "$pkg"
         else
           echo "$pkg is already installed"
