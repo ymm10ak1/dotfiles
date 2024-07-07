@@ -1,0 +1,12 @@
+name: Install dotfiles
+on: [push]
+jobs:
+  Install-Dotfiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Required Packages
+        run: apt-get update && apt-get install -y git sudo
+      - name: Check out Repository code 
+        uses: actions/checkout@v4
+      - name: Run install.sh
+        run: ./install.sh
