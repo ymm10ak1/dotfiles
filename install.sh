@@ -21,7 +21,6 @@ create_symlink_dotfiles() {
       [[ $(basename "$file") == ".git" ]] && continue
       [[ $(basename "$file") == ".gitignore" ]] && continue
       [[ $(basename "$file") == ".config" ]] && continue
-      [[ $(basename "$file") == "scripts" ]] && continue
       if [[ -L "$HOME/$(basename "$file")" ]]; then
         command unlink "$HOME/$(basename "$file")"
       fi
