@@ -24,3 +24,7 @@
 !/.gitignore
 !/stylua.toml
 !/.zshrc
+!/.github/
+!/.github/**
+!/.github/workflows/
+!/.github/workflows/**
