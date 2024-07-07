@@ -89,7 +89,7 @@ packages_install() {
       # シェルをbashからzshに変更
       if [[ "$SHELL" =~ "bash" ]]; then
         echo "Change zsh"
-        chsh -s "$(which zsh)"
+        sudo chsh "$(id -un)" -s "$(which zsh)"
       fi
     fi
   fi
