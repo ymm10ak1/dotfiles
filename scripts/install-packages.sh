@@ -58,7 +58,7 @@ packages_install() {
       # starshipのインストール
       if ! (has "starship"); then
         echo "Install starship"
-        curl -sS https://starship.rs/install.sh | sh
+        yes | curl -sS https://starship.rs/install.sh | sh
       else
         echo "starship is already installed"
       fi
