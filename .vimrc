@@ -43,5 +43,7 @@ vnoremap L $h
 " インサートモードのとき"jj"でノーマルモードへ
 inoremap <silent> jj <ESC>
 
+" ========== color ==========
 syntax on
-
+filetype indent on " ファイルタイプによるインデント
+filetype plugin on " ファイルタイプごとのプラグイン
