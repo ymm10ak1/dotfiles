@@ -2,7 +2,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = { "BufNewFile", "BufReadPost" },
+        event = { "BufNewFile", "BufRead" },
         cmd = { "TSUpdate", "TSInstall" },
         config = function()
             local configs = require("nvim-treesitter.configs")
@@ -40,7 +40,7 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
-        event = { "BufReadPost", "BufNewFile" },
+        event = { "BufRead", "BufNewFile" },
         opts = {},
         config = function()
             require("nvim-ts-autotag").setup({})
