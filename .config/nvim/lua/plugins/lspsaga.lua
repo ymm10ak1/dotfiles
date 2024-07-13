@@ -10,6 +10,7 @@ return {
                 keys = {
                     vsplit = "v",
                     split = "s",
+                    quit = "q",
                 },
             },
             lightbulb = {
@@ -18,6 +19,10 @@ return {
             definition = {
                 height = 0.6,
             },
+            code_action = {
+                show_server_name = true,
+                extend_gitsigns = false,
+            }
         })
         -- diagnostic
         keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
