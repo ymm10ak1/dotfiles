@@ -16,17 +16,18 @@ return {
     },
     keys = {
         { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "find_files" },
-        { "<leader>lg", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
+        { "<leader>gg", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
         {
-            "<leader>lG",
+            "<leader>gG",
             "<cmd>Telescope live_grep grep_open_files=true<cr>",
             desc = "live_grep(grep_open_files = true)",
         },
         { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "buffers" },
-        { "<leader>ht", "<cmd>Telescope help_tags<cr>", desc = "help_tags" },
+        { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "help_tags" },
         { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "git_files" },
         { "<leader>re", "<cmd>Telescope registers<cr>", desc = "registers" },
-        { "<leader>fr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+        { "<leader>rr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+        { "<leader>rw", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope Frecency workspace" },
         { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
         {
             "<leader>nf",
@@ -36,7 +37,7 @@ return {
             desc = "Telescope notify",
         },
         { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope smart_open" },
-        { "<leader>ta", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
+        { "<leader>fa", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
     },
     config = function()
         local actions = require("telescope.actions")
