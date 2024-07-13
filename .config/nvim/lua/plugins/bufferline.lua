@@ -7,7 +7,14 @@ return {
     },
     config = function()
         local opts = { noremap = true, silent = true }
-        require("bufferline").setup({})
+        require("bufferline").setup({
+            options = {
+                indicator = {
+                    style = "icon",
+                },
+                separator_style = "slant",
+            },
+        })
         vim.keymap.set("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
         vim.keymap.set("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opts)
     end,
