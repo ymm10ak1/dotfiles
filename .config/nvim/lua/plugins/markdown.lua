@@ -10,7 +10,7 @@ return {
         config = function()
             require("render-markdown").setup({
                 -- Markdownをデフォルトではレンダリングしない
-                start_enabled = false,
+                enabled = false,
             })
             vim.keymap.set("n", "<M-r>", "<cmd>RenderMarkdownToggle<CR>")
         end,
@@ -18,6 +18,6 @@ return {
     {
         "ixru/nvim-markdown",
         ft = { "markdown" },
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
     },
 }
