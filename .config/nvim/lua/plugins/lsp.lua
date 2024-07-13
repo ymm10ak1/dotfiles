@@ -8,7 +8,7 @@ return {
         -- global mappings.
         -- See `:help vim.diagnostic.*` for documentation on any of the below functions
         -- エラーメッセージ表示(Diagnostic)
-        keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
+        -- keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>")
         -- 次のエラーメッセージを表示
         -- keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
         -- 前のエラーメッセージを表示
@@ -38,7 +38,7 @@ return {
                 -- 型定義ジャンプ
                 -- keymap("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
                 -- formatting
-                keymap("n", "<leader>f", function()
+                keymap("n", "<leader>fo", function()
                     vim.lsp.buf.format({ async = true })
                 end, opts)
                 -- rename
