@@ -18,7 +18,7 @@ return {
         { "hrsh7th/cmp-buffer", event = "InsertEnter" },
         { "hrsh7th/cmp-path", event = "InsertEnter" },
         { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineEnter" } },
-        { "dmitmel/cmp-cmdline-history", event = "CmdlineEnter" },
+        { "dmitmel/cmp-cmdline-history", event = { "ModeChanged", "CmdlineEnter" } },
         { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
     config = function()
@@ -93,6 +93,20 @@ return {
                         fallback()
                     end
                 end, { "i", "c", "s" }),
+                ["<C-b>"] = cmp.mapping(function(fallback)
+                    if cmp.visible_docs() then
+                        cmp.mapping.scroll_docs(-4)
+                    else
+                        fallback()
+                    end
+                end, { "i" }),
+                ["<C-f>"] = cmp.mapping(function(fallback)
+                    if cmp.visible_docs() then
+                        cmp.mapping.scroll_docs(4)
+                    else
+                        fallback()
+                    end
+                end, { "i" }),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
             },
             window = {
