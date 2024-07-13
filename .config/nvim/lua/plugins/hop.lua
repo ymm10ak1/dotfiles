@@ -9,8 +9,8 @@ return {
             keys = "etovxqpdygfblzhckisuran",
             quit_key = "<SPC>",
         })
-        vim.keymap.set("n", "<leader><leader>j", ":HopLineStart<CR>")
+        vim.keymap.set("n", "<leader>rj", ":HopLineStart<CR>")
         vim.keymap.set("n", "<leader>a", ":HopLine<CR>")
-        vim.keymap.set("n", "<leader><leader>w", ":HopWord<CR>")
+        vim.keymap.set("n", "<leader>wo", ":HopWord<CR>")
     end,
 }
