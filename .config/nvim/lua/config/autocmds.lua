@@ -28,3 +28,13 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     pattern = { "*grep*" },
     command = "cw",
 })
+
+-- helpなどをqで閉じるようにする
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "help", "checkhealth", "qf" },
+    callback = function(ev)
+        -- help等の対象ファイルをバッファリストに入れない
+        vim.bo[ev.buf].buflisted = false
+        vim.keymap.set("n", "q", "<C-w>c", { noremap = true, buffer = 0 })
+    end,
+})
