@@ -1,16 +1,11 @@
 return {
     "Wansmer/treesj",
     keys = {
-        {
-            "<leader>m",
-            function()
-                require("treesj").toggle()
-            end,
-            desc = "toggle mode",
-        },
+        { "<leader>m", "<cmd>TSJToggle<cr>", desc = "toggle mode" },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-        require("treesj").setup({})
-    end,
+    opts = {
+        use_default_keymaps = false,
+        max_join_length = 150,
+    },
 }
