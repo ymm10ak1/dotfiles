@@ -23,7 +23,11 @@ setopt no_clobber
 setopt print_eight_bit
 
 # alias
-alias ll='exa -aalF --icons --group-directories-first'
+if type "eza" > /dev/null 2>&1; then
+    alias ll='eza -aalF --icons --group-directories-first'
+else
+    alias ll='ls -alF'
+fi
 alias udaug='sudo apt update && sudo apt upgrade -y'
 alias auc='sudo apt autoremove && sudo apt clean -y'
 alias nv='nvim'

@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl exa build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev zip)
+INSTALL_LIST=(git curl build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev zip wget)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -15,7 +15,7 @@ packages_install() {
       sudo apt-get update -y
       sudo apt-get upgrade -y
 
-      # git,curl,exa,xsel,build-essential,bat,ripgrep等のインストール
+      # 必要なソフトウェアのインストール
       for pkg in "${INSTALL_LIST[@]}"; do
         local pkg_name="$pkg"
         if [[ "$pkg" = "ripgrep" ]]; then
@@ -84,6 +84,16 @@ packages_install() {
         "$HOME/.local/bin/mise" --version
       else
         echo "mise is already installed"
+      fi
+      # ezaのインストール
+      if ! (has "eza"); then
+        echo "Install eza"
+        wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz
+        sudo chmod +x eza
+        sudo chown root:root eza
+        sudo mv eza /usr/local/bin/eza
+      else
+        echo "eza is already installed"
       fi
 
       # シェルをbashからzshに変更
