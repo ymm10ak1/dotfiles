@@ -1,8 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
+    branch = "0.1.x",
     event = { "BufReadPre", "BufNewFile" },
-    cmd = "Telescope",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
@@ -16,9 +15,9 @@ return {
     },
     keys = {
         { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "find_files" },
-        { "<leader>gg", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
+        { "<leader>gl", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
         {
-            "<leader>gG",
+            "<leader>gL",
             "<cmd>Telescope live_grep grep_open_files=true<cr>",
             desc = "live_grep(grep_open_files = true)",
         },
@@ -29,13 +28,7 @@ return {
         { "<leader>rr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
         { "<leader>rw", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope Frecency workspace" },
         { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
-        {
-            "<leader>nf",
-            function()
-                require("telescope").extensions.notify.notify(require("telescope.themes").get_dropdown({ height = 30 }))
-            end,
-            desc = "Telescope notify",
-        },
+        { "<leader>nf", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Telescope notify" },
         { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope smart_open" },
         { "<leader>fa", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
     },
@@ -61,6 +54,12 @@ return {
                         ["q"] = actions.close,
                         ["?"] = actions_generate.which_key(which_key_opts),
                         ["<C-t>"] = trouble.open, -- <C-t>で結果をTroubleで開く
+                    },
+                },
+                path_display = {
+                    -- なぜか設定が反映されない
+                    filename_first = {
+                        reverse_directories = false,
                     },
                 },
             },
