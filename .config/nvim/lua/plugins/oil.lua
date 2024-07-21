@@ -1,15 +1,12 @@
 return {
     "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         { "<leader>fe", "<cmd>Oil<cr>", desc = "Oil" },
     },
-    opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-        require("oil").setup({
-            view_options = {
-                show_hidden = true,
-            },
-        })
-    end,
+    opts = {
+        view_options = {
+            show_hidden = true,
+        },
+    },
 }
