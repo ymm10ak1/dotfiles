@@ -1,18 +1,17 @@
 return {
     {
         "williamboman/mason.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        cmd = {
-            "Mason",
-            "MasonInstall",
-            "MasonUninstall",
-            "MasonUninstallAll",
-            "MasonLog",
-            "MasonUpdate",
+        -- event = { "BufReadPre", "BufNewFile" },
+        cmd = "Mason",
+        opts = {
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗",
+                },
+            },
         },
-        config = function()
-            require("mason").setup({})
-        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -22,17 +21,6 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
-            -- {
-            --     "lukas-reineke/lsp-format.nvim",
-            --     config = function()
-            --         require("lsp-format").setup({})
-            --         local on_attach = function(client, bufnr)
-            --             require("lsp-format").on_attach(client, bufnr)
-            --             -- ... custom code ...
-            --         end
-            --         require("lspconfig").gopls.setup({ on_attach = on_attach })
-            --     end,
-            -- },
         },
         config = function()
             local lspconfig = require("lspconfig")
@@ -104,7 +92,7 @@ return {
                     null_ls.builtins.diagnostics.textlint,
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.formatting.clang_format.with({
-                        disabled_filetypes = { "json", "javascript", "java" },
+                        disabled_filetypes = { "java" },
                     }),
                     null_ls.builtins.formatting.gofmt,
                     null_ls.builtins.formatting.prettier,
