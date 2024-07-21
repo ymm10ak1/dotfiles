@@ -16,6 +16,7 @@ return {
                 suffix_next = "n",
             },
         })
+        -- nvim-surroundと同じようにVisual Modeのときは"S"で囲むようにする
         vim.keymap.del("x", "sa")
         vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<cr>]])
         require("mini.pairs").setup({
