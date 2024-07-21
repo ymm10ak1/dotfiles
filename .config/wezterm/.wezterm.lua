@@ -24,8 +24,9 @@ end)
 return {
     wsl_domains = wsl_domains,
     font = wezterm.font_with_fallback({
-        "HackGen Console NF",
-        "JetBrains Mono",
+        { family = "HackGen Console NF", },
+        { family = "HackGen Console NF", assume_emoji_presentation = true, },
+        { family = "JetBrains Mono", },
     }),
     font_size = 14.0,
     adjust_window_size_when_changing_font_size = true,
@@ -33,11 +34,11 @@ return {
     initial_cols = 120,
     initial_rows = 30,
     audible_bell = "Disabled",
-    window_background_opacity = 0.90,
+    window_background_opacity = 0.80,
     default_domain = "WSL:Ubuntu-22.04",
     default_prog = { "wsl.exe" },
     hide_tab_bar_if_only_one_tab = true,
-    leader = { key = "a", mods = "CTRL", timeout_milliseconds = 2000 },
+    leader = { key = "f", mods = "CTRL", timeout_milliseconds = 2000 },
     keys = {
         -- 新しいWindow
         {
