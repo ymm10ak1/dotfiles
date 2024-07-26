@@ -11,10 +11,8 @@ return {
             "nvim-lua/plenary.nvim",
         },
         opts = {},
-        config = function()
-            require("todo-comments").setup({
-                vim.keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { noremap = true }),
-            })
-        end,
+        keys = {
+            { "<leader>tt", "<cmd>TodoTelescope<CR>", desc = "TodoComments Telescope" },
+        },
     },
 }
