@@ -1,10 +1,8 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
-        event = { "BufRead" },
-        config = function()
-            require("gitsigns").setup({})
-        end,
+        event = { "BufRead", "BufNewFile" },
+        opts = {},
     },
     {
         "sindrets/diffview.nvim",
@@ -14,11 +12,11 @@ return {
     },
     {
         "FabijanZulj/blame.nvim",
-        event = { "BufRead" },
-        cmd = { "BlameToggle" },
-        config = function()
-            require("blame").setup({})
-            vim.keymap.set("n", "<leader>gb", "<cmd>BlameToggle<cr>")
-        end,
+        event = "BufRead",
+        cmd = "BlameToggle",
+        keys = {
+            { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "Blame Toggle" },
+        },
+        opts = {},
     },
 }
