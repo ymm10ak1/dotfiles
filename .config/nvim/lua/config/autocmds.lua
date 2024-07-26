@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 
 -- helpなどをqで閉じるようにする
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "help", "checkhealth", "qf" },
+    pattern = { "help", "checkhealth", "qf", "notify", "startuptime" },
     callback = function(ev)
         -- help等の対象ファイルをバッファリストに入れない
         vim.bo[ev.buf].buflisted = false
