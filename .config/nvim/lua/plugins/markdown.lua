@@ -10,12 +10,10 @@ return {
         keys = {
             { "<M-r>", "<cmd>RenderMarkdown toggle<cr>" },
         },
-        config = function()
-            require("render-markdown").setup({
-                -- Markdownをデフォルトではレンダリングしない
-                enabled = false,
-            })
-        end,
+        opts = {
+            -- Markdownをデフォルトではレンダリングしない
+            enabled = false,
+        },
     },
     {
         "ixru/nvim-markdown",
