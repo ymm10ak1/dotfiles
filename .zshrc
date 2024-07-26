@@ -23,7 +23,7 @@ setopt no_clobber
 setopt print_eight_bit
 
 # alias
-if type "eza" > /dev/null 2>&1; then
+if type -p "eza" > /dev/null 2>&1; then
     alias ll='eza -aalF --icons --group-directories-first'
 else
     alias ll='ls -alF'
@@ -78,7 +78,13 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$($HOME/.local/bin/mise activate zsh)"
 
 # neovim
-[ -d /opt/nvim-linux64 ] && export PATH="$PATH:/opt/nvim-linux64/bin"
+if [ -d /opt/nvim-linux64 ]; then
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+    # neovimとfzfがあればfzfで検索した結果をneovimで編集
+    if type -p "fzf" > /dev/null 2>&1; then
+        alias nvf='nvim $(fzf)'
+    fi
+fi
 
 # sheldon
 eval "$(sheldon source)"
