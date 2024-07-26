@@ -10,7 +10,7 @@ end
 local act = wezterm.action
 
 -- ｢+｣ボタン押したときのタブのcwdをdefaultDomain(wsl2:Ubuntu22.04)の"~"にする
-wezterm.on("new-tab-button-click", function(window, pane, button, default_action)
+wezterm.on("new-tab-button-click", function(window, pane)
     window:perform_action(
         act.SpawnCommandInNewTab({
             cwd = "~",
@@ -24,9 +24,10 @@ end)
 return {
     wsl_domains = wsl_domains,
     font = wezterm.font_with_fallback({
-        { family = "HackGen Console NF", },
-        { family = "HackGen Console NF", assume_emoji_presentation = true, },
-        { family = "JetBrains Mono", },
+        { family = "HackGen Console NF" },
+        { family = "HackGen Console NF", assume_emoji_presentation = true },
+        { family = "SauceCodePro Nerd Font Mono" },
+        { family = "JetBrains Mono" },
     }),
     font_size = 14.0,
     adjust_window_size_when_changing_font_size = true,
