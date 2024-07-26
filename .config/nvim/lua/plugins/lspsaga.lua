@@ -2,7 +2,6 @@ return {
     "nvimdev/lspsaga.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-        local keymap = vim.keymap.set
         require("lspsaga").setup({
             finder = {
                 max_height = 0.6,
@@ -22,10 +21,11 @@ return {
             code_action = {
                 show_server_name = true,
                 extend_gitsigns = false,
-            }
+            },
         })
         vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function (ev)
+            callback = function(ev)
+                local keymap = vim.keymap.set
                 local opts = { buffer = ev.buf }
                 -- diagnostic
                 keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
@@ -40,7 +40,7 @@ return {
                 -- definition
                 keymap("n", "gd", "<cmd>Lspsaga peek_definition<cr>", opts)
                 keymap("n", "gy", "<cmd>Lspsaga peek_type_definition<cr>", opts)
-            end
+            end,
         })
     end,
     depedencies = {
