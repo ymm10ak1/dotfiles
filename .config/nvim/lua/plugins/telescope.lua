@@ -21,7 +21,7 @@ return {
             "<cmd>Telescope live_grep grep_open_files=true<cr>",
             desc = "live_grep(grep_open_files = true)",
         },
-        { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "buffers" },
+        { "<leader>fs", "<cmd>Telescope buffers<cr>", desc = "buffers" },
         { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "help_tags" },
         { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "git_files" },
         { "<leader>re", "<cmd>Telescope registers<cr>", desc = "registers" },
