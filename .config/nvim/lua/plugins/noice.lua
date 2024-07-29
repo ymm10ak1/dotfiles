@@ -6,15 +6,6 @@ return {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
     },
-    keys = {
-        {
-            "<leader>nh",
-            function()
-                require("noice").cmd("history")
-            end,
-            desc = "noice history",
-        },
-    },
     opts = {
         messages = {
             view = "mini",
@@ -43,4 +34,9 @@ return {
             lsp_doc_border = false, -- add a border to hover docs and signature help
         },
     },
+    init = function()
+        vim.keymap.set("n", "<leader>nh", function()
+            require("noice").cmd("history")
+        end, { desc = "Noice History" })
+    end,
 }
