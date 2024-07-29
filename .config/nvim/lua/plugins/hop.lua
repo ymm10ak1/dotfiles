@@ -11,6 +11,6 @@ return {
         })
         vim.keymap.set("n", "<leader>rj", ":HopLineStart<CR>")
         vim.keymap.set("n", "<leader>a", ":HopLine<CR>")
-        vim.keymap.set("n", "<leader>wo", ":HopWord<CR>")
+        vim.keymap.set("n", "<leader>ro", ":HopWord<CR>")
     end,
 }
