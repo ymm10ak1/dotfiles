@@ -93,14 +93,14 @@ return {
                         fallback()
                     end
                 end, { "i", "c", "s" }),
-                ["<C-b>"] = cmp.mapping(function(fallback)
+                ["<C-u>"] = cmp.mapping(function(fallback)
                     if cmp.visible_docs() then
                         cmp.mapping.scroll_docs(-4)
                     else
                         fallback()
                     end
                 end, { "i" }),
-                ["<C-f>"] = cmp.mapping(function(fallback)
+                ["<C-d>"] = cmp.mapping(function(fallback)
                     if cmp.visible_docs() then
                         cmp.mapping.scroll_docs(4)
                     else
