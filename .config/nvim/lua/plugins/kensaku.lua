@@ -13,7 +13,7 @@ return {
             "lambdalisue/kensaku.vim",
         },
         config = function()
-            vim.keymap.set("c", "<CR>", "<Plug>(kensaku-search-replace)<CR>")
+            vim.keymap.set("c", "<CR>", "<Plug>(kensaku-search-replace)<CR>", { noremap = true })
         end,
     },
 }
