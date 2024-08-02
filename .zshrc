@@ -1,3 +1,6 @@
+# gpg
+export GPG_TTY=$(tty)
+
 # 言語を日本語にする
 export LANG=ja_JP.UTF-8
 
