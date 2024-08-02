@@ -32,5 +32,8 @@ keymap("n", "<leader>l", "<C-w>l", opts)
 -- 画面分割 <C-u>はコマンドラインに記述されている文字をすべて削除する
 keymap("n", "ss", ":<C-u>split<CR><C-w>w", opts)
 keymap("n", "sv", ":<C-u>vsplit<CR><C-w>w", opts)
+-- ZZ, ZQを無効化する
+keymap("n", "ZZ", "<NOP>")
+keymap("n", "ZQ", "<NOP>")
 -- insertモード中、jjでnormalモードに変更
 keymap("i", "jj", "<Esc>", opts)
