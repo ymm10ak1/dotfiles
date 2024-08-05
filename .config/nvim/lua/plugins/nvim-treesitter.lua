@@ -1,6 +1,9 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        cond =vscode,
         build = ":TSUpdate",
         event = { "BufNewFile", "BufRead" },
         cmd = { "TSUpdate", "TSInstall" },
@@ -40,6 +43,7 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
+        cond = vscode,
         event = { "BufRead", "BufNewFile" },
         config = true
     },

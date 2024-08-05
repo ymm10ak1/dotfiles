@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "folke/noice.nvim",
+    cond = vscode,
     event = "VeryLazy",
     dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "nvim-telescope/telescope.nvim",
+    cond = vscode,
     branch = "0.1.x",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
@@ -15,9 +18,9 @@ return {
     },
     keys = {
         { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "find_files" },
-        { "<leader>gl", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
+        { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
         {
-            "<leader>gL",
+            "<leader>fW",
             "<cmd>Telescope live_grep grep_open_files=true<cr>",
             desc = "live_grep(grep_open_files = true)",
         },

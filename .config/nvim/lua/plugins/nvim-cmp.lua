@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "hrsh7th/nvim-cmp",
+    cond =vscode,
     -- InsertEnter: 挿入モードを開始したとき
     -- CmdlineEnter: カーソルがコマンドラインに移動したあと
     event = { "InsertEnter", "CmdlineEnter" },

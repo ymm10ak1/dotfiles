@@ -1,6 +1,9 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     {
         "folke/tokyonight.nvim",
+        cond = vscode,
         enabled = false,
         lazy = false,
         priority = 1000,
@@ -20,6 +23,7 @@ return {
     },
     {
         "catppuccin/nvim",
+        cond = vscode,
         name = "catppuccin",
         enabled = false,
         priority = 1000,
@@ -29,6 +33,7 @@ return {
     },
     {
         "navarasu/onedark.nvim",
+        cond = vscode,
         priority = 1000,
         enabled = false,
         config = function()
@@ -40,6 +45,7 @@ return {
     },
     {
         "EdenEast/nightfox.nvim",
+        cond = vscode,
         priority = 1000,
         enabled = true,
         lazy = false,
@@ -49,6 +55,7 @@ return {
     },
     {
         "tanvirtin/monokai.nvim",
+        cond = vscode,
         priority = 1000,
         enabled = false,
         lazy = false,

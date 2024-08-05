@@ -1,6 +1,9 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     {
         "MeanderingProgrammer/markdown.nvim",
+        cond = vscode,
         ft = "markdown",
         name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
         dependencies = {
@@ -17,6 +20,7 @@ return {
     },
     {
         "ixru/nvim-markdown",
+        cond = vscode,
         ft = "markdown",
         event = { "BufReadPre", "BufNewFile" },
     },

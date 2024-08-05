@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "neovim/nvim-lspconfig",
+    cond = vscode,
     -- BufReadPre: 新しいバッファの編集を始めたとき、ファイルを読み込む前
     -- BufNewFile: 存在しないファイルの編集を始めたとき
     event = { "BufReadPre", "BufNewFile" },

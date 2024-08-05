@@ -6,6 +6,7 @@
 # 管理するファイル
 !/README.md
 !/.config/
+!/.config/**
 !/.config/starship.toml
 !/.config/nvim/
 !/.config/nvim/**

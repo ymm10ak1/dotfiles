@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "shellRaining/hlchunk.nvim",
+    cond = vscode,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         require("hlchunk").setup({

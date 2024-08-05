@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "iamcco/markdown-preview.nvim",
+    cond = vscode,
     keys = {
         { "<M-p>", "<cmd>MarkdownPreviewToggle<CR>" },
     },

@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "akinsho/bufferline.nvim",
+    cond = vscode,
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
     dependencies = {

@@ -1,6 +1,9 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     {
         "williamboman/mason.nvim",
+        cond = vscode,
         cmd = "Mason",
         opts = {
             ui = {
@@ -14,6 +17,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "williamboman/mason.nvim",
@@ -54,6 +58,7 @@ return {
     },
     {
         "jay-babu/mason-null-ls.nvim",
+        cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "williamboman/mason.nvim",
@@ -78,6 +83,7 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
+        cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvim-lua/plenary.nvim",

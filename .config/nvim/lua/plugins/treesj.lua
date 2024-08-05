@@ -1,5 +1,7 @@
+local vscode = require("utils.helper").vscode_check
 return {
     "Wansmer/treesj",
+    cond = vscode,
     keys = {
         { "<leader>m", "<cmd>TSJToggle<cr>", desc = "toggle mode" },
     },

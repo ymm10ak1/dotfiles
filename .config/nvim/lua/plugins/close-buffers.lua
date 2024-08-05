@@ -1,5 +1,8 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     "kazhala/close-buffers.nvim",
+    cond = vscode,
     event = { "BufReadPre", "BufNewFile"},
     config = function ()
         require("close_buffers").setup({

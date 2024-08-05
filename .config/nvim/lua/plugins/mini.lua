@@ -1,24 +1,24 @@
 return {
     "echasnovski/mini.nvim",
     version = false,
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     config = function()
         require("mini.surround").setup({
             mappings = {
-                add = "sa", -- Normal ModeとVisual Modeのとき文字列を括弧やクォーテーションで囲む
-                delete = "sd", -- 括弧やクォーテーションを削除
-                find = "sf", -- 括弧やクォーテーションを探す(右方向)
-                find_left = "sF", -- 括弧やクォーテーションを探す(左方向)
-                highlight = "sh", -- 括弧やクォーテーションをハイライトする
-                replace = "sr", -- 括弧やクォーテーションを別のものに置換する
-                update_n_lines = "sn",
+                add = "gsa", -- Normal ModeとVisual Modeのとき文字列を括弧やクォーテーションで囲む
+                delete = "gsd", -- 括弧やクォーテーションを削除
+                find = "gsf", -- 括弧やクォーテーションを探す(右方向)
+                find_left = "gsF", -- 括弧やクォーテーションを探す(左方向)
+                highlight = "gsh", -- 括弧やクォーテーションをハイライトする
+                replace = "gsr", -- 括弧やクォーテーションを別のものに置換する
+                update_n_lines = "gsn",
                 suffix_last = "l",
                 suffix_next = "n",
             },
         })
         -- nvim-surroundと同じようにVisual Modeのときは"S"で囲むようにする
-        vim.keymap.del("x", "sa")
-        vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<cr>]])
+        vim.keymap.del("x", "gsa")
+        vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<cr>]], { noremap = true })
         require("mini.pairs").setup({
             mode = { insert = true, command = false, terminal = false },
             mappings = {

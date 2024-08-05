@@ -1,6 +1,9 @@
+local vscode = require("utils.helper").vscode_check
+
 return {
     {
         "lambdalisue/kensaku.vim",
+        cond = vscode,
         event = "VeryLazy",
         dependencies = {
             "vim-denops/denops.vim",
@@ -8,6 +11,7 @@ return {
     },
     {
         "lambdalisue/kensaku-search.vim",
+        cond = vscode,
         event = "VeryLazy",
         dependencies = {
             "lambdalisue/kensaku.vim",

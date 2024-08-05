@@ -55,7 +55,7 @@ opt.smartcase = true
 -- ヘルプの言語には日本語を優先
 opt.helplang = { "ja", "en" }
 -- コマンドラインモードで<Tab>キーでファイル名補完を有効にする
-opt.wildmenu = false
+opt.wildmenu = true
 -- 対応するカッコを表示
 opt.showmatch = true
 -- 入力中のコマンドを表示する
