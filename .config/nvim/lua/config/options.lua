@@ -19,6 +19,8 @@ opt.backup = false
 opt.ambiwidth = "single"
 -- 行番号表示
 opt.number = true
+-- 相対行番号の表示
+opt.relativenumber = true
 -- 現在行のカーソルを非表示
 opt.cursorline = false
 -- 端末上でTrueColorが使えるようになる
