@@ -1,4 +1,4 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     {
@@ -22,7 +22,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
-            "hrsh7th/nvim-cmp",
+            -- "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
@@ -73,7 +73,6 @@ return {
                     "prettier",
                     "shfmt",
                     "markdownlint",
-                    "shellcheck",
                     "markdownlint-cli2",
                 },
                 automatic_setup = true,
@@ -84,7 +83,7 @@ return {
     {
         "nvimtools/none-ls.nvim",
         cond = vscode,
-        event = { "BufReadPre", "BufNewFile" },
+        -- event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
@@ -97,12 +96,12 @@ return {
                     null_ls.builtins.diagnostics.textlint,
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.formatting.clang_format.with({
-                        disabled_filetypes = { "java" },
+                        disabled_filetypes = { "java", "json", "javascript" },
                     }),
                     null_ls.builtins.formatting.gofmt,
                     null_ls.builtins.formatting.prettier,
                     null_ls.builtins.formatting.shfmt.with({
-                        extra_args = { "-i", "2", "-ci" },
+                        extra_args = { "-i", "2", "-ci", "-bn" },
                     }),
                     null_ls.builtins.diagnostics.markdownlint_cli2,
                     null_ls.builtins.diagnostics.markdownlint,

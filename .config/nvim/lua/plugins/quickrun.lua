@@ -1,4 +1,4 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     "thinca/vim-quickrun",

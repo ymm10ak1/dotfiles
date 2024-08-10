@@ -1,4 +1,4 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     {
@@ -22,6 +22,5 @@ return {
         "ixru/nvim-markdown",
         cond = vscode,
         ft = "markdown",
-        event = { "BufReadPre", "BufNewFile" },
     },
 }

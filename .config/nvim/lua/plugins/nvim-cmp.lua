@@ -1,10 +1,8 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     "hrsh7th/nvim-cmp",
-    cond =vscode,
-    -- InsertEnter: 挿入モードを開始したとき
-    -- CmdlineEnter: カーソルがコマンドラインに移動したあと
+    cond = vscode,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
         {
@@ -32,41 +30,6 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
         cmp.setup({
-            -- mapping = cmp.mapping.preset.insert({
-            --     ["<Tab>"] = function(fallback)
-            --         if cmp.visible() then
-            --             cmp.select_next_item()
-            --         else
-            --             fallback()
-            --         end
-            --     end,
-            --     ["<S-Tab>"] = function(fallback)
-            --         if cmp.visible() then
-            --             cmp.select_prev_item()
-            --         else
-            --             fallback()
-            --         end
-            --     end,
-            --     ["<C-j>"] = function(fallback)
-            --         if cmp.visible() then
-            --             cmp.select_next_item()
-            --         else
-            --             fallback()
-            --         end
-            --     end,
-            --     ["<C-k>"] = function(fallback)
-            --         if cmp.visible() then
-            --             cmp.select_prev_item()
-            --         else
-            --             fallback()
-            --         end
-            --     end,
-            --     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-            --     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            --     ["<C-l>"] = cmp.mapping.complete(),
-            --     ["<C-e>"] = cmp.mapping.abort(),
-            --     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-            -- }),
             mapping = {
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
@@ -113,7 +76,7 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
             },
             window = {
-                completion = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
             snippet = {

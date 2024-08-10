@@ -1,6 +1,9 @@
+local vscode = require("utils").vscode_check
+
 return {
     {
         "mfussenegger/nvim-dap",
+        cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             vim.keymap.set("n", "<F5>", function()
@@ -31,6 +34,7 @@ return {
     },
     {
         "rcarriga/nvim-dap-ui",
+        cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "mfussenegger/nvim-dap",

@@ -1,8 +1,8 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 return {
     "folke/todo-comments.nvim",
     cond = vscode,
-    event = { "BufRead", "BufNewFile" },
+    -- event = { "BufRead", "BufNewFile" },
     dependencies = {
         "nvim-lua/plenary.nvim",
     },

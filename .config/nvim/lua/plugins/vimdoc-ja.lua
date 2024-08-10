@@ -1,8 +1,8 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     "vim-jp/vimdoc-ja",
     conf = vscode,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = "help",
 }

@@ -1,9 +1,10 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
+
 return {
     "Wansmer/treesj",
     cond = vscode,
     keys = {
-        { "<leader>m", "<cmd>TSJToggle<cr>", desc = "toggle mode" },
+        { "<leader>m", "<cmd>TSJToggle<cr>", desc = "Treesj Toggle Mode" },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {

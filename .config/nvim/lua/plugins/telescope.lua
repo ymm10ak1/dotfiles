@@ -1,39 +1,37 @@
-local vscode = require("utils.helper").vscode_check
+local vscode = require("utils").vscode_check
 
 return {
     "nvim-telescope/telescope.nvim",
     cond = vscode,
     branch = "0.1.x",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    cmd = "Telescope",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
         "nvim-telescope/telescope-frecency.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "make",
-        },
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "danielfalk/smart-open.nvim",
     },
     keys = {
-        { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "find_files" },
-        { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "live_grep" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope Find_files" },
+        { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live_grep" },
         {
             "<leader>fW",
             "<cmd>Telescope live_grep grep_open_files=true<cr>",
-            desc = "live_grep(grep_open_files = true)",
+            desc = "Telescope Live_grep(grep_open_files = true)",
         },
-        { "<leader>fs", "<cmd>Telescope buffers<cr>", desc = "buffers" },
-        { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "help_tags" },
-        { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "git_files" },
-        { "<leader>re", "<cmd>Telescope registers<cr>", desc = "registers" },
+        { "<leader>fs", "<cmd>Telescope buffers<cr>", desc = "Telescope Buffers" },
+        { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Telescope Help_tags" },
+        { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "Telescope Git_files" },
+        { "<leader>re", "<cmd>Telescope registers<cr>", desc = "Telescope Registers" },
         { "<leader>rr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
         { "<leader>rw", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope Frecency workspace" },
         { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
-        { "<leader>nf", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Telescope notify" },
-        { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope smart_open" },
-        { "<leader>fa", "<cmd>Telescope aerial<cr>", desc = "Telescope aerial" },
+        { "<leader>nf", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Telescope Notify" },
+        { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope Smart_open" },
+        { "<leader>fa", "<cmd>Telescope aerial<cr>", desc = "Telescope Aerial" },
     },
     config = function()
         local actions = require("telescope.actions")
@@ -65,6 +63,15 @@ return {
                         reverse_directories = false,
                     },
                 },
+                file_ignore_patterns = {
+                    "node_modules",
+                    "^.dotbackup/",
+                },
+            },
+            pickers = {
+                find_files = {
+                    hidden = true,
+                },
             },
             extensions = {
                 file_browser = {
@@ -80,6 +87,10 @@ return {
                             ["N"] = fb_actions.create,
                         },
                     },
+                },
+                smart_open = {
+                    match_algorithm = "fzf",
+                    ignore_patterns = { "*.git/*", "*/tmp/*", "*/.dotbackup/*", ".dotbackup/*", "*/node_modules/*" },
                 },
             },
         })
