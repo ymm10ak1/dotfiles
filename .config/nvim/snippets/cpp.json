@@ -25,4 +25,24 @@
     "prefix": "co",
     "body": ["cout << $1 << el;"]
   },
+  "chmin": {
+    "prefix": "ch",
+    "body": [
+      "template<typename T>",
+      "bool chmin(T& a, T b){",
+      "\tif(a > b){ a = b; return true; }",
+      "\treturn false;",
+      "}"
+    ]
+  },
+  "chmax": {
+    "prefix": "ch",
+    "body": [
+      "template<typename T>",
+      "bool chmax(T& a, T b){",
+      "\tif(a < b){ a = b; return true; }",
+      "\treturn false;",
+      "}"
+    ]
+  }
 }
