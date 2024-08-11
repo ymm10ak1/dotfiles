@@ -51,7 +51,7 @@ create_symlink_config() {
   local backup_config_dir="$HOME/.dotbackup/$BACKUP_DATE/.config"
   if [[ "$HOME" != "$config_dir" ]]; then
     for file in "$config_dir"/??*; do
-      # ディレクトリか通常のファイルの場合にシンボリックリンクを作る
+      # ディレクトリまたは通常のファイルの場合はシンボリックリンクを作る
       if [[ -d "$file" || -f "$file" ]]; then
         [[ $(basename "$file") = ".git" ]] && continue
         # wsl2の場合はweztermのシンボリックリンクは作らない
@@ -71,6 +71,16 @@ create_symlink_config() {
     command echo "same install src dest"
   fi
 }
+
+# aqua_pkg_install(){
+#   command echo -e "\033[1;36mInstalling aqua packages...\033[0m"
+#   aqua i -l -a
+# }
+#
+# mise_pkg_install(){
+#   command echo -e "\033[1;36mInstalling mise packages...\033[0m"
+#   mise i
+# }
 
 run_script() {
   if [[ -f "$1" ]]; then

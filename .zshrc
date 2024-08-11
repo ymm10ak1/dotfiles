@@ -1,6 +1,11 @@
 # gpg
 export GPG_TTY=$(tty)
 
+# aqua
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+export AQUA_GLOBAL_CONFIG="${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
+export AQUA_PROGRESS_BAR=true
+
 # 言語を日本語にする
 export LANG=ja_JP.UTF-8
 
@@ -60,8 +65,8 @@ export BAT_THEME="OneHalfDark"
 export BAT_PAGER="less -RF"
 
 # deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+# export DENO_INSTALL="$HOME/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
 
 # starship
 eval "$(starship init zsh)"
@@ -69,9 +74,6 @@ eval "$(starship init zsh)"
 # zoxide
 # "--cmd cd"はzをcdコマンドに置き換える
 eval "$(zoxide init --cmd cd zsh)"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # .zshrc_localがあれば読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

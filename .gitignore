@@ -16,6 +16,8 @@
 !/.config/sheldon/**
 !/.config/mise/
 !/.config/mise/**
+!/.config/aqua/
+!/.config/aqua/**
 !/scripts/
 !/scripts/**
 !/.vimrc

@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl build-essential xsel bat ripgrep unzip zsh sqlite3 libsqlite3-dev zip wget)
+INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -18,12 +18,8 @@ packages_install() {
       # 必要なソフトウェアのインストール
       for pkg in "${INSTALL_LIST[@]}"; do
         local pkg_name="$pkg"
-        if [[ "$pkg" = "ripgrep" ]]; then
-          pkg_name="rg"
-        elif [[ "$pkg" = "build-essential" ]]; then
+        if [[ "$pkg" = "build-essential" ]]; then
           pkg_name="gcc"
-        elif [[ "$pkg" = "bat" ]]; then
-          pkg_name="batcat"
         fi
         if ! (has "$pkg_name"); then
           sudo apt-get install -y "$pkg"
@@ -32,36 +28,17 @@ packages_install() {
         fi
       done
 
-      #denoのインストール
-      if ! (has "deno"); then
-        echo "Install deno"
-        curl -fsSL https://deno.land/install.sh | sh
+      # aquaのインストール
+      if ! (has "aqua"); then
+        echo "Install aqua"
+        curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
+        echo "fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a  aqua-installer" | sha256sum -c
+        chmod +x aqua-installer
+        ./aqua-installer
       else
-        echo "deno is already installed"
+        echo "aqua is already installed"
       fi
-      # fzfのインストール(aptだとバージョンが古いのでgitを使う)
-      if ! (has "fzf"); then
-        echo "Install fzf"
-        local fzf_dir="$HOME/.fzf"
-        git clone --depth 1 https://github.com/junegunn/fzf.git "$fzf_dir"
-        "$fzf_dir"/install
-      else
-        echo "fzf is already installed"
-      fi
-      # zoxideのインストール
-      if ! (has "zoxide"); then
-        echo "Install zoxide"
-        curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-      else
-        echo "zoxide is already installed"
-      fi
-      # starshipのインストール
-      if ! (has "starship"); then
-        echo "Install starship"
-        curl -sS https://starship.rs/install.sh | sh -s -- -y
-      else
-        echo "starship is already installed"
-      fi
+
       # rustのインストール
       if ! (has "rustup"); then
         echo "Install rust"
@@ -69,6 +46,7 @@ packages_install() {
       else
         echo "rust is already installed"
       fi
+
       # sheldonのインストール
       if ! (has "sheldon"); then
         echo "Install sheldon"
@@ -77,6 +55,7 @@ packages_install() {
       else
         echo "sheldon is already installed"
       fi
+
       # miseのインストール
       if ! (has "mise"); then
         echo "Install mise"
@@ -84,16 +63,6 @@ packages_install() {
         "$HOME/.local/bin/mise" --version
       else
         echo "mise is already installed"
-      fi
-      # ezaのインストール
-      if ! (has "eza"); then
-        echo "Install eza"
-        wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz
-        sudo chmod +x eza
-        sudo chown root:root eza
-        sudo mv eza /usr/local/bin/eza
-      else
-        echo "eza is already installed"
       fi
 
       # シェルをbashからzshに変更
