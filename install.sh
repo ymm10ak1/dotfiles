@@ -95,6 +95,4 @@ run_script "$SCRIPT_DIR/scripts/install-packages.sh"
 command echo -e "\033[1;36mCreating symbolic link...\033[0m"
 create_symlink_dotfiles
 create_symlink_config
-aqua_pkg_install
-mise_pkg_install
 command echo -e "\033[1;32mInstall completed!\033[0m"
