@@ -72,15 +72,15 @@ create_symlink_config() {
   fi
 }
 
-aqua_pkg_install(){
-  command echo -e "\033[1;36mInstalling aqua packages...\033[0m"
-  aqua i -l -a
-}
-
-mise_pkg_install(){
-  command echo -e "\033[1;36mInstalling mise packages...\033[0m"
-  mise i
-}
+# aqua_pkg_install(){
+#   command echo -e "\033[1;36mInstalling aqua packages...\033[0m"
+#   aqua i -l -a
+# }
+#
+# mise_pkg_install(){
+#   command echo -e "\033[1;36mInstalling mise packages...\033[0m"
+#   mise i
+# }
 
 run_script() {
   if [[ -f "$1" ]]; then
