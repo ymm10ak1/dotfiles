@@ -20,12 +20,8 @@ return {
         },
     },
     init = function()
-        vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(ev)
-                vim.keymap.set({ "v", "n" }, "ga", function()
-                    require("actions-preview").code_actions()
-                end, { buffer = ev.buf, desc = "Code Action" })
-            end,
-        })
+        vim.keymap.set({ "v", "n" }, "ga", function()
+            require("actions-preview").code_actions()
+        end, { desc = "Code Actions" })
     end,
 }
