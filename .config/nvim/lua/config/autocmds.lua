@@ -32,9 +32,10 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 -- helpなどをqで閉じるようにする
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "help", "checkhealth", "qf", "notify", "startuptime" },
+    group = vim.api.nvim_create_augroup("qclose", { clear = true }),
     callback = function(ev)
         -- help等の対象ファイルをバッファリストに入れない
         vim.bo[ev.buf].buflisted = false
-        vim.keymap.set("n", "q", "<C-w>c", { noremap = true, buffer = 0 })
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { noremap = true, buffer = 0 })
     end,
 })
