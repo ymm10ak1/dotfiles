@@ -4,7 +4,7 @@ return {
     {
         "lambdalisue/kensaku.vim",
         cond = vscode,
-        event = "VeryLazy",
+        event = { "BufRead", "BufNewFile" },
         dependencies = {
             "vim-denops/denops.vim",
         },
@@ -12,7 +12,7 @@ return {
     {
         "lambdalisue/kensaku-search.vim",
         cond = vscode,
-        event = "VeryLazy",
+        event = { "BufRead", "BufNewFile" },
         dependencies = {
             "lambdalisue/kensaku.vim",
         },
