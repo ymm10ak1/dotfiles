@@ -5,20 +5,21 @@ return {
     keys = {
         -- stylua: ignore start
         { "s", mode = { "n", "x", "o" }, function () require("flash").jump() end, desc = "Flash" },
-        { "r", mode = { "n", "x", "o" }, function () require("flash").remote() end, desc = "Remote Flash" },
+        { "r", mode = { "o" }, function () require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "x", "o" }, function () require("flash").treesitter_search() end, desc = "Treesitter Search" },
         { "<C-s>", mode = { "c" }, function () require("flash").toggle() end, desc = "Toggle Flash Search" },
         -- stylua: ignore end
         {
             "<CR>",
-            mode = { "n", "x", "o" },
+            mode = { "n" },
             function()
                 require("flash").jump({
-                    search = { forward = false, mode = "search", max_lenght = 0 },
-                    lable = { after = { 0, 0 } },
+                    search = { mode = "search", max_length = 0 },
+                    label = { after = { 0, 0 } },
                     pattern = "^",
                 })
             end,
-            desc = "jump to a line",
+            desc = "Jump to a line",
         },
     },
 }
