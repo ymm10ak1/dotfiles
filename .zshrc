@@ -69,7 +69,11 @@ export BAT_PAGER="less -RF"
 # export PATH="$DENO_INSTALL/bin:$PATH"
 
 # starship
-eval "$(starship init zsh)"
+if type -p "starship" > /dev/null 2>&1; then
+    eval "$(starship init zsh)"
+else
+    PROMPT="%~ $ "
+fi
 
 # zoxide
 # "--cmd cd"はzをcdコマンドに置き換える
