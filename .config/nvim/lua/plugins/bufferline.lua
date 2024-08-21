@@ -14,11 +14,11 @@ return {
                 style = "icon",
             },
             separator_style = "slant",
-        }
+        },
     },
-    init = function ()
-        local opts = { noremap = true, silent = true}
-        vim.keymap.set("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
-        vim.keymap.set("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opts)
+    init = function()
+        local opts = { noremap = true, silent = true }
+        vim.keymap.set("n", "<C-k>", "<cmd>BufferLineCyclePrev<CR>", opts)
+        vim.keymap.set("n", "<C-j>", "<cmd>BufferLineCycleNext<CR>", opts)
     end,
 }
