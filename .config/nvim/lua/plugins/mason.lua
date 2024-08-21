@@ -22,14 +22,13 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
-            -- "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "tsserver", "ruff", "bashls" },
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "tsserver", "bashls", "pyright" },
             })
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- default handler
@@ -90,6 +89,7 @@ return {
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
+                diagnostics_format = "[#{c}] #{m} (#{s})",
                 sources = {
                     null_ls.builtins.diagnostics.textlint,
                     null_ls.builtins.formatting.stylua,
