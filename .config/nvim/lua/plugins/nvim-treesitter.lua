@@ -3,10 +3,9 @@ local vscode = require("utils").vscode_check
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        cond =vscode,
+        cond = vscode,
         build = ":TSUpdate",
         event = { "BufNewFile", "BufRead" },
-        cmd = { "TSUpdate", "TSInstall" },
         config = function()
             local configs = require("nvim-treesitter.configs")
             configs.setup({
@@ -20,19 +19,13 @@ return {
                     "go",
                     "markdown",
                     "markdown_inline",
+                    "html",
                     "python",
-                    "regex",
                     "javascript",
                     "typescript",
-                    "html",
-                    "css",
-                    "dockerfile",
-                    "python",
                     "json",
                     "toml",
-                    "latex",
                     "rust",
-                    "luadoc",
                 },
                 sync_install = false,
                 highlight = { enable = true },
@@ -45,6 +38,6 @@ return {
         "windwp/nvim-ts-autotag",
         cond = vscode,
         event = { "BufRead", "BufNewFile" },
-        config = true
+        config = true,
     },
 }
