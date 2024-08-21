@@ -18,3 +18,5 @@ packages:
 - name: BurntSushi/ripgrep@14.1.0
 - name: sharkdp/bat@v0.24.0
 - name: sharkdp/fd@v10.1.0
+- name: koalaman/shellcheck@v0.10.0
+- name: mvdan/sh@v3.8.0
