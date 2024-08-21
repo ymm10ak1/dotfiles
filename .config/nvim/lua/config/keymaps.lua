@@ -22,13 +22,10 @@ keymap("n", "qw", ":cclose<CR>", opts)
 -- タブ作成、削除、 移動
 keymap("n", "tn", ":tabnew<CR>", opts)
 keymap("n", "tx", ":tabclose<CR>", opts)
-keymap("n", "gl", "gt", opts)
-keymap("n", "gh", "gT", opts)
+keymap("n", "tl", "gt", opts)
+keymap("n", "th", "gT", opts)
 -- ウィンドウ移動
-keymap("n", "<leader>h", "<C-w>h", opts)
-keymap("n", "<leader>j", "<C-w>j", opts)
-keymap("n", "<leader>k", "<C-w>k", opts)
-keymap("n", "<leader>l", "<C-w>l", opts)
+keymap("n", "g", "<C-w>", opts)
 -- 画面分割 <C-u>はコマンドラインに記述されている文字をすべて削除する
 keymap("n", "ss", ":<C-u>split<CR><C-w>w", opts)
 keymap("n", "sv", ":<C-u>vsplit<CR><C-w>w", opts)
