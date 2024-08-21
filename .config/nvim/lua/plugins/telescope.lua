@@ -92,6 +92,10 @@ return {
                     match_algorithm = "fzf",
                     ignore_patterns = { "*.git/*", "*/tmp/*", "*/.dotbackup/*", ".dotbackup/*", "*/node_modules/*" },
                 },
+                frecency = {
+                    -- こちらも何故か適用されない
+                    path_display = { "filename_first" },
+                },
             },
         })
         require("telescope").load_extension("frecency")
