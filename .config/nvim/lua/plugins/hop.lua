@@ -1,7 +1,7 @@
 return {
     "smoka7/hop.nvim",
     version = "*",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     keys = {
         { "<leader>rj", "<Cmd>HopLineStart<CR>", desc = "HopLineStart"},
     },
