@@ -5,29 +5,19 @@ return {
     cond = vscode,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-        {
-            "L3MON4D3/LuaSnip",
-            version = "v2.*",
-            build = "make install_jsregexp",
-            event = "InsertEnter",
-            dependencies = { "rafamadriz/friendly-snippets" },
-        },
+        { "L3MON4D3/LuaSnip" },
         { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-        { "neovim/nvim-lspconfig" },
         { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
         { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
         { "hrsh7th/cmp-buffer", event = "InsertEnter" },
         { "hrsh7th/cmp-path", event = "InsertEnter" },
         { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineEnter" } },
-        { "dmitmel/cmp-cmdline-history", event = { "ModeChanged", "CmdlineEnter" } },
+        -- { "dmitmel/cmp-cmdline-history", event = { "ModeChanged", "CmdlineEnter" } },
         { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
-
-        require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
         cmp.setup({
             mapping = {
@@ -61,19 +51,25 @@ return {
                 end, { "i", "c", "s" }),
                 ["<C-u>"] = cmp.mapping(function(fallback)
                     if cmp.visible_docs() then
-                        cmp.mapping.scroll_docs(-4)
+                        cmp.scroll_docs(-4)
                     else
                         fallback()
                     end
                 end, { "i" }),
                 ["<C-d>"] = cmp.mapping(function(fallback)
                     if cmp.visible_docs() then
-                        cmp.mapping.scroll_docs(4)
+                        cmp.scroll_docs(4)
                     else
                         fallback()
                     end
                 end, { "i" }),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.confirm({ select = true })
+                    else
+                        fallback()
+                    end
+                end),
             },
             window = {
                 -- completion = cmp.config.window.bordered(),
@@ -117,7 +113,6 @@ return {
                         keyword_length = 1,
                     },
                 },
-                { name = "cmdline_history" },
             },
         })
 
