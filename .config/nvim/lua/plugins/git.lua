@@ -17,7 +17,7 @@ return {
     {
         "FabijanZulj/blame.nvim",
         cond = vscode,
-        event = "BufRead",
+        -- event = "BufRead",
         cmd = "BlameToggle",
         keys = {
             { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "Blame Toggle" },
