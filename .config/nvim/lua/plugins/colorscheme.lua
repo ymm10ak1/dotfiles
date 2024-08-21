@@ -53,14 +53,4 @@ return {
             vim.cmd([[colorscheme nightfox]])
         end,
     },
-    {
-        "tanvirtin/monokai.nvim",
-        cond = vscode,
-        priority = 1000,
-        enabled = false,
-        lazy = false,
-        config = function()
-            require("monokai").setup({})
-        end,
-    },
 }
