@@ -59,19 +59,12 @@ return {
                 },
                 path_display = {
                     -- なぜか設定が反映されない
-                    filename_first = {
-                        reverse_directories = false,
-                    },
+                    filename_first = { reverse_directories = false },
                 },
-                file_ignore_patterns = {
-                    "node_modules",
-                    "^.dotbackup/",
-                },
+                file_ignore_patterns = { "node_modules", "^.dotbackup/" },
             },
             pickers = {
-                find_files = {
-                    hidden = true,
-                },
+                find_files = { hidden = true },
             },
             extensions = {
                 file_browser = {
