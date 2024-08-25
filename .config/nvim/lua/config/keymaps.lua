@@ -25,10 +25,13 @@ keymap("n", "tx", ":tabclose<CR>", opts)
 keymap("n", "tl", "gt", opts)
 keymap("n", "th", "gT", opts)
 -- ウィンドウ移動
-keymap("n", "g", "<C-w>", opts)
+keymap("n", "gh", "<C-w>h", opts)
+keymap("n", "gj", "<C-w>j", opts)
+keymap("n", "gk", "<C-w>k", opts)
+keymap("n", "gl", "<C-w>l", opts)
 -- 画面分割 <C-u>はコマンドラインに記述されている文字をすべて削除する
-keymap("n", "ss", ":<C-u>split<CR><C-w>w", opts)
-keymap("n", "sv", ":<C-u>vsplit<CR><C-w>w", opts)
+keymap("n", "gss", ":<C-u>split<CR><C-w>w", opts)
+keymap("n", "gsv", ":<C-u>vsplit<CR><C-w>w", opts)
 -- ZZ, ZQを無効化する
 keymap("n", "ZZ", "<NOP>")
 keymap("n", "ZQ", "<NOP>")
