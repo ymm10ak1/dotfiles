@@ -36,9 +36,10 @@ opt.signcolumn = "yes"
 
 -- Tabキー押下時やインデントの際、半角スペースが挿入される
 opt.expandtab = true
--- タブ幅4
+-- タブ文字をスペース何文字分で表示するか
 opt.tabstop = 4
--- シフト幅4
+-- 自動インデントのときに何文字分のスペースでインデントを入れるか
+-- 0にするとtabstopの値を使用
 opt.shiftwidth = 4
 -- 改行するとき前の行インデントから開始
 opt.autoindent = true
@@ -68,7 +69,6 @@ opt.splitright = true
 -- 新しいウィンドウを下に開く
 opt.splitbelow = true
 
--- ========== clipboard ==========
 opt.clipboard = "unnamedplus"
 if vim.fn.has("wsl") == 1 then
     g.clipboard = {
