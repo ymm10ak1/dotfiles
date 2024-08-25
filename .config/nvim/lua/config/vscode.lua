@@ -14,27 +14,30 @@ opt.smartcase = true
 opt.helplang = "ja"
 
 opt.clipboard = "unnamedplus"
-g.clipboard = {
-    name = "WslClipboard",
-    copy = {
-        ["+"] = "xsel -bi",
-        ["*"] = "xsel -bi",
-    },
-    paste = {
-        ["+"] = "xsel -bo",
-        ["*"] = function()
-            return vim.fn.systemlist('xsel -bo | tr -d "\r"')
-        end,
-    },
-    cache_enable = 1,
-}
+if vim.fn.has("wsl") == 1 then
+    g.clipboard = {
+        name = "WslClipboard",
+        copy = {
+            ["+"] = "xsel -bi",
+            ["*"] = "xsel -bi",
+        },
+        paste = {
+            ["+"] = "xsel -bo",
+            ["*"] = function()
+                return vim.fn.systemlist('xsel -bo | tr -d "\r"')
+            end,
+        },
+        cache_enable = 1,
+    }
+end
 
 -- ==================== keymaps ====================
 g.mapleader = " "
 local keymap = vim.keymap.set
 local opts = { noremap = true }
 
-keymap({ "n", "v" }, "L", "$", opts)
+keymap("n", "L", "$", opts)
+keymap("v", "L", "$h", opts)
 keymap({ "n", "v" }, "H", "^", opts)
 keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
