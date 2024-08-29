@@ -11,13 +11,15 @@ return {
         { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
         { "hrsh7th/cmp-buffer", event = "InsertEnter" },
         { "hrsh7th/cmp-path", event = "InsertEnter" },
-        { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineEnter" } },
-        -- { "dmitmel/cmp-cmdline-history", event = { "ModeChanged", "CmdlineEnter" } },
+        { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineChanged" } },
         { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
+
+        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snippets" } })
 
         cmp.setup({
             mapping = {
