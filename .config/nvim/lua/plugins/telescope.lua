@@ -23,9 +23,7 @@ return {
             desc = "Telescope Live_grep(grep_open_files = true)",
         },
         { "<leader>fs", "<cmd>Telescope buffers<cr>", desc = "Telescope Buffers" },
-        { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Telescope Help_tags" },
         { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "Telescope Git_files" },
-        { "<leader>re", "<cmd>Telescope registers<cr>", desc = "Telescope Registers" },
         { "<leader>rr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
         { "<leader>rw", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope Frecency workspace" },
         { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
@@ -58,7 +56,6 @@ return {
                     },
                 },
                 path_display = {
-                    -- なぜか設定が反映されない
                     filename_first = { reverse_directories = false },
                 },
                 file_ignore_patterns = { "node_modules", "^.dotbackup/" },
@@ -86,7 +83,6 @@ return {
                     ignore_patterns = { "*.git/*", "*/tmp/*", "*/.dotbackup/*", ".dotbackup/*", "*/node_modules/*" },
                 },
                 frecency = {
-                    -- こちらも何故か適用されない
                     path_display = { "filename_first" },
                 },
             },
