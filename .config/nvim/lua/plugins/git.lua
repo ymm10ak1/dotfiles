@@ -22,7 +22,7 @@ return {
         cond = vscode,
         cmd = "BlameToggle",
         keys = {
-            { "<leader>tb", "<cmd>BlameToggle<cr>", desc = "Blame Toggle" },
+            { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "Blame Toggle" },
         },
         opts = {},
     },
