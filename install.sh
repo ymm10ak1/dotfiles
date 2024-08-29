@@ -19,6 +19,7 @@ create_symlink_dotfiles() {
   if [[ "$HOME" != "$dot_dir" ]]; then
     for file in "$dot_dir"/.??*; do
       [[ $(basename "$file") == ".git" ]] && continue
+      [[ $(basename "$file") == ".github" ]] && continue
       [[ $(basename "$file") == ".gitignore" ]] && continue
       [[ $(basename "$file") == ".config" ]] && continue
       if [[ -L "$HOME/$(basename "$file")" ]]; then
