@@ -3,7 +3,7 @@ local vscode = require("utils").vscode_check
 return {
     "nvimdev/lspsaga.nvim",
     cond = vscode,
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile", "LspAttach" },
     depedencies = {
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons",
