@@ -47,15 +47,6 @@ packages_install() {
         echo "rust is already installed"
       fi
 
-      # sheldonのインストール
-      if ! (has "sheldon"); then
-        echo "Install sheldon"
-        curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh |
-          bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
-      else
-        echo "sheldon is already installed"
-      fi
-
       # miseのインストール
       if ! (has "mise"); then
         echo "Install mise"
