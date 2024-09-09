@@ -3,11 +3,11 @@ local vscode = require("utils").vscode_check
 return {
     "nvimdev/lspsaga.nvim",
     cond = vscode,
-    event = { "BufReadPre", "BufNewFile", "LspAttach" },
-    depedencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons",
-    },
+    event = { "LspAttach" },
+    -- depedencies = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "nvim-tree/nvim-web-devicons",
+    -- },
     opts = {
         finder = {
             max_height = 0.6,
@@ -30,24 +30,19 @@ return {
         },
     },
     init = function()
-        vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(ev)
-                local keymap = vim.keymap.set
-                local opts = { buffer = ev.buf }
-                -- diagnostic
-                keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-                keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-                keymap("n", "ge", "<cmd>Lspsaga show_workspace_diagnostics ++float<cr>", opts)
-                -- code action
-                -- keymap("n", "ga", "<cmd>Lspsaga code_action<cr>", opts)
-                -- hover
-                keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
-                -- finder
-                keymap("n", "gn", "<cmd>Lspsaga finder<cr>", opts)
-                -- definition
-                keymap("n", "gd", "<cmd>Lspsaga peek_definition<cr>", opts)
-                keymap("n", "gy", "<cmd>Lspsaga peek_type_definition<cr>", opts)
-            end,
-        })
+        local keymap = vim.keymap.set
+        -- diagnostic
+        keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+        keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+        keymap("n", "go", "<cmd>Lspsaga show_workspace_diagnostics ++float<cr>")
+        -- code action
+        -- keymap("n", "ga", "<cmd>Lspsaga code_action<cr>")
+        -- hover
+        keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+        -- finder
+        keymap("n", "gn", "<cmd>Lspsaga finder<cr>")
+        -- definition
+        keymap("n", "gd", "<cmd>Lspsaga peek_definition<cr>")
+        keymap("n", "gy", "<cmd>Lspsaga peek_type_definition<cr>")
     end,
 }
