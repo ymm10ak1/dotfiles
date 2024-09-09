@@ -3,7 +3,6 @@ local vscode = require("utils").vscode_check
 return {
     "kazhala/close-buffers.nvim",
     cond = vscode,
-    -- event = { "BufReadPre", "BufNewFile" },
     keys = {
         { "<leader>to", "<cmd>BDelete other<cr>", desc = "BDelete other" },
     },
