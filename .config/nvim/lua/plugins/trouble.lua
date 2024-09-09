@@ -3,9 +3,7 @@ local vscode = require("utils").vscode_check
 return {
     "folke/trouble.nvim",
     cond = vscode,
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
     cmd = "Trouble",
     keys = {

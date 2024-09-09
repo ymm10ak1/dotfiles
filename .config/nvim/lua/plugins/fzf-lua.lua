@@ -3,7 +3,8 @@ local vscode = require("utils").vscode_check
 return {
     "ibhagwan/fzf-lua",
     cond = vscode,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "FzfLua",
+    -- dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "<leader>fp",
