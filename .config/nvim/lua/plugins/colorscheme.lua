@@ -9,24 +9,16 @@ return {
         priority = 1000,
         opt = {},
         config = function()
-            require("tokyonight").setup({
-                transparent = false,
-                styles = {
-                    comments = { italic = false },
-                    keywords = { italic = false },
-                    sidebars = "dark",
-                    floats = "dark",
-                },
-            })
-            -- vim.cmd([[colorscheme tokyonight-night]])
+            vim.cmd([[colorscheme tokyonight-night]])
         end,
     },
     {
         "catppuccin/nvim",
         cond = vscode,
         name = "catppuccin",
-        enabled = false,
+        enabled = true,
         priority = 1000,
+        lazy = false,
         config = function()
             vim.cmd([[colorscheme catppuccin-mocha]])
         end,
@@ -36,6 +28,7 @@ return {
         cond = vscode,
         priority = 1000,
         enabled = false,
+        lazy = false,
         config = function()
             require("onedark").setup({
                 style = "darker",
@@ -47,7 +40,7 @@ return {
         "EdenEast/nightfox.nvim",
         cond = vscode,
         priority = 1000,
-        enabled = true,
+        enabled = false,
         lazy = false,
         config = function()
             vim.cmd([[colorscheme nightfox]])
