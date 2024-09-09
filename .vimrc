@@ -30,10 +30,10 @@ nnoremap <silent> tx :tabclose<CR>
 nnoremap <silent> th :tabp<CR>
 nnoremap <silent> tl :tabn<CR>
 " ウィンドウ移動
-nnoremap gh <C-w>h
-nnoremap gj <C-w>j
-nnoremap gk <C-w>k
-nnoremap gl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
 " 行の先頭/行末
 nnoremap H ^ 
 nnoremap L $
