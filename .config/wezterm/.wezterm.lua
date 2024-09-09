@@ -11,16 +11,16 @@ end
 local act = wezterm.action
 
 -- ｢+｣ボタン押したときのタブのcwdをdefaultDomain(wsl2:Ubuntu22.04)の"~"にする
-wezterm.on("new-tab-button-click", function(window, pane)
-    window:perform_action(
-        act.SpawnCommandInNewTab({
-            cwd = "~",
-            domain = "CurrentPaneDomain",
-        }),
-        pane
-    )
-    return false
-end)
+-- wezterm.on("new-tab-button-click", function(window, pane)
+--     window:perform_action(
+--         act.SpawnCommandInNewTab({
+--             cwd = "~",
+--             domain = "CurrentPaneDomain",
+--         }),
+--         pane
+--     )
+--     return false
+-- end)
 
 wezterm.on("format-tab-title", function(tab)
     return tab.active_pane.title
