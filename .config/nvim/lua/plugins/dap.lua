@@ -1,55 +1,102 @@
 local vscode = require("utils").vscode_check
 
 return {
+    { "nvim-neotest/nvim-nio", cond = vscode },
     {
         "mfussenegger/nvim-dap",
         cond = vscode,
-        event = "LspAttach",
         keys = {
             {
                 "<F5>",
                 function()
                     require("dap").continue()
                 end,
-                desc = "Continue",
+                desc = "DAP Continue",
             },
             {
                 "<F10>",
                 function()
                     require("dap").step_over()
                 end,
-                desc = "Step Over",
+                desc = "DAP Step Over",
             },
             {
                 "<F11>",
                 function()
                     require("dap").step_into()
                 end,
-                desc = "Step Into",
+                desc = "DAP Step Into",
             },
             {
                 "<F12>",
                 function()
                     require("dap").step_out()
                 end,
-                desc = "Step Out",
+                desc = "DAP Step Out",
             },
             {
                 "<leader>db",
                 function()
                     require("dap").toggle_breakpoint()
                 end,
-                desc = "Toggle Breakpoint",
+                desc = "DAP Toggle Breakpoint",
             },
         },
+        config = function()
+            local dap = require("dap")
+            dap.adapters.cppdbg = {
+                id = "cppdbg",
+                type = "executable",
+                command = vim.fn.stdpath("data") .. "/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+            }
+            dap.adapters.codelldb = {
+                type = "server",
+                port = "${port}",
+                executable = {
+                    command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb",
+                    args = { "--port", "${port}" },
+                },
+            }
+            dap.configurations.cpp = {
+                {
+                    name = "Launch file",
+                    type = "cppdbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopAtEntry = true,
+                },
+                {
+                    name = "LLDB Launch file",
+                    type = "codelldb",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
+                },
+            }
+        end,
     },
     {
         "rcarriga/nvim-dap-ui",
         cond = vscode,
-        event = "LspAttach",
-        dependencies = {
-            "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio",
+        -- dependencies = {
+        --     "mfussenegger/nvim-dap",
+        --     "nvim-neotest/nvim-nio",
+        -- },
+        keys = {
+            {
+                "<leader>dp",
+                function()
+                    require("dapui").toggle()
+                end,
+                desc = "DapUI Toggle",
+            },
         },
+        opts = {},
     },
 }
