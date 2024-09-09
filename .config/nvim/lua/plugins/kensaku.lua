@@ -4,10 +4,6 @@ return {
     {
         "lambdalisue/kensaku.vim",
         cond = vscode,
-        event = { "BufRead", "BufNewFile" },
-        dependencies = {
-            "vim-denops/denops.vim",
-        },
     },
     {
         "lambdalisue/kensaku-search.vim",
@@ -15,6 +11,7 @@ return {
         event = { "BufRead", "BufNewFile" },
         dependencies = {
             "lambdalisue/kensaku.vim",
+            "vim-denops/denops.vim",
         },
         config = function()
             vim.keymap.set("c", "<CR>", "<Plug>(kensaku-search-replace)<CR>", { noremap = true })
