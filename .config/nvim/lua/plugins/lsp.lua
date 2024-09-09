@@ -3,7 +3,7 @@ local vscode = require("utils").vscode_check
 return {
     "neovim/nvim-lspconfig",
     cond = vscode,
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
         local keymap = vim.keymap.set
         -- global mappings.
