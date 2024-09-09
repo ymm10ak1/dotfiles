@@ -1,43 +1,34 @@
 local vscode = require("utils").vscode_check
 
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        cond = vscode,
-        build = ":TSUpdate",
-        event = { "BufNewFile", "BufRead" },
-        config = function()
-            local configs = require("nvim-treesitter.configs")
-            configs.setup({
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "cpp",
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                    "go",
-                    "markdown",
-                    "markdown_inline",
-                    "html",
-                    "python",
-                    "javascript",
-                    "typescript",
-                    "json",
-                    "toml",
-                    "rust",
-                },
-                sync_install = false,
-                highlight = { enable = true },
-                -- indent = { enable = true },
-                endwise = { enable = true },
-            })
-        end,
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        cond = vscode,
-        event = { "BufRead", "BufNewFile" },
-        config = true,
-    },
+    "nvim-treesitter/nvim-treesitter",
+    cond = vscode,
+    build = ":TSUpdate",
+    event = { "BufNewFile", "BufRead" },
+    config = function()
+        local configs = require("nvim-treesitter.configs")
+        configs.setup({
+            ensure_installed = {
+                "bash",
+                "c",
+                "cpp",
+                "lua",
+                "vim",
+                "vimdoc",
+                "go",
+                "markdown",
+                "markdown_inline",
+                "html",
+                "python",
+                "javascript",
+                "typescript",
+                "json",
+                "toml",
+                "rust",
+            },
+            sync_install = false,
+            highlight = { enable = true },
+            endwise = { enable = true },
+        })
+    end,
 }
