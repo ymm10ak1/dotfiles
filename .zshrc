@@ -36,7 +36,7 @@ if type -p "eza" > /dev/null 2>&1; then
 else
     alias ll='ls -alF'
 fi
-alias udaug='sudo apt update && sudo apt upgrade -y'
+alias uag='sudo apt update && sudo apt upgrade -y'
 alias auc='sudo apt autoremove && sudo apt clean -y'
 alias nv='nvim'
 alias nz='nvim ~/.zshrc'
@@ -50,6 +50,8 @@ alias ain='./a.out < input.txt >| output.txt'
 alias nt='nvim ~/.tmux.conf'
 alias tst='tmux source ~/.tmux.conf'
 alias start='explorer.exe'
+alias g='g++ -std=c++23 -Wall'
+alias gg='g++ -g'
 
 # GOPATH
 # export PATH=$PATH:/usr/local/go/bin
