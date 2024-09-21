@@ -4,7 +4,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     cond = vscode,
     build = ":TSUpdate",
-    event = { "BufNewFile", "BufRead" },
+    event = "VeryLazy",
     config = function()
         local configs = require("nvim-treesitter.configs")
         configs.setup({
@@ -25,6 +25,7 @@ return {
                 "json",
                 "toml",
                 "rust",
+                "regex",
             },
             sync_install = false,
             highlight = { enable = true },
