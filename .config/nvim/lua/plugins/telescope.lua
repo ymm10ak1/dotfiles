@@ -10,6 +10,7 @@ return {
         branch = "0.1.x",
         cmd = "Telescope",
         -- dependencies = {
+        --     "nvim-lua/plenary.nvim",
         --     "nvim-tree/nvim-web-devicons",
         --     "nvim-telescope/telescope-frecency.nvim",
         --     "nvim-telescope/telescope-file-browser.nvim",
@@ -30,7 +31,6 @@ return {
             { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
             { "<leader>nf", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Telescope Notify" },
             { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope Smart_open" },
-            { "<leader>fa", "<cmd>Telescope aerial<cr>", desc = "Telescope Aerial" },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -93,7 +93,6 @@ return {
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("notify")
             require("telescope").load_extension("smart_open")
-            require("telescope").load_extension("aerial")
         end,
     },
 }
