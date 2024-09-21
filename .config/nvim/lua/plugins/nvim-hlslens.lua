@@ -3,7 +3,8 @@ return {
     { "rapan931/lasterisk.nvim" },
     {
         "kevinhwang91/nvim-hlslens",
-        event = { "BufNewFile", "BufRead" },
+        event = { "BufRead", "BufNewFile" },
+        ft = "lazy",
         -- dependencies = {
         --     "kevinhwang91/nvim-ufo",
         --     "rapan931/lasterisk.nvim",
