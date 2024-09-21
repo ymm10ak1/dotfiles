@@ -6,12 +6,17 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- インデントを1段浅く/深く
-keymap("n", "<", "<<", { noremap = true })
-keymap("n", ">", ">>", { noremap = true })
+keymap("n", "<", "<<", opts)
+keymap("n", ">", ">>", opts)
+-- Visual <,>で連続してインデント操作
+keymap("x", "<", "<gv", opts)
+keymap("x", ">", ">gv", opts)
 -- Lで行末に移動/Hでスペースを除く先頭に移動
-keymap("n", "L", "$", { noremap = true })
-keymap("v", "L", "$h", { noremap = true })
-keymap({ "n", "v" }, "H", "^", { noremap = true })
+keymap("n", "L", "$", opts)
+keymap("v", "L", "$h", opts)
+keymap({ "n", "v" }, "H", "^", opts)
+-- 行末までヤンク
+keymap("n", "Y", "y$", opts)
 -- バッファ移動
 keymap("n", "]b", ":bnext<CR>", opts)
 keymap("n", "[b", ":bprev<CR>", opts)
@@ -35,5 +40,7 @@ keymap("n", "sv", ":<C-u>vsplit<CR><C-w>l", opts)
 -- ZZ, ZQを無効化する
 keymap("n", "ZZ", "<NOP>")
 keymap("n", "ZQ", "<NOP>")
+-- リドゥ
+keymap("n", "U", "<C-r>", opts)
 -- insertモード中、jjでnormalモードに変更
 keymap("i", "jj", "<Esc>", opts)
