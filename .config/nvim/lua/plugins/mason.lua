@@ -92,6 +92,7 @@ return {
             })
             require("mason-null-ls").setup({
                 ensure_installed = nil,
+                -- null_lsで選ばれたsourcesに基づいてmasons toolsを自動でインストールする
                 automatic_installation = true,
             })
         end,
@@ -99,28 +100,6 @@ return {
     {
         "nvimtools/none-ls.nvim",
         cond = vscode,
-        -- dependencies = { "nvim-lua/plenary.nvim" },
-        -- config = function()
-        --     local null_ls = require("null-ls")
-        --     null_ls.setup({
-        --         diagnostics_format = "[#{c}] #{m} (#{s})",
-        --         sources = {
-        --             null_ls.builtins.diagnostics.textlint,
-        --             null_ls.builtins.formatting.stylua,
-        --             null_ls.builtins.formatting.clang_format.with({
-        --                 disabled_filetypes = { "java", "json", "javascript" },
-        --             }),
-        --             null_ls.builtins.formatting.gofmt,
-        --             null_ls.builtins.formatting.prettier,
-        --             null_ls.builtins.formatting.shfmt.with({
-        --                 extra_args = { "-i", "2", "-ci", "-bn" },
-        --             }),
-        --             null_ls.builtins.diagnostics.markdownlint_cli2,
-        --             null_ls.builtins.diagnostics.markdownlint,
-        --             null_ls.builtins.formatting.markdownlint,
-        --         },
-        --     })
-        -- end,
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
