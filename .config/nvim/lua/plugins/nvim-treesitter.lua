@@ -23,7 +23,6 @@ return {
                 "javascript",
                 "typescript",
                 "json",
-                "toml",
                 "rust",
                 "regex",
             },
