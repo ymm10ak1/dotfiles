@@ -27,9 +27,24 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local on_attach = function(client, bufnr)
+                if client.name == "ruff_lsp" then
+                    -- Disable hover in favor of Pyright
+                    client.server_capabilities.hoverProvider = false
+                end
+            end
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "ts_ls", "bashls", "pyright" },
+                ensure_installed = {
+                    "lua_ls",
+                    "rust_analyzer",
+                    "clangd",
+                    "gopls",
+                    "ts_ls",
+                    "bashls",
+                    "pyright",
+                    "ruff_lsp",
+                },
             })
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- default handler
@@ -56,6 +71,26 @@ return {
                 ["clangd"] = function()
                     lspconfig.clangd.setup({
                         cmd = { "clangd", "--header-insertion=never" },
+                    })
+                end,
+                ["ruff_lsp"] = function()
+                    lspconfig.ruff_lsp.setup({
+                        on_attach = on_attach,
+                    })
+                end,
+                ["pyright"] = function()
+                    lspconfig.pyright.setup({
+                        settings = {
+                            pyright = {
+                                -- Using Ruff's import organizer
+                                disableOrganizeImports = true,
+                            },
+                            python = {
+                                analysis = {
+                                    ignore = { "*" },
+                                },
+                            },
+                        },
                     })
                 end,
             })
