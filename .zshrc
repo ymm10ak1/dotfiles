@@ -48,7 +48,7 @@ alias asp1='acc s main.py -- -l 5063'
 alias a='./a.out'
 alias ain='./a.out < input.txt >| output.txt'
 alias nt='nvim ~/.tmux.conf'
-alias tst='tmux source ~/.tmux.conf'
+alias st='tmux source ~/.tmux.conf'
 alias start='explorer.exe'
 alias g='g++ -std=c++23 -Wall'
 alias gg='g++ -g'
@@ -60,7 +60,9 @@ alias gg='g++ -g'
 export PATH="$HOME/.local/bin:$PATH"
 
 # rust
-. "$HOME/.cargo/env"
+if [ -e /etc/debian_version -a -e /etc/lsb-release ]; then
+ . "$HOME/.cargo/env"
+fi
 
 # bat
 export BAT_THEME="OneHalfDark"
