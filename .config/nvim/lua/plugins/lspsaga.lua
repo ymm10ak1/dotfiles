@@ -4,10 +4,10 @@ return {
     "nvimdev/lspsaga.nvim",
     cond = vscode,
     event = { "LspAttach" },
-    -- depedencies = {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     "nvim-tree/nvim-web-devicons",
-    -- },
+    depedencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
+    },
     opts = {
         finder = {
             max_height = 0.6,
@@ -32,17 +32,17 @@ return {
     init = function()
         local keymap = vim.keymap.set
         -- diagnostic
-        keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-        keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-        keymap("n", "go", "<cmd>Lspsaga show_workspace_diagnostics ++float<cr>")
+        keymap("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>")
+        keymap("n", "]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>")
+        keymap("n", "go", "<Cmd>Lspsaga show_workspace_diagnostics ++float<CR>")
         -- code action
-        -- keymap("n", "ga", "<cmd>Lspsaga code_action<cr>")
+        -- keymap("n", "ga", "<Cmd>Lspsaga code_action<cr>")
         -- hover
-        keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>")
+        keymap("n", "K", "<Cmd>Lspsaga hover_doc<CR>")
         -- finder
-        keymap("n", "gn", "<cmd>Lspsaga finder<cr>")
+        keymap("n", "gn", "<Cmd>Lspsaga finder<CR>")
         -- definition
-        keymap("n", "gd", "<cmd>Lspsaga peek_definition<cr>")
-        keymap("n", "gy", "<cmd>Lspsaga peek_type_definition<cr>")
+        keymap("n", "gd", "<Cmd>Lspsaga peek_definition<CR>")
+        keymap("n", "gy", "<Cmd>Lspsaga peek_type_definition<CR>")
     end,
 }

@@ -5,7 +5,7 @@ return {
     cond = vscode,
     cmd = "BlameToggle",
     keys = {
-        { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "Blame Toggle" },
+        { "<leader>gb", "<Cmd>BlameToggle<CR>", desc = "Blame Toggle" },
     },
     opts = {},
 }

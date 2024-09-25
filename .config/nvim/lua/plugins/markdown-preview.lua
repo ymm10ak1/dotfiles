@@ -4,7 +4,7 @@ return {
     "iamcco/markdown-preview.nvim",
     cond = vscode,
     keys = {
-        { "<M-p>", "<cmd>MarkdownPreviewToggle<CR>" },
+        { "<M-p>", "<Cmd>MarkdownPreviewToggle<CR>" },
     },
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },

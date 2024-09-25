@@ -1,17 +1,17 @@
 local vscode = require("utils").vscode_check
 
 return {
-    { "MunifTanjim/nui.nvim", cond = vscode },
-    { "rcarriga/nvim-notify", cond = vscode },
+    -- { "MunifTanjim/nui.nvim", cond = vscode },
+    -- { "rcarriga/nvim-notify", cond = vscode },
     {
         "folke/noice.nvim",
         cond = vscode,
         event = "VeryLazy",
-        -- dependencies = {
-        --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        --     "MunifTanjim/nui.nvim",
-        --     "rcarriga/nvim-notify",
-        -- },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
         opts = {
             messages = {
                 view = "mini",

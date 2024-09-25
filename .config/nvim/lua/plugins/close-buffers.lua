@@ -4,7 +4,7 @@ return {
     "kazhala/close-buffers.nvim",
     cond = vscode,
     keys = {
-        { "<leader>to", "<cmd>BDelete other<cr>", desc = "BDelete other" },
+        { "<leader>to", "<Cmd>BDelete other<CR>", desc = "BDelete other" },
     },
     opts = {
         preserve_window_layout = { "this" },

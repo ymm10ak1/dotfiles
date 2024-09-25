@@ -4,7 +4,7 @@ return {
     "ibhagwan/fzf-lua",
     cond = vscode,
     cmd = "FzfLua",
-    -- dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         {
             "<leader>fp",

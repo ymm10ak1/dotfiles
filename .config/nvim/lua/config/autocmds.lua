@@ -36,6 +36,6 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function(ev)
         -- help等の対象ファイルをバッファリストに入れない
         vim.bo[ev.buf].buflisted = false
-        vim.keymap.set("n", "q", "<cmd>close<cr>", { noremap = true, buffer = 0 })
+        vim.keymap.set("n", "q", "<Cmd>close<CR>", { noremap = true, buffer = 0 })
     end,
 })

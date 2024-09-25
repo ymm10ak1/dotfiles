@@ -5,7 +5,7 @@ return {
     cond = vscode,
     event = { "BufReadPre", "BufNewFile" },
     version = "*",
-    -- dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         options = {
             indicator = {
@@ -16,7 +16,7 @@ return {
     },
     init = function()
         local opts = { noremap = true, silent = true }
-        vim.keymap.set("n", "<C-k>", "<cmd>BufferLineCyclePrev<CR>", opts)
-        vim.keymap.set("n", "<C-j>", "<cmd>BufferLineCycleNext<CR>", opts)
+        vim.keymap.set("n", "<C-k>", "<Cmd>BufferLineCyclePrev<CR>", opts)
+        vim.keymap.set("n", "<C-j>", "<Cmd>BufferLineCycleNext<CR>", opts)
     end,
 }

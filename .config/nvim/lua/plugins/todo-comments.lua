@@ -1,11 +1,12 @@
 local vscode = require("utils").vscode_check
+
 return {
     "folke/todo-comments.nvim",
     cond = vscode,
-    -- dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
     keys = {
-        { "<leader>tt", "<cmd>TodoTelescope<CR>", desc = "TodoComments Telescope" },
-        { "<leader>tq", "<cmd>TodoQuickFix<CR>", desc = "TodoComments QuickFix" },
+        { "<leader>tt", "<Cmd>TodoTelescope<CR>", desc = "TodoComments Telescope" },
+        { "<leader>tq", "<Cmd>TodoQuickFix<CR>", desc = "TodoComments QuickFix" },
     },
 }

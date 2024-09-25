@@ -19,11 +19,11 @@ return {
         "williamboman/mason-lspconfig.nvim",
         cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
-        -- dependencies = {
-        --     "williamboman/mason.nvim",
-        --     "neovim/nvim-lspconfig",
-        --     "hrsh7th/cmp-nvim-lsp",
-        -- },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -100,10 +100,10 @@ return {
         "jay-babu/mason-null-ls.nvim",
         cond = vscode,
         event = { "BufReadPre", "BufNewFile" },
-        -- dependencies = {
-        --     "williamboman/mason.nvim",
-        --     "nvimtools/none-ls.nvim",
-        -- },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
         config = function()
             local null_ls = require("null-ls")
             require("mason").setup({})

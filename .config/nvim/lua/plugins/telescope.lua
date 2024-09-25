@@ -1,36 +1,36 @@
 local vscode = require("utils").vscode_check
 
 return {
-    { "nvim-telescope/telescope-frecency.nvim", cond = vscode },
-    { "nvim-telescope/telescope-file-browser.nvim", cond = vscode },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vscode },
+    -- { "nvim-telescope/telescope-frecency.nvim", cond = vscode },
+    -- { "nvim-telescope/telescope-file-browser.nvim", cond = vscode },
+    -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vscode },
     {
         "nvim-telescope/telescope.nvim",
         cond = vscode,
         branch = "0.1.x",
         cmd = "Telescope",
-        -- dependencies = {
-        --     "nvim-lua/plenary.nvim",
-        --     "nvim-tree/nvim-web-devicons",
-        --     "nvim-telescope/telescope-frecency.nvim",
-        --     "nvim-telescope/telescope-file-browser.nvim",
-        --     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        -- },
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-tree/nvim-web-devicons" },
+            { "nvim-telescope/telescope-frecency.nvim" },
+            { "nvim-telescope/telescope-file-browser.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
         keys = {
-            { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope Find_files" },
-            { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live_grep" },
+            { "<leader>ff", "<Cmd>Telescope find_files<CR>", desc = "Telescope Find_files" },
+            { "<leader>fw", "<Cmd>Telescope live_grep<CR>", desc = "Telescope Live_grep" },
             {
                 "<leader>fW",
-                "<cmd>Telescope live_grep grep_open_files=true<cr>",
+                "<Cmd>Telescope live_grep grep_open_files=true<CR>",
                 desc = "Telescope Live_grep(grep_open_files = true)",
             },
-            { "<leader>fs", "<cmd>Telescope buffers<cr>", desc = "Telescope Buffers" },
-            { "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "Telescope Git_files" },
-            { "<leader>rr", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
-            { "<leader>rw", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Telescope Frecency workspace" },
-            { "<leader>fb", "<cmd>Telescope file_browser hidden=true<cr>", desc = "Telescope FileBrowser" },
-            { "<leader>nf", "<cmd>Telescope notify theme=dropdown<cr>", desc = "Telescope Notify" },
-            { "<leader><space>", "<cmd>Telescope smart_open<cr>", desc = "Telescope Smart_open" },
+            { "<leader>fs", "<Cmd>Telescope buffers<CR>", desc = "Telescope Buffers" },
+            { "<leader>gf", "<Cmd>Telescope git_files<CR>", desc = "Telescope Git_files" },
+            { "<leader>rr", "<Cmd>Telescope frecency<CR>", desc = "Telescope Frecency" },
+            { "<leader>rw", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Telescope Frecency workspace" },
+            { "<leader>fb", "<Cmd>Telescope file_browser hidden=true<CR>", desc = "Telescope FileBrowser" },
+            { "<leader>nf", "<Cmd>Telescope notify theme=dropdown<CR>", desc = "Telescope Notify" },
+            { "<leader><space>", "<Cmd>Telescope smart_open<CR>", desc = "Telescope Smart_open" },
         },
         config = function()
             local actions = require("telescope.actions")
