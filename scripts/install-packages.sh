@@ -2,7 +2,7 @@
 
 set -eu
 
-INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget)
+UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget)
 ARCH_INSTALL_LIST=(git curl sqlite3 xsel zip unzip wget rustup)
 
 has() {
@@ -17,7 +17,7 @@ packages_install() {
       sudo apt-get upgrade -y
 
       # 必要なソフトウェアのインストール
-      for pkg in "${INSTALL_LIST[@]}"; do
+      for pkg in "${UBUNTU_INSTALL_LIST[@]}"; do
         local pkg_name="$pkg"
         if [[ "$pkg" = "build-essential" ]]; then
           pkg_name="gcc"
@@ -38,7 +38,12 @@ packages_install() {
       fi
     fi
   elif [[ -e /etc/arch-release ]]; then
-    sudo pacman -Syyu --disable-sandbox
+    # wsl-archの場合は--disable-sandboxオプションをつける
+    if [[ "$(uname -r)" == *microsoft* ]]; then
+      sudo pacman -Syyu --disable-sandbox
+    else
+      sudo pacman -Syyu
+    fi
     for pkg in "${ARCH_INSTALL_LIST[@]}"; do
       sudo pacman -S --noconfirm --needed "$pkg"
     done

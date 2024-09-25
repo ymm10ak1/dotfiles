@@ -4,5 +4,5 @@ return {
     "j-hui/fidget.nvim",
     cond = vscode,
     event = "LspAttach",
-    config = true,
+    opts = {},
 }

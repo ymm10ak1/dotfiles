@@ -4,6 +4,6 @@ return {
     "simeji/winresizer",
     cond = vscode,
     keys = {
-        { "<C-e>", "<cmd>WinResizerStartResize<cr>", desc = "WinResizer Start"}
+        { "<C-e>", "<Cmd>WinResizerStartResize<CR>", desc = "WinResizer Start"}
     }
 }
