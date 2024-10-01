@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- QuickFixCmdPost: QuickFixコマンドを実行した後
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     pattern = { "*grep*" },
-    command = "cw",
+    command = "cwindow",
 })
 
 -- helpなどをqで閉じるようにする
