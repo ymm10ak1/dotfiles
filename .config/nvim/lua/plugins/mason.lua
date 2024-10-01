@@ -35,16 +35,7 @@ return {
             end
             require("mason").setup({})
             require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "rust_analyzer",
-                    "clangd",
-                    "gopls",
-                    "ts_ls",
-                    "bashls",
-                    "pyright",
-                    "ruff_lsp",
-                },
+                ensure_installed = { "lua_ls", "bashls", "clangd" },
             })
             require("mason-lspconfig").setup_handlers({
                 function(server_name) -- default handler
@@ -115,7 +106,6 @@ return {
                     null_ls.builtins.formatting.clang_format.with({
                         disabled_filetypes = { "java", "json", "javascript" },
                     }),
-                    null_ls.builtins.formatting.gofmt,
                     null_ls.builtins.formatting.prettier,
                     null_ls.builtins.formatting.shfmt.with({
                         extra_args = { "-i", "2", "-ci", "-bn" },
