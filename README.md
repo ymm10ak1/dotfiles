@@ -2,7 +2,7 @@
 
 ## 環境
 
-Windows11 + WSL2(Ubuntu22.04 LTS)
+Windows11 + WSL2(Ubuntu24.04 LTS)
 
 ## 手順
 
