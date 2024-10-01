@@ -86,3 +86,15 @@ if vim.fn.has("wsl") == 1 then
         cache_enable = 1,
     }
 end
+
+-- 外部grepをripgrepに変える
+if vim.fn.executable("rg") == 1 then
+    opt.grepprg = "rg --vimgrep --hidden --no-heading"
+    -- opt.grepformat = "%f:%l:c:%m"
+end
+
+-- Providerを無効
+g.loaded_python3_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_node_provider = 0
