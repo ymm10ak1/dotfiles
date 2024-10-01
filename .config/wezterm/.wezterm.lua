@@ -3,7 +3,12 @@ local wezterm = require("wezterm")
 local wsl_domains = wezterm.default_wsl_domains()
 for _, dom in ipairs(wsl_domains) do
     -- 今WSLで使用しているディストリビューションに対応
-    if dom.name == "WSL:Ubuntu-22.04" or dom.name == "WSL:Ubuntu-20.04" or dom.name == "WSL:Ubuntu" then
+    if
+        dom.name == "WSL:Ubuntu-24.04"
+        or dom.name == "WSL:Ubuntu-22.04"
+        or dom.name == "WSL:Ubuntu-20.04"
+        or dom.name == "WSL:Ubuntu"
+    then
         dom.default_cwd = "~"
     end
 end
@@ -22,8 +27,18 @@ local act = wezterm.action
 --     return false
 -- end)
 
-wezterm.on("format-tab-title", function(tab)
-    return tab.active_pane.title
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local title = tab.active_pane.title
+    local background = "#5c6d74"
+    local foreground = "#FFFFFF"
+    if tab.is_active then
+        background = "#ae8b2d"
+    end
+    return {
+        { Background = { Color = background } },
+        { Foreground = { Color = foreground } },
+        { Text = " " .. title .. " " },
+    }
 end)
 
 local leader = { key = "f", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -103,7 +118,8 @@ return {
     initial_rows = 30,
     audible_bell = "Disabled",
     window_background_opacity = 0.80,
-    default_domain = "WSL:Ubuntu-22.04",
+    window_decorations = "RESIZE",
+    default_domain = "WSL:Ubuntu-24.04",
     default_prog = { "wsl.exe" },
     hide_tab_bar_if_only_one_tab = true,
     leader = leader,
