@@ -51,7 +51,7 @@ alias nt='nvim ~/.tmux.conf'
 alias st='tmux source ~/.tmux.conf'
 alias start='explorer.exe'
 alias g='g++ -std=c++23 -Wall'
-alias gg='g++ -g'
+alias gg='g++ -g -Wall'
 
 # GOPATH
 # export PATH=$PATH:/usr/local/go/bin
