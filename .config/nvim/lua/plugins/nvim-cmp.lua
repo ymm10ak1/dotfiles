@@ -9,7 +9,10 @@ return {
     { "hrsh7th/cmp-cmdline", cond = vscode, event = { "CmdlineChanged", "ModeChanged", "CmdlineEnter" } },
     { "onsails/lspkind.nvim", cond = vscode, event = "InsertEnter" },
     {
-        "hrsh7th/nvim-cmp",
+        -- "hrsh7th/nvim-cmp",
+        -- https://github.com/iguanacucumber/magazine.nvim
+        "iguanacucumber/magazine.nvim",
+        name = "nvim-cmp",
         cond = vscode,
         event = { "InsertEnter", "CmdlineEnter" },
         -- dependencies = {
@@ -22,7 +25,7 @@ return {
         --     { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineChanged" } },
         --     { "onsails/lspkind.nvim", event = "InsertEnter" },
         -- },
-        config = function()
+        opts = function()
             local cmp = require("cmp")
             local lspkind = require("lspkind")
 
@@ -122,6 +125,10 @@ return {
                         return item
                     end,
                 },
+                performance = {
+                    debounce = 0,
+                    throttle = 0,
+                },
             })
 
             -- `/, ?` cmdline setup
@@ -150,6 +157,7 @@ return {
                         },
                     },
                 }),
+                matching = { disallow_symbol_noprefix_matching = false },
             })
         end,
     },
