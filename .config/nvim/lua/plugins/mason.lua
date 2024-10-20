@@ -24,7 +24,7 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
         },
-        config = function()
+        opts = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local on_attach = function(client, bufnr)
@@ -95,13 +95,22 @@ return {
             "williamboman/mason.nvim",
             "nvimtools/none-ls.nvim",
         },
-        config = function()
+        opts = function()
             local null_ls = require("null-ls")
             require("mason").setup({})
+            require("mason-null-ls").setup({
+                ensure_installed = { "stylua", "textlint", "markdownlint", "prettier", "shfmt" },
+                -- null_lsで選ばれたsourcesに基づいてmasons toolsを自動でインストールするか
+                automatic_installation = false,
+                handlers = {},
+            })
             null_ls.setup({
                 diagnostics_format = "[#{c}] #{m} (#{s})",
                 sources = {
+                    -- diagnostics
                     null_ls.builtins.diagnostics.textlint,
+                    null_ls.builtins.diagnostics.markdownlint,
+                    -- formatter
                     null_ls.builtins.formatting.stylua,
                     null_ls.builtins.formatting.clang_format.with({
                         disabled_filetypes = { "java", "json", "javascript" },
@@ -110,21 +119,10 @@ return {
                     null_ls.builtins.formatting.shfmt.with({
                         extra_args = { "-i", "2", "-ci", "-bn" },
                     }),
-                    null_ls.builtins.diagnostics.markdownlint_cli2,
-                    null_ls.builtins.diagnostics.markdownlint,
                     null_ls.builtins.formatting.markdownlint,
                 },
             })
-            require("mason-null-ls").setup({
-                ensure_installed = nil,
-                -- null_lsで選ばれたsourcesに基づいてmasons toolsを自動でインストールする
-                automatic_installation = true,
-            })
         end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        cond = vscode,
     },
     {
         "jay-babu/mason-nvim-dap.nvim",
