@@ -1,7 +1,6 @@
 local vscode = require("utils").vscode_check
 
 return {
-    -- { "nvim-neotest/nvim-nio", cond = vscode },
     {
         "mfussenegger/nvim-dap",
         cond = vscode,

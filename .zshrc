@@ -15,7 +15,7 @@ export EDITOR=vim
 # 履歴
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000
-export SAVEHIST=2000
+export SAVEHIST=10000
 
 # 重複するコマンドを記録しない
 setopt hist_ignore_dups
@@ -29,6 +29,8 @@ setopt correct
 setopt no_clobber
 # 日本語ファイル名等8ビットを通す
 setopt print_eight_bit
+# コマンドの実行時刻を記録
+setopt extended_history
 
 # alias
 if type -p "eza" > /dev/null 2>&1; then

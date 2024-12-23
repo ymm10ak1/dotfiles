@@ -27,12 +27,6 @@ return {
         opts = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local on_attach = function(client, bufnr)
-                if client.name == "ruff_lsp" then
-                    -- Disable hover in favor of Pyright
-                    client.server_capabilities.hoverProvider = false
-                end
-            end
             require("mason").setup({})
             require("mason-lspconfig").setup({
                 ensure_installed = { "lua_ls", "bashls", "clangd" },
@@ -62,11 +56,6 @@ return {
                 ["clangd"] = function()
                     lspconfig.clangd.setup({
                         cmd = { "clangd", "--header-insertion=never" },
-                    })
-                end,
-                ["ruff_lsp"] = function()
-                    lspconfig.ruff_lsp.setup({
-                        on_attach = on_attach,
                     })
                 end,
                 ["pyright"] = function()

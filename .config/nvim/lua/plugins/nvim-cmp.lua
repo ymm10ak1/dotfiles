@@ -1,18 +1,15 @@
 local vscode = require("utils").vscode_check
 
 return {
-    { "saadparwaiz1/cmp_luasnip", cond = vscode, event = "InsertEnter" },
     { "hrsh7th/cmp-nvim-lsp", cond = vscode, event = "InsertEnter" },
-    { "hrsh7th/cmp-nvim-lsp-signature-help", cond = vscode, event = "InsertEnter" },
     { "hrsh7th/cmp-buffer", cond = vscode, event = { "InsertEnter", "CmdlineEnter" } },
-    { "hrsh7th/cmp-path", cond = vscode, event = "InsertEnter" },
     { "hrsh7th/cmp-cmdline", cond = vscode, event = { "CmdlineChanged", "ModeChanged", "CmdlineEnter" } },
+    { "hrsh7th/cmp-path", cond = vscode, event = "InsertEnter" },
+    { "saadparwaiz1/cmp_luasnip", cond = vscode, event = "InsertEnter" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help", cond = vscode, event = "InsertEnter" },
     { "onsails/lspkind.nvim", cond = vscode, event = "InsertEnter" },
     {
-        -- "hrsh7th/nvim-cmp",
-        -- https://github.com/iguanacucumber/magazine.nvim
-        "iguanacucumber/magazine.nvim",
-        name = "nvim-cmp",
+        "hrsh7th/nvim-cmp",
         cond = vscode,
         event = { "InsertEnter", "CmdlineEnter" },
         -- dependencies = {
