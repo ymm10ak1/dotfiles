@@ -58,21 +58,6 @@ return {
                         cmd = { "clangd", "--header-insertion=never" },
                     })
                 end,
-                ["pyright"] = function()
-                    lspconfig.pyright.setup({
-                        settings = {
-                            pyright = {
-                                -- Using Ruff's import organizer
-                                disableOrganizeImports = true,
-                            },
-                            python = {
-                                analysis = {
-                                    ignore = { "*" },
-                                },
-                            },
-                        },
-                    })
-                end,
             })
         end,
     },
