@@ -7,7 +7,7 @@
                 "language":[ 
                     "cpp"
                 ],
-                "path": "cpp.json"
+                "path": "./cpp.json"
             }
         ]
     }

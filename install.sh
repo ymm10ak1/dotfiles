@@ -54,10 +54,10 @@ create_symlink_config() {
     for file in "$config_dir"/??*; do
       # ディレクトリまたは通常のファイルの場合はシンボリックリンクを作る
       if [[ -d "$file" || -f "$file" ]]; then
-        [[ $(basename "$file") = ".git" ]] && continue
+        [[ $(basename "$file") == ".git" ]] && continue
         # wsl2の場合はweztermのシンボリックリンクは作らない
         if [[ "$(uname -r)" == *microsoft* ]]; then
-          [[ $(basename "$file") = "wezterm" ]] && continue
+          [[ $(basename "$file") == "wezterm" ]] && continue
         fi
         if [[ -L "$home_config/$(basename "$file")" ]]; then
           command unlink "$home_config/$(basename "$file")"
@@ -68,20 +68,8 @@ create_symlink_config() {
         command ln -snfv "$file" "$home_config"
       fi
     done
-  else
-    command echo "same install src dest"
   fi
 }
-
-# aqua_pkg_install(){
-#   command echo -e "\033[1;36mInstalling aqua packages...\033[0m"
-#   aqua i -l -a
-# }
-#
-# mise_pkg_install(){
-#   command echo -e "\033[1;36mInstalling mise packages...\033[0m"
-#   mise i
-# }
 
 run_script() {
   if [[ -f "$1" ]]; then
