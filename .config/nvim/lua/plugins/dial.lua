@@ -1,4 +1,4 @@
 return {
-    "monaqa/dial.nvim",
-    keys = { "<C-a>", { "<C-x>", mode = "n" } },
+  "monaqa/dial.nvim",
+  keys = { "<C-a>", { "<C-x>", mode = "n" } },
 }

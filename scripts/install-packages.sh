@@ -2,15 +2,14 @@
 
 set -eu
 
-UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget)
+UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget pandoc poppler-utils ffmpeg)
 ARCH_INSTALL_LIST=(git curl sqlite3 xsel zip unzip wget rustup)
 
 has() {
   type -p "$1" >/dev/null 2>&1
 }
 
-packages_install() {
-  # Ubuntu(WSL2)用セットアップ
+install_packages() {
   if [[ -e /etc/debian_version ]]; then
     if [[ -e /etc/lsb-release ]]; then
       sudo apt-get update -y
@@ -76,4 +75,4 @@ packages_install() {
   fi
 }
 
-packages_install
+install_packages

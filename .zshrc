@@ -1,9 +1,12 @@
 # gpg
 export GPG_TTY=$(tty)
 
+# mise
+eval "$($HOME/.local/bin/mise activate zsh)"
+
 # aqua
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-export AQUA_GLOBAL_CONFIG="${AQUA_GLOBAL_CONFIG:-}:${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
+export AQUA_GLOBAL_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/aqua/aqua.yaml"
 export AQUA_PROGRESS_BAR=true
 
 # 言語を日本語にする
@@ -34,7 +37,7 @@ setopt extended_history
 
 # alias
 if type -p "eza" > /dev/null 2>&1; then
-    alias ll='eza -aalF --icons --group-directories-first'
+    alias ll='eza -aal -F=always --icons=always --group-directories-first'
 else
     alias ll='ls -alF'
 fi
@@ -52,27 +55,51 @@ alias ain='./a.out < input.txt >| output.txt'
 alias nt='nvim ~/.tmux.conf'
 alias st='tmux source ~/.tmux.conf'
 alias start='explorer.exe'
-alias g='g++ -std=c++23 -Wall'
-alias gg='g++ -g -Wall'
+alias g='g++ -std=c++23 -O2 -Wall -Wextra'
+alias gg='g++ -g -std=c++23 -O2 -Wall -Wextra'
+alias clip='xsel -bi'
 
-# GOPATH
-# export PATH=$PATH:/usr/local/go/bin
+# functions
+function ghq-fzf(){
+    local src=$(ghq list | fzf --preview "ls -alF $(ghq root)/{} | awk '{print \$6\"/\"\$7 \" \" \$9\" \"\$10\" \"\$11}'")
+    if [ -n "$src" ]; then
+        BUFFER="cd $(ghq root)/$src"
+        zle accept-line
+    fi
+    zle -R -c
+}
+zle -N ghq-fzf
+bindkey '^g' ghq-fzf
+
+if type -p "ghq" > /dev/null 2>&1; then
+    ATCODER_CPP="$HOME/ghq/github.com/ymm10ak1/atcoder-cpp"
+    if [ -d "$ATCODER_CPP" ]; then
+        function adcp(){
+            source "$ATCODER_CPP/adcp.sh"
+        }
+        function mkcp(){
+            source "$ATCODER_CPP/mkcp.sh"
+        }
+        function ancp(){
+            source "$ATCODER_CPP/ancp.sh"
+        }
+        function ojcp(){
+            source "$ATCODER_CPP/ojcp.sh"
+        }
+    fi
+fi
 
 # online-judge-tools path
 export PATH="$HOME/.local/bin:$PATH"
 
 # rust
-if [ -e /etc/debian_version -a -e /etc/lsb-release ]; then
+if [ -e /etc/debian_version ] && [ -e /etc/lsb-release ]; then
  . "$HOME/.cargo/env"
 fi
 
 # bat
 export BAT_THEME="OneHalfDark"
 export BAT_PAGER="less -RF"
-
-# deno
-# export DENO_INSTALL="$HOME/.deno"
-# export PATH="$DENO_INSTALL/bin:$PATH"
 
 # starship
 if type -p "starship" > /dev/null 2>&1; then
@@ -83,18 +110,15 @@ fi
 
 # zoxide
 # "--cmd cd"はzをcdコマンドに置き換える
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 
 # .zshrc_localがあれば読み込み
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# mise
-eval "$($HOME/.local/bin/mise activate zsh)"
-
 # neovim
 if [ -d /opt/nvim-linux64 ]; then
     export PATH="$PATH:/opt/nvim-linux64/bin"
-    # neovimとfzfがあればfzfで検索した結果をneovimで編集
+    # fzfで検索した結果をneovimで編集
     if type -p "fzf" > /dev/null 2>&1; then
         alias nvf='nvim $(fzf)'
     fi

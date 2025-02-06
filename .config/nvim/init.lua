@@ -1,12 +1,12 @@
 if vim.loader then
-    vim.loader.enable()
+  vim.loader.enable()
 end
 
 if not vim.g.vscode then
-    require("config.options")
-    require("config.keymaps")
-    require("config.autocmds")
+  require("config.options")
+  require("config.keybind")
+  require("config.autocmds")
 else
-    require("config.vscode")
+  require("config.vscode")
 end
 require("config.lazy")

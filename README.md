@@ -11,3 +11,15 @@ git clone https://github.com/ymm10ak1/dotfiles.git
 cd dotfiles/
 ./install.sh
 ```
+
+miseのツールのインストール
+
+```sh
+mise i
+```
+
+aquaのツールのインストール
+
+```sh
+aqua i -a -l
+```

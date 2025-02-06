@@ -2,18 +2,17 @@ vim.g.mapleader = " " -- <leader>キーを半角スペース
 
 -- vim.opt.keymap.set: 第1引数でどのmodeか指定する
 -- n: normal, i: insert, v: visual, t: terminal
-local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 -- インデントを1段浅く/深く
 keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
--- Visual <,>で連続してインデント操作
-keymap("x", "<", "<gv", opts)
-keymap("x", ">", ">gv", opts)
+keymap("x", "<", "<gv", { noremap = true, silent = true, desc = "<で連続してインデント操作する" })
+keymap("x", ">", ">gv", { noremap = true, silent = true, desc = ">で連続してインデント操作する" })
 -- Lで行末に移動/Hでスペースを除く先頭に移動
 keymap("n", "L", "$", opts)
-keymap("v", "L", "$h", opts)
+keymap("v", "L", "g_", opts)
 keymap({ "n", "v" }, "H", "^", opts)
 -- 行末までヤンク
 keymap("n", "Y", "y$", opts)
@@ -42,5 +41,16 @@ keymap("n", "ZZ", "<NOP>")
 keymap("n", "ZQ", "<NOP>")
 -- リドゥ
 keymap("n", "U", "<C-r>", opts)
+-- 全行コピー
+keymap("n", "sy", "<Cmd>%y<CR>", opts)
+keymap("n", "<leader>*", "*''cgn", { desc = "検索対象の文字列を編集" })
+keymap(
+  { "n", "x" },
+  "x",
+  [["_x]],
+  { noremap = true, silent = true, desc = "レジスタに残さないように消去専用レジスタを使う" }
+)
+-- sを無効にする
+keymap("n", "s", "<NOP>")
 -- insertモード中、jjでnormalモードに変更
 keymap("i", "jj", "<Esc>", opts)
