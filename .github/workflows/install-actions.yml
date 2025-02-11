@@ -1,10 +1,17 @@
 name: Install dotfiles
-on: [push]
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    paths-ignore:
+      - './renovate.json'
+
 jobs:
   Install-Dotfiles:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Repository code 
+      - name: Check out Repository code
         uses: actions/checkout@v4
       - name: Run install.sh
         run: ./install.sh
