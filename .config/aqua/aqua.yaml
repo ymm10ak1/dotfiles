@@ -24,4 +24,4 @@ packages:
 - name: rhysd/vim-startuptime@v1.3.2
 - name: phiresky/ripgrep-all@v0.10.6
 - name: x-motemen/ghq@v1.7.1
-- name: fastfetch-cli/fastfetch@2.35.0
+- name: fastfetch-cli/fastfetch@2.36.1
