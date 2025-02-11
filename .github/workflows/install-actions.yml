@@ -2,10 +2,11 @@ name: Install dotfiles
 on:
   push:
     branches:
-      - "main"
+      - main
   pull_request:
     paths-ignore:
       - './renovate.json'
+      - './.config/aqua/aqua.yaml'
 
 jobs:
   Install-Dotfiles:
