@@ -3,6 +3,14 @@
   "extends": [
     "config:recommended",
     ":disableDependencyDashboard",
-    "github>aquaproj/aqua-renovate-config#2.7.4",
+    "github>aquaproj/aqua-renovate-config#2.7.4"
+  ],
+  "packageRules": [
+      {
+          "matchUpdateTypes": ["minor", "patch"],
+          "matchCurrentVersion": "!/^0/",
+          "automerge": true,
+          "addLabels": ["automerge"]
+      }
   ]
 }
