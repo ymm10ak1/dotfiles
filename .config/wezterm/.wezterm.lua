@@ -1,16 +1,13 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
+local launch_menu = {}
 
 local wsl_domains = wezterm.default_wsl_domains()
 for _, dom in ipairs(wsl_domains) do
   -- 今WSLで使用しているディストリビューションに対応
-  if
-    dom.name == "WSL:Ubuntu-24.04"
-    or dom.name == "WSL:Ubuntu-22.04"
-    or dom.name == "WSL:Ubuntu-20.04"
-    or dom.name == "WSL:Ubuntu"
-  then
+  local matched = string.find(dom.name, "^WSL:[%w%.]")
+  if matched ~= nil then
     dom.default_cwd = "~"
   end
 end
@@ -45,6 +42,13 @@ wezterm.on("gui-startup", function(cmd)
   local _, _, window = mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
+
+-- if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+--   table.insert(launch_menu, {
+--     label = "PowerShell",
+--     args = { "powershell.exe", "-NoLogo" },
+--   })
+-- end
 
 local leader = { key = "f", mods = "CTRL", timeout_milliseconds = 1000 }
 local keys = {
@@ -106,6 +110,8 @@ local keys = {
   { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
   -- Fullscrenn
   { key = "f", mods = "SHIFT|ALT", action = act.ToggleFullScreen },
+  -- Show Launcher
+  { key = "l", mods = "ALT", action = act.ShowLauncher },
 }
 
 return {
@@ -123,10 +129,11 @@ return {
   initial_rows = 30,
   audible_bell = "Disabled",
   window_background_opacity = 0.80,
-  window_decorations = "RESIZE",
+  window_decorations = "TITLE | RESIZE",
   default_domain = "WSL:Ubuntu-24.04",
   default_prog = { "wsl.exe" },
   hide_tab_bar_if_only_one_tab = true,
   leader = leader,
   keys = keys,
+  launch_menu = launch_menu,
 }

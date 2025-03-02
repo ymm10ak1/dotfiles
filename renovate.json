@@ -6,11 +6,11 @@
     "github>aquaproj/aqua-renovate-config#2.7.5"
   ],
   "packageRules": [
-      {
-          "matchUpdateTypes": ["minor", "patch"],
-          "matchCurrentVersion": "!/^0/",
-          "automerge": true,
-          "addLabels": ["automerge"]
-      }
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true,
+      "addLabels": ["automerge"]
+    }
   ]
 }

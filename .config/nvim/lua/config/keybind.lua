@@ -14,8 +14,6 @@ keymap("x", ">", ">gv", { noremap = true, silent = true, desc = ">で連続し�
 keymap("n", "L", "$", opts)
 keymap("v", "L", "g_", opts)
 keymap({ "n", "v" }, "H", "^", opts)
--- 行末までヤンク
-keymap("n", "Y", "y$", opts)
 -- バッファ移動
 keymap("n", "]b", ":bnext<CR>", opts)
 keymap("n", "[b", ":bprev<CR>", opts)
@@ -28,6 +26,8 @@ keymap("n", "tn", ":tabnew<CR>", opts)
 keymap("n", "tx", ":tabclose<CR>", opts)
 keymap("n", "tl", "gt", opts)
 keymap("n", "th", "gT", opts)
+-- sを無効にする
+keymap("n", "s", "<NOP>")
 -- ウィンドウ移動
 keymap("n", "sh", "<C-w>h", opts)
 keymap("n", "sj", "<C-w>j", opts)
@@ -43,6 +43,8 @@ keymap("n", "ZQ", "<NOP>")
 keymap("n", "U", "<C-r>", opts)
 -- 全行コピー
 keymap("n", "sy", "<Cmd>%y<CR>", opts)
+-- 行末までコピー
+keymap("n", "Y", "y$", opts)
 keymap("n", "<leader>*", "*''cgn", { desc = "検索対象の文字列を編集" })
 keymap(
   { "n", "x" },
@@ -50,7 +52,5 @@ keymap(
   [["_x]],
   { noremap = true, silent = true, desc = "レジスタに残さないように消去専用レジスタを使う" }
 )
--- sを無効にする
-keymap("n", "s", "<NOP>")
 -- insertモード中、jjでnormalモードに変更
 keymap("i", "jj", "<Esc>", opts)
