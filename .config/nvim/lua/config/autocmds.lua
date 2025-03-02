@@ -46,13 +46,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "cpp", "lua" },
   group = vim.api.nvim_create_augroup("fold-markder", { clear = true }),
   callback = function()
-      vim.opt_local.foldmethod = "marker"
-      -- vim.notify("foldmarker")
-      -- vim.cmd("set foldmethod?")
+    vim.opt_local.foldmethod = "marker"
   end,
-})
-
-vim.api.nvim_create_autocmd("BufNewFile", {
-  pattern = "*",
-  command = "lua vim.notify('BufNewFile' .. vim.fn.expand('%'))",
 })
