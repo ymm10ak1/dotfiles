@@ -2,10 +2,6 @@ local vscode = require("utils").vscode_check
 
 return {
   {
-    "lambdalisue/kensaku.vim",
-    cond = vscode,
-  },
-  {
     "lambdalisue/kensaku-search.vim",
     cond = vscode,
     event = { "BufRead", "BufNewFile" },

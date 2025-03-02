@@ -42,16 +42,10 @@ return {
           lspconfig.lua_ls.setup({
             settings = {
               Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                },
-                format = {
-                  -- styluaを適用するため無効
-                  enable = false,
-                },
-                hint = {
-                  enable = true,
-                },
+                diagnostics = { globals = { "vim", "Snacks" } },
+                -- styluaを適用するため無効
+                format = { enable = false },
+                hint = { enable = true },
               },
             },
           })
@@ -91,14 +85,13 @@ return {
       })
     end,
   },
+  -- mason-dap {{{
   {
     "jay-babu/mason-nvim-dap.nvim",
     cond = vscode,
     enabled = false,
-    event = "LspAttach",
     dependencies = {
       "mfussenegger/nvim-dap",
-      "rcarriga/nvim-dap-ui",
       "williamboman/mason.nvim",
     },
     config = function()
@@ -112,5 +105,5 @@ return {
         },
       })
     end,
-  },
+  }, -- }}}
 }

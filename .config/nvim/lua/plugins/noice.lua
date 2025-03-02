@@ -11,12 +11,15 @@ return {
   },
   opts = {
     messages = {
+      enabled = true,
       view = "notify",
       view_error = "notify",
       view_warn = "notify",
       view_history = "messages",
       view_search = false,
     },
+    popupmenu = { enabled = false },
+    notify = { enabled = true },
     lsp = {
       progress = {
         enabled = false,

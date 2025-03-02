@@ -1,7 +1,6 @@
 return {
   "kevinhwang91/nvim-hlslens",
-  event = { "BufRead", "BufNewFile" },
-  ft = "lazy",
+  event = { "CmdlineEnter" },
   dependencies = {
     "kevinhwang91/nvim-ufo",
     "rapan931/lasterisk.nvim",

@@ -1,6 +1,6 @@
 return {
   "folke/flash.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   ---@type Flash.Config
   opts = {},
   keys = {
@@ -10,9 +10,7 @@ return {
     { "R", mode = { "x", "o" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     {
       "M", mode = { "n", "x", "o" },
-      function()
-        require("flash").jump({ jump = { pos = "end" } })
-      end,
+      function() require("flash").jump({ jump = { pos = "end" } }) end,
       desc = "Flash Backward search only",
     },
     -- stylua: ignore end

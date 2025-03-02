@@ -24,6 +24,11 @@ return {
         end, opts)
         -- rename
         keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+        -- inlayHintの有効化
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client.supports_method("textDocument/inlayHint") then
+          vim.lsp.inlay_hint.enable()
+        end
       end,
     })
     vim.opt.completeopt = "menu,menuone,noselect"
