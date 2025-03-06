@@ -13,7 +13,8 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
       "automergeSchedule": ["* * * * 0,6"],
-      "addLabels": ["renovate-automerge"]
+      "addLabels": ["renovate-automerge"],
+      "ignoreTests": true
     }
   ]
 }
