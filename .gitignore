@@ -31,3 +31,4 @@
 !/.github/**
 !/.github/workflows/
 !/.github/workflows/**
+!/renovate.json
