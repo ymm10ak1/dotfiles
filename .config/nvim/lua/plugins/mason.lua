@@ -33,11 +33,9 @@ return {
       })
       require("mason-lspconfig").setup_handlers({
         function(server_name) -- default handler
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
+          lspconfig[server_name].setup({ capabilities = capabilities })
         end,
-        -- you can provide targeted overrides for specific servers
+        -- 特定のLSPに設定したい場合は以下のように書く
         ["lua_ls"] = function()
           lspconfig.lua_ls.setup({
             settings = {
@@ -65,6 +63,7 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "nvimtools/none-ls.nvim",
+      "nvim-lua/plenary.nvim",
     },
     opts = function()
       local null_ls = require("null-ls")
