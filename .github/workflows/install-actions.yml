@@ -11,7 +11,7 @@ jobs:
   aqua:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Repository code 
+      - name: Check out Repository code
       - uses: actions/checkout@v4
       - name: aqua-installer
       - uses: aquaproj/aqua-installer@v3.1.1
@@ -36,4 +36,3 @@ jobs:
     if: ${{ failure() || cancelled() }}
     steps:
       - run: exit 1
-
