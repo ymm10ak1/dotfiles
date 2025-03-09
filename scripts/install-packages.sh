@@ -2,7 +2,7 @@
 
 set -eu
 
-UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget pandoc poppler-utils ffmpeg)
+UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget pandoc poppler-utils ffmpeg libreadline-dev)
 ARCH_INSTALL_LIST=(git curl sqlite3 xsel zip unzip wget rustup)
 
 has() {
