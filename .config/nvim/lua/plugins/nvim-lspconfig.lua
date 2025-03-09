@@ -5,6 +5,9 @@ return {
   cond = vscode,
   config = function()
     local keymap = vim.keymap.set
+    keymap("n", "<leader>go", vim.diagnostic.open_float)
+    keymap("n", "[d", vim.diagnostic.goto_prev)
+    keymap("n", "]d", vim.diagnostic.goto_next)
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -12,18 +15,12 @@ return {
       callback = function(ev)
         -- Buffer local mappings.
         local opts = { buffer = ev.buf }
-        -- 宣言ジャンプ
-        keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-        -- 実装ジャンプ
-        keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-        -- 参照元ジャンプ
-        keymap("n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
-        -- formatting
+        keymap("n", "K", vim.lsp.buf.hover, opts)
+        -- keymap("n", "ga", vim.lsp.buf.code_action, opts)
         keymap("n", "<leader>fo", function()
           vim.lsp.buf.format({ async = true })
         end, opts)
-        -- rename
-        keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+        keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
         -- inlayHintの有効化
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if client.supports_method("textDocument/inlayHint") then
