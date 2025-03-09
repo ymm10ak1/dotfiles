@@ -41,9 +41,9 @@ return {
     },
   },
   init = function()
-    vim.keymap.set("n", "<leader>nh", function()
-      require("noice").cmd("history")
-    end, { desc = "Noice History" })
+    -- stylua: ignore start
+    vim.keymap.set("n", "<leader>nh", function() require("noice").cmd("history") end, { desc = "Noice History" })
+    -- stylua: ignore end
     vim.keymap.set("n", "<leader>nd", "<Cmd>NoiceDisable<CR>", { desc = "Noice Disable" })
   end,
 }
