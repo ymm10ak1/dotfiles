@@ -27,6 +27,7 @@ return {
         "regex",
         "toml",
         "yaml",
+        "diff",
       },
       sync_install = false,
       highlight = { enable = true },
