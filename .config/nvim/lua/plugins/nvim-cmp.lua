@@ -6,7 +6,7 @@ return {
   { "hrsh7th/cmp-cmdline", cond = vscode, event = { "CmdlineChanged", "ModeChanged", "CmdlineEnter" } },
   { "hrsh7th/cmp-path", cond = vscode, event = "InsertEnter" },
   { "saadparwaiz1/cmp_luasnip", cond = vscode, event = "InsertEnter" },
-  { "hrsh7th/cmp-nvim-lsp-signature-help", cond = vscode, event = "InsertEnter" },
+  -- { "hrsh7th/cmp-nvim-lsp-signature-help", cond = vscode, event = "InsertEnter" },
   { "onsails/lspkind.nvim", cond = vscode, event = "InsertEnter" },
   {
     "hrsh7th/nvim-cmp",
@@ -14,13 +14,6 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       { "L3MON4D3/LuaSnip", event = "InsertEnter" },
-      -- { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-      -- { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-      -- { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
-      -- { "hrsh7th/cmp-buffer", event = "InsertEnter" },
-      -- { "hrsh7th/cmp-path", event = "InsertEnter" },
-      -- { "hrsh7th/cmp-cmdline", event = { "ModeChanged", "CmdlineChanged" } },
-      -- { "onsails/lspkind.nvim", event = "InsertEnter" },
     },
     opts = function()
       local cmp = require("cmp")
