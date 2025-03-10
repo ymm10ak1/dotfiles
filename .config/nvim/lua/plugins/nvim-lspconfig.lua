@@ -23,7 +23,10 @@ return {
         keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
         -- inlayHintの有効化
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client.supports_method("textDocument/inlayHint") then
+        if client.name == "clangd" then
+          return
+        end
+        if client ~= nil and client:supports_method("textDocument/inlayHint") then
           vim.lsp.inlay_hint.enable()
         end
       end,
