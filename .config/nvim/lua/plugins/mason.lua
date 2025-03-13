@@ -22,11 +22,13 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
+      "saghen/blink.cmp",
     },
     opts = function()
       local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "bashls", "clangd" },
