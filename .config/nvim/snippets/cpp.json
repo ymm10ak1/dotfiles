@@ -13,8 +13,8 @@
       "#define all(x) (x).begin(), (x).end()",
       "#define rall(x) (x).rbegin(), (x).rend()",
       "#define el '\\n'",
-      "const int INF = 2e9;",
-      "const ll LLINF = 2e18;",
+      "const int INF = (1<<30);",
+      "const ll LLINF = (1LL<<60);",
       "",
       "int main(){",
       "\t$1",
@@ -23,7 +23,7 @@
     ]
   },
   "chmin": {
-    "prefix": "ch",
+    "prefix": "chmin",
     "body": [
       "template<typename T>",
       "bool chmin(T& a, T b){",
@@ -33,7 +33,7 @@
     ]
   },
   "chmax": {
-    "prefix": "ch",
+    "prefix": "chmax",
     "body": [
       "template<typename T>",
       "bool chmax(T& a, T b){",
