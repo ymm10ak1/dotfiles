@@ -12,7 +12,7 @@ return {
       function()
         require("quicker").expand()
       end,
-      ft = { "qf" },
+      ft = "qf",
       desc = "Expand quickfix context",
     },
     {
@@ -20,7 +20,7 @@ return {
       function()
         require("quicker").collapse()
       end,
-      ft = { "qf" },
+      ft = "qf",
       desc = "Collapse quickfix context",
     },
     {
