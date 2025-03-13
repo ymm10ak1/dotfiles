@@ -4,19 +4,23 @@ return {
   "neovim/nvim-lspconfig",
   cond = vscode,
   config = function()
+    vim.diagnostic.config({
+      virtual_text = {
+        format = function(diagnostic)
+          return string.format("%s (%s: %s) ", diagnostic.message, diagnostic.source, diagnostic.code)
+        end,
+      },
+    })
     local keymap = vim.keymap.set
     keymap("n", "<leader>go", vim.diagnostic.open_float)
     keymap("n", "[d", vim.diagnostic.goto_prev)
     keymap("n", "]d", vim.diagnostic.goto_next)
-    -- Use LspAttach autocommand to only map the following keys
-    -- after the language server attaches to the current buffer
+    -- カレントバッファにLSPが接続した場合(LspAttachイベント)にキーマップを定義する
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Buffer local mappings.
         local opts = { buffer = ev.buf }
         keymap("n", "K", vim.lsp.buf.hover, opts)
-        -- keymap("n", "ga", vim.lsp.buf.code_action, opts)
         keymap("n", "<leader>fo", function()
           vim.lsp.buf.format({ async = true })
         end, opts)

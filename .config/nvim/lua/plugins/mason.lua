@@ -75,7 +75,6 @@ return {
         handlers = {},
       })
       null_ls.setup({
-        diagnostics_format = "[#{c}] #{m} (#{s})",
         sources = {
           null_ls.builtins.formatting.shfmt.with({
             extra_args = { "-i", "2", "-ci", "-bn" },
