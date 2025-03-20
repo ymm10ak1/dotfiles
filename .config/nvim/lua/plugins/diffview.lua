@@ -3,7 +3,7 @@ local vscode = require("utils").vscode_check
 return {
   "sindrets/diffview.nvim",
   cond = vscode,
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   opts = {
     keymaps = {
@@ -13,6 +13,7 @@ return {
     },
   },
   init = function()
+    vim.keymap.set("n", "<leader>di", "<Cmd>DiffviewOpen<CR>", { desc = "Open Diffview" })
     vim.keymap.set("n", "<leader>dq", "<Cmd>DiffviewClose<CR>", { desc = "Close Diffview" })
   end,
 }

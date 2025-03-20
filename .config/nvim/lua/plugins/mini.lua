@@ -3,6 +3,8 @@ return {
   version = false,
   event = "VeryLazy",
   config = function()
+    require("mini.icons").setup({})
+    MiniIcons.mock_nvim_web_devicons()
     require("mini.surround").setup({
       mappings = {
         add = "sa", -- Normal ModeとVisual Modeのとき文字列を括弧やクォーテーションで囲む
