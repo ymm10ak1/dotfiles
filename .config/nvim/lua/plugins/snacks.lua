@@ -5,7 +5,7 @@ return {
   cond = vscode,
   priority = 1000,
   lazy = false,
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "echasnovski/mini.icons" },
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
