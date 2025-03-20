@@ -2,10 +2,11 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
 local launch_menu = {}
+local config = wezterm.config_builder()
 
 local wsl_domains = wezterm.default_wsl_domains()
 for _, dom in ipairs(wsl_domains) do
-  -- 今WSLで使用しているディストリビューションに対応
+  -- WSLのディストリビューションの起動時のディレクトリを$HOMEに設定する
   local matched = string.find(dom.name, "^WSL:[%w%.]")
   if matched ~= nil then
     dom.default_cwd = "~"
@@ -43,12 +44,23 @@ wezterm.on("gui-startup", function(cmd)
   window:gui_window():maximize()
 end)
 
--- if wezterm.target_triple == "x86_64-pc-windows-msvc" then
---   table.insert(launch_menu, {
---     label = "PowerShell",
---     args = { "powershell.exe", "-NoLogo" },
---   })
--- end
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  table.insert(launch_menu, {
+    label = "PowerShell 7",
+    domain = { DomainName = "local" },
+    args = { "pwsh.exe" },
+  })
+  table.insert(launch_menu, {
+    label = "CMD",
+    domain = { DomainName = "local" },
+    args = { "cmd.exe" },
+  })
+  table.insert(launch_menu, {
+    label = "Git for Windows",
+    domain = { DomainName = "local" },
+    args = { "C:/Program Files/Git/bin/bash.exe", "-l" },
+  })
+end
 
 local leader = { key = "f", mods = "CTRL", timeout_milliseconds = 1000 }
 local keys = {
@@ -114,26 +126,26 @@ local keys = {
   { key = "l", mods = "ALT", action = act.ShowLauncher },
 }
 
-return {
-  wsl_domains = wsl_domains,
-  font = wezterm.font_with_fallback({
+config.wsl_domains = wsl_domains
+config.font = wezterm.font_with_fallback({
     { family = "HackGen Console NF" },
     { family = "HackGen Console NF", assume_emoji_presentation = true },
     { family = "SauceCodePro Nerd Font Mono" },
     { family = "JetBrains Mono Nerd Font" },
-  }),
-  font_size = 14.0,
-  adjust_window_size_when_changing_font_size = false,
-  color_scheme = "iceberg-dark",
-  initial_cols = 120,
-  initial_rows = 30,
-  audible_bell = "Disabled",
-  window_background_opacity = 0.80,
-  window_decorations = "TITLE | RESIZE",
-  default_domain = "WSL:Ubuntu-24.04",
-  default_prog = { "wsl.exe" },
-  hide_tab_bar_if_only_one_tab = true,
-  leader = leader,
-  keys = keys,
-  launch_menu = launch_menu,
-}
+})
+config.font_size = 14.0
+config.adjust_window_size_when_changing_font_size = false
+config.color_scheme = "iceberg-dark"
+config.initial_cols = 120
+config.initial_rows = 30
+config.audible_bell = "Disabled"
+config.window_background_opacity = 0.80
+config.window_decorations = "TITLE | RESIZE"
+config.default_domain = "WSL:Ubuntu-24.04"
+config.default_prog = { "wsl.exe" }
+config.hide_tab_bar_if_only_one_tab = true
+config.leader = leader
+config.keys = keys
+config.launch_menu = launch_menu
+
+return config
