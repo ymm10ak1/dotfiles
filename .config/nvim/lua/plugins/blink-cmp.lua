@@ -48,6 +48,13 @@ return {
         --   end,
         -- },
       },
+      keymap = {
+        preset = "cmdline",
+        ["<C-n>"] = {},
+        ["<C-p>"] = {},
+        ["<C-j>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+      },
     },
   },
 }
