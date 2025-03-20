@@ -1,15 +1,14 @@
 local vscode = require("utils").vscode_check
 return {
-  -- amongst your other plugins
   "akinsho/toggleterm.nvim",
   cond = vscode,
-  event = { "BufReadPre", "BufNewFile" },
   version = "*",
   opts = {
     open_mapping = [[<C-\>]],
     size = 10,
   },
   keys = {
+    { [[<C-\>]], "<Cmd>ToggleTerm<CR>", desc = "Open ToggleTerm" },
     {
       "<leader>te",
       function()
