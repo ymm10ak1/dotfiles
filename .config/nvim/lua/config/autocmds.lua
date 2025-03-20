@@ -1,7 +1,11 @@
+local function augroup(name)
+  return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
 -- 特定のファイルのインデントを2にする
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "html", "css", "js", "javascript", "ts", "typescript", "json", "markdown", "sh", "lua", "zsh" },
-  group = vim.api.nvim_create_augroup("indent2file", { clear = true }),
+  group = augroup("indent2file"),
   callback = function()
     vim.opt_local.expandtab = true
     vim.opt_local.shiftwidth = 2
@@ -12,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ターミナルを開いたらインサートモード
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = { "*" },
-  group = vim.api.nvim_create_augroup("termopen-insert", { clear = true }),
+  group = augroup("termopen-insert"),
   callback = function()
     local opts = { buffer = 0 }
     -- escでノーマルモードに戻る
@@ -27,14 +31,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 -- QuickFixCmdPost: QuickFixコマンドを実行した後
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
   pattern = { "*grep*" },
-  group = vim.api.nvim_create_augroup("qfcwindow", { clear = true }),
+  group = augroup("qf-cwindow"),
   command = "cwindow",
 })
 
 -- helpなどをqで閉じるようにする
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "checkhealth", "qf", "notify", "startuptime" },
-  group = vim.api.nvim_create_augroup("qclose", { clear = true }),
+  group = augroup("qclose"),
   callback = function(ev)
     -- help等の対象ファイルをバッファリストに入れない
     vim.bo[ev.buf].buflisted = false
@@ -44,7 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "cpp", "lua" },
-  group = vim.api.nvim_create_augroup("fold-markder", { clear = true }),
+  group = augroup("fold-markder"),
   callback = function()
     vim.opt_local.foldmethod = "marker"
   end,
