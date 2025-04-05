@@ -2,8 +2,8 @@
 
 set -eu
 
-UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zsh sqlite3 libsqlite3-dev zip wget pandoc poppler-utils ffmpeg libreadline-dev)
-ARCH_INSTALL_LIST=(git curl sqlite3 xsel zip unzip wget rustup)
+UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zip zsh wget pandoc poppler-utils ffmpeg libreadline-dev)
+ARCH_INSTALL_LIST=(git curl xsel zip unzip wget rustup)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -34,6 +34,22 @@ install_packages() {
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
       else
         echo "rust is already installed"
+      fi
+
+      # neovimのインストール
+      if ! (has "nvim"); then
+        echo "Install neovim"
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+        if [[ -d /opt/nvim ]]; then
+          sudo rm -rf /opt/nvim
+        elif [[ -d /opt/nvim-linux64 ]]; then
+          sudo rm -rf /opt/nvim-linux64
+        elif [[ -d /opt/nvim-linux-x86_64 ]]; then
+          sudo rm -rf /opt/nvim-linux-x86_64
+        fi
+        sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+      else
+        echo "neovim is already installed"
       fi
     fi
   elif [[ -e /etc/arch-release ]]; then

@@ -116,8 +116,8 @@ eval "$(zoxide init zsh)"
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # neovim
-if [ -d /opt/nvim-linux64 ]; then
-    export PATH="$PATH:/opt/nvim-linux64/bin"
+if [ -d /opt/nvim-linux-x86_64 ]; then
+    export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
     # fzfで検索した結果をneovimで編集
     if type -p "fzf" > /dev/null 2>&1; then
         alias nvf='nvim $(fzf)'
