@@ -6,8 +6,8 @@ return {
   keys = {
     -- stylua: ignore start
     { "m", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "r", mode = { "o" }, function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "x", "o" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    -- { "r", mode = { "o" }, function() require("flash").remote() end, desc = "Remote Flash" },
+    -- { "R", mode = { "x", "o" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     {
       "M", mode = { "n", "x", "o" },
       function() require("flash").jump({ jump = { pos = "end" } }) end,
