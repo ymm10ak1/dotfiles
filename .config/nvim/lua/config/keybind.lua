@@ -22,10 +22,10 @@ keymap("n", "[q", ":cprevious<CR>", opts)
 keymap("n", "]q", ":cnext<CR>", opts)
 keymap("n", "qw", ":cclose<CR>", opts)
 -- タブ作成、削除、 移動
-keymap("n", "tn", ":tabnew<CR>", opts)
-keymap("n", "tx", ":tabclose<CR>", opts)
-keymap("n", "tl", "gt", opts)
-keymap("n", "th", "gT", opts)
+keymap("n", "<leader>ta", ":tabnew<CR>", opts)
+keymap("n", "<leader>tx", ":tabclose<CR>", opts)
+keymap("n", "<leader>tl", "gt", opts)
+keymap("n", "<leader>th", "gT", opts)
 -- sを無効にする
 keymap("n", "s", "<NOP>")
 -- ウィンドウ移動
