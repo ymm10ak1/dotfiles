@@ -3,38 +3,57 @@ local vscode = require("utils").vscode_check
 return {
   "neovim/nvim-lspconfig",
   cond = vscode,
+  event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "saghen/blink.cmp",
+    "nvimtools/none-ls.nvim",
+    "nvim-lua/plenary.nvim",
+    "jay-babu/mason-null-ls.nvim",
+  },
   config = function()
-    vim.diagnostic.config({
-      virtual_text = {
-        format = function(diagnostic)
-          return string.format("%s (%s: %s) ", diagnostic.message, diagnostic.source, diagnostic.code)
-        end,
-      },
+    require("plugins.lsp.diagnostics")
+    require("plugins.lsp.attach")
+
+    local lspconfig = require("lspconfig")
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    require("mason").setup({})
+    require("mason-lspconfig").setup({
+      ensure_installed = { "lua_ls", "bashls", "clangd" },
     })
-    local keymap = vim.keymap.set
-    keymap("n", "<leader>go", vim.diagnostic.open_float)
-    keymap("n", "[d", vim.diagnostic.goto_prev)
-    keymap("n", "]d", vim.diagnostic.goto_next)
-    -- カレントバッファにLSPが接続した場合(LspAttachイベント)にキーマップを定義する
-    vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-      callback = function(ev)
-        local opts = { buffer = ev.buf }
-        keymap("n", "K", vim.lsp.buf.hover, opts)
-        keymap("n", "<leader>fo", function()
-          vim.lsp.buf.format({ async = true })
-        end, opts)
-        keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        -- inlayHintの有効化
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client.name == "clangd" then
-          return
-        end
-        if client ~= nil and client:supports_method("textDocument/inlayHint") then
-          vim.lsp.inlay_hint.enable()
-        end
+    require("mason-lspconfig").setup_handlers({
+      function(server_name) -- default handler
+        lspconfig[server_name].setup({ capabilities = capabilities })
+      end,
+      -- 特定のLSPの設定
+      ["lua_ls"] = function()
+        lspconfig.lua_ls.setup({
+          settings = {
+            Lua = {
+              diagnostics = { globals = { "vim", "Snacks" } },
+              -- styluaを適用するため無効
+              format = { enable = false },
+              hint = { enable = true },
+            },
+          },
+        })
       end,
     })
-    vim.opt.completeopt = "menu,menuone,noselect"
+
+    local null_ls = require("null-ls")
+    require("mason-null-ls").setup({
+      ensure_installed = { "stylua", "textlint", "markdownlint", "prettier" },
+      -- null_lsで選ばれたsourcesに基づいてmasons toolsを自動でインストールするか
+      automatic_installation = false,
+      handlers = {},
+    })
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.shfmt.with({
+          extra_args = { "-i", "2", "-ci", "-bn" },
+        }),
+      },
+    })
   end,
 }
