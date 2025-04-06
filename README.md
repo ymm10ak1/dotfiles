@@ -15,13 +15,15 @@ cd dotfiles/
 ./install.sh
 ```
 
-miseのツールのインストール
+### ツールのインストール
+
+- mise
 
 ```sh
 mise i
 ```
 
-aquaのツールのインストール
+- aqua
 
 ```sh
 aqua i -a -l
