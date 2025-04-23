@@ -36,21 +36,6 @@ install_packages() {
         echo "rust is already installed"
       fi
 
-      # neovimのインストール
-      if ! (has "nvim"); then
-        echo "Install neovim"
-        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-        if [[ -d /opt/nvim ]]; then
-          sudo rm -rf /opt/nvim
-        elif [[ -d /opt/nvim-linux64 ]]; then
-          sudo rm -rf /opt/nvim-linux64
-        elif [[ -d /opt/nvim-linux-x86_64 ]]; then
-          sudo rm -rf /opt/nvim-linux-x86_64
-        fi
-        sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-      else
-        echo "neovim is already installed"
-      fi
     fi
   elif [[ -e /etc/arch-release ]]; then
     # wsl-archの場合は--disable-sandboxオプションをつける
