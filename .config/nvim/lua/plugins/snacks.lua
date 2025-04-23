@@ -94,13 +94,12 @@ return {
     { "<leader>fi", function() Snacks.picker.explorer() end, desc = "File Explorer" },
     { "<leader>co", function() Snacks.bufdelete.other() end, desc = "Bufdelete Other" },
     { "<leader>zz", function() Snacks.zen() end, desc = "Zen Mode" },
-    -- { "<leader>to", function() Snacks.picker.todo_comments() end, desc = "Todo" },
     -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
     { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-    { "gi", function() Snacks.picker.lsp_implementations() end, nowait = true, desc = "Goto Implementation" },
-    { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+    { "gri", function() Snacks.picker.lsp_implementations() end, nowait = true, desc = "Goto Implementation" },
+    { "grr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
     -- stylua: ignore end
   },
 }

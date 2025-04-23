@@ -6,7 +6,7 @@ return {
   event = "LspAttach",
   keys = {
     {
-      "ga",
+      "gra",
       function()
         require("actions-preview").code_actions()
       end,
