@@ -2,8 +2,8 @@
 set number
 set relativenumber
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smartindent
 set autoindent
 set hlsearch " 検索後をハイライト表示
@@ -53,6 +53,6 @@ inoremap <silent> jj <ESC>
 
 " ========== color ========== 
 syntax enable
-colorscheme retrobox
+colorscheme habamax
 filetype indent on " ファイルタイプによるインデント
 filetype plugin on " ファイルタイプごとのプラグイン
