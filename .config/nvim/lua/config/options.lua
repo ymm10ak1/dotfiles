@@ -29,18 +29,18 @@ opt.termguicolors = true
 opt.laststatus = 3
 -- マウス有効化
 opt.mouse = "a"
--- テキストの折り返しを有効化
-opt.wrap = true
+-- テキストの折り返し
+opt.wrap = false
 -- 記号列(gitsignsの記号等を表示する列)を常に表示する
 opt.signcolumn = "yes"
 
 -- Tabキー押下時やインデントの際、半角スペースが挿入される
 opt.expandtab = true
 -- タブ文字をスペース何文字分で表示するか
-opt.tabstop = 4
+opt.tabstop = 2
 -- 自動インデントのときに何文字分のスペースでインデントを入れるか
 -- 0にするとtabstopの値を使用
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 -- 改行するとき前の行インデントから開始
 opt.autoindent = true
 -- 改行時に入力された行の末尾に合わせて次の行のインデントを増減する

@@ -3,15 +3,15 @@ local function augroup(name)
 end
 
 -- 特定のファイルのインデントを2にする
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "html", "css", "js", "javascript", "ts", "typescript", "json", "markdown", "sh", "lua", "zsh" },
-  group = augroup("indent2file"),
-  callback = function()
-    vim.opt_local.expandtab = true
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.tabstop = 2
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "html", "css", "js", "javascript", "ts", "typescript", "json", "markdown", "sh", "lua", "zsh" },
+--   group = augroup("indent2file"),
+--   callback = function()
+--     vim.opt_local.expandtab = true
+--     vim.opt_local.shiftwidth = 2
+--     vim.opt_local.tabstop = 2
+--   end,
+-- })
 
 -- ターミナルを開いたらインサートモード
 vim.api.nvim_create_autocmd("TermOpen", {
