@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "saghen/blink.cmp",
-  cond = vscode,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = { "rafamadriz/friendly-snippets" },
   version = "*",

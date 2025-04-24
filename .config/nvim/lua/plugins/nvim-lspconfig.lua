@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "neovim/nvim-lspconfig",
-  cond = vscode,
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "williamboman/mason.nvim",
@@ -43,7 +40,7 @@ return {
 
     local null_ls = require("null-ls")
     require("mason-null-ls").setup({
-      ensure_installed = { "stylua", "textlint", "markdownlint", "prettier" },
+      ensure_installed = { "stylua", "textlint", "markdownlint", "prettierd" },
       -- null_lsで選ばれたsourcesに基づいてmasons toolsを自動でインストールするか
       automatic_installation = false,
       handlers = {},

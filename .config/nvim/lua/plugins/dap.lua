@@ -1,9 +1,6 @@
-local vscode = require("utils").vscode_check
-
 return {
   {
     "mfussenegger/nvim-dap",
-    cond = vscode,
     keys = {
       {
         "<F5>",
@@ -82,7 +79,6 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    cond = vscode,
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",

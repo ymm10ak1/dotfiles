@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "nvim-treesitter/nvim-treesitter",
-  cond = vscode,
   build = ":TSUpdate",
   event = { "BufNewFile", "BufRead" },
   config = function()

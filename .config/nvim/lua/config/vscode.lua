@@ -1,7 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
--- ==================== options ====================
+-- {{{ ==================== options ====================
 opt.tabstop = 4
 opt.expandtab = true
 opt.swapfile = false
@@ -32,8 +32,9 @@ if vim.fn.has("wsl") == 1 then
     cache_enable = 1,
   }
 end
+-- }}}
 
--- ==================== keymaps ====================
+-- {{{ ==================== keymaps ====================
 g.mapleader = " "
 local keymap = vim.keymap.set
 local opts = { noremap = true }
@@ -60,3 +61,4 @@ keymap("n", "<leader>rr", "<Cmd>lua require('vscode').action('workbench.action.r
 keymap("n", "<leader>sn", "<Cmd>lua require('vscode').action('workbench.action.openSnippets')<CR>")
 keymap("n", "<leader>tq", "<Cmd>lua require('vscode').action('workbench.action.closeActiveEditor')<CR>")
 -- keymap("n", "<leader>fl", "<Cmd>lua require('vscode').action('workbench.view.extensions')<CR>")
+-- }}}

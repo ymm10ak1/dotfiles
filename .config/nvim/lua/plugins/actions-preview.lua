@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "aznhe21/actions-preview.nvim",
-  cond = vscode,
   event = "LspAttach",
   keys = {
     {

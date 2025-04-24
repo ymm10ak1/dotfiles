@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "f-person/git-blame.nvim",
-  cond = vscode,
   event = "BufRead",
   opts = {
     enabled = true,

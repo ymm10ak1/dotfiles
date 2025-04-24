@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "folke/todo-comments.nvim",
-  cond = vscode,
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {},
   keys = {

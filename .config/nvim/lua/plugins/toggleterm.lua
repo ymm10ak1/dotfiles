@@ -1,7 +1,5 @@
-local vscode = require("utils").vscode_check
 return {
   "akinsho/toggleterm.nvim",
-  cond = vscode,
   version = "*",
   opts = {
     open_mapping = [[<C-\>]],

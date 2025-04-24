@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "folke/snacks.nvim",
-  cond = vscode,
   priority = 1000,
   lazy = false,
   -- dependencies = { "echasnovski/mini.icons" },

@@ -17,4 +17,21 @@ local opts = {
   },
 }
 
-require("lazy").setup("plugins", opts)
+local not_vscode = require("utils").vscode_check
+
+if not_vscode then
+  require("lazy").setup("plugins", opts)
+else
+  require("lazy").setup({
+    spec = {
+      { import = "plugins.mini" },
+      { import = "plugins.hop" },
+      { import = "plugins.nvim-hlslens" },
+      { import = "plugins.comment" },
+      { import = "plugins.dial" },
+      { import = "plugins.flash" },
+      { import = "plugins.camelcasemotion" },
+    }
+  })
+end
+

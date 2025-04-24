@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "williamboman/mason.nvim",
-  cond = vscode,
   cmd = "Mason",
   opts = {
     ui = {

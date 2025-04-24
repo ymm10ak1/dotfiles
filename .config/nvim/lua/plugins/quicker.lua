@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "stevearc/quicker.nvim",
-  cond = vscode,
   event = "FileType qf",
   ---@module "quicker"
   ---@type quicker.SetupOptions

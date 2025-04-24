@@ -1,6 +1,6 @@
 local keymap = vim.keymap.set
 
-local inlayhint_ignore_lsp = { "clangd" }
+local inlayhint_lsp = { "lua_ls" }
 
 -- カレントバッファにLSPが接続した場合(LspAttachイベント)にキーマップを定義する
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -14,16 +14,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>fo", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
-    keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    for _, server_name in pairs(inlayhint_ignore_lsp) do
-      if server_name == client.name then
-        return
-      end
-    end
+    keymap("n", "grn", vim.lsp.buf.rename, opts)
+
     -- inlayHintの有効化
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if client ~= nil and client:supports_method("textDocument/inlayHint") then
-      vim.lsp.inlay_hint.enable()
+      for _, server_name in pairs(inlayhint_lsp) do
+        if client.name == server_name then
+          vim.lsp.inlay_hint.enable()
+        end
+      end
     end
   end,
 })

@@ -1,9 +1,6 @@
-local vscode = require("utils").vscode_check
-
 return {
   "nvimdev/lspsaga.nvim",
   enabled = false,
-  cond = vscode,
   event = "LspAttach",
   depedencies = {
     "nvim-treesitter/nvim-treesitter",

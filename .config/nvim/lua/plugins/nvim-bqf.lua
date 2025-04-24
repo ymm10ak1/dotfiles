@@ -1,8 +1,5 @@
-local vscode = require("utils").vscode_check
-
 return {
   "kevinhwang91/nvim-bqf",
-  cond = vscode,
   ft = "qf",
   config = function()
     require("bqf").setup({
