@@ -3,7 +3,7 @@
 ## 環境
 
 - Windows11 + WSL2(Ubuntu24.04 LTS)
-- Neovim v0.10.1
+- Neovim v0.11.0
   - lazy.nvim
 - Wezterm
 
