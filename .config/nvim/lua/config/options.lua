@@ -34,14 +34,14 @@ opt.wrap = false
 -- 記号列(gitsignsの記号等を表示する列)を常に表示する
 opt.signcolumn = "yes"
 
--- Tabキー押下時やインデントの際、半角スペースが挿入される
+-- Tabキー押下時やインデントの際、半角スペースにするか
 opt.expandtab = true
--- タブ文字をスペース何文字分で表示するか
+-- タブの表示幅
 opt.tabstop = 2
--- 自動インデントのときに何文字分のスペースでインデントを入れるか
+-- 自動インデントのときに何文字分のインデントを入れるか
 -- 0にするとtabstopの値を使用
 opt.shiftwidth = 2
--- 改行するとき前の行インデントから開始
+-- 改行するとき前の行のインデントから開始
 opt.autoindent = true
 -- 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 opt.smartindent = true
@@ -116,3 +116,6 @@ g.loaded_tar = 1
 g.loaded_tarPlugin = 1
 g.loaded_loaded_2html_plugin = 1
 -- g.loaded_tutor_mode_plugin = 1
+
+-- ft-markdown-plugin
+g.markdown_recommended_style = 0
