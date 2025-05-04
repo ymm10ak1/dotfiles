@@ -3,7 +3,7 @@
 set -eu
 
 UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zip zsh wget pandoc poppler-utils ffmpeg libreadline-dev)
-ARCH_INSTALL_LIST=(git curl xsel zip unzip wget rustup)
+ARCH_INSTALL_LIST=(git curl xsel zip unzip wget rustup gcc mise zsh)
 
 has() {
   type -p "$1" >/dev/null 2>&1
@@ -36,14 +36,25 @@ install_packages() {
         echo "rust is already installed"
       fi
 
+      # miseのインストール
+      if ! (has "mise"); then
+        echo "Install mise"
+        curl https://mise.run | sh
+        "$HOME/.local/bin/mise" --version
+      else
+        echo "mise is already installed"
+      fi
     fi
   elif [[ -e /etc/arch-release ]]; then
     # wsl-archの場合は--disable-sandboxオプションをつける
-    if [[ "$(uname -r)" == *microsoft* ]]; then
-      sudo pacman -Syyu --disable-sandbox
-    else
-      sudo pacman -Syyu
-    fi
+    # if [[ "$(uname -r)" == *microsoft* ]]; then
+    #   sudo pacman -Syyu --disable-sandbox
+    # else
+    #   sudo pacman -Syyu
+    # fi
+
+    sudo pacaman -Syyu
+
     for pkg in "${ARCH_INSTALL_LIST[@]}"; do
       sudo pacman -S --noconfirm --needed "$pkg"
     done
@@ -58,15 +69,6 @@ install_packages() {
     ./aqua-installer
   else
     echo "aqua is already installed"
-  fi
-
-  # miseのインストール
-  if ! (has "mise"); then
-    echo "Install mise"
-    curl https://mise.run | sh
-    "$HOME/.local/bin/mise" --version
-  else
-    echo "mise is already installed"
   fi
 
   # シェルをbashからzshに変更
