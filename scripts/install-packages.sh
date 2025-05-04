@@ -3,7 +3,7 @@
 set -eu
 
 UBUNTU_INSTALL_LIST=(git curl build-essential xsel unzip zip zsh wget pandoc poppler-utils ffmpeg libreadline-dev)
-ARCH_INSTALL_LIST=(git curl xsel zip unzip wget rustup gcc mise zsh)
+ARCH_INSTALL_LIST=(git curl xsel zip unzip wget rustup gcc mise zsh less which make)
 
 has() {
   type -p "$1" >/dev/null 2>&1
