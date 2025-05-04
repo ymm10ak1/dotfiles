@@ -2,7 +2,11 @@
 export GPG_TTY=$(tty)
 
 # mise
-eval "$($HOME/.local/bin/mise activate zsh)"
+if [[ -e /etc/debian_version ]]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
+elif [[ -e /etc/arch-release ]]; then
+  eval "$(mise activate zsh)"
+fi
 
 # aqua
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
