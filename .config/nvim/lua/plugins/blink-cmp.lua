@@ -39,11 +39,11 @@ return {
     cmdline = {
       completion = {
         ghost_text = { enabled = false },
-        -- menu = {
-        --   auto_show = function(ctx)
-        --     return vim.fn.getcmdtype() == ":"
-        --   end,
-        -- },
+        menu = {
+          auto_show = function(ctx)
+            return vim.fn.getcmdtype() == ":"
+          end,
+        },
       },
       keymap = {
         preset = "cmdline",
@@ -53,5 +53,6 @@ return {
         ["<C-k>"] = { "select_prev", "fallback" },
       },
     },
+    completion = { documentation = { auto_show = true } },
   },
 }
