@@ -53,7 +53,7 @@ install_packages() {
     #   sudo pacman -Syyu
     # fi
 
-    sudo pacaman -Syyu
+    sudo pacman -Syyu
 
     for pkg in "${ARCH_INSTALL_LIST[@]}"; do
       sudo pacman -S --noconfirm --needed "$pkg"
