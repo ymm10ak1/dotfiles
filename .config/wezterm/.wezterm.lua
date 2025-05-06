@@ -4,11 +4,18 @@ local mux = wezterm.mux
 local launch_menu = {}
 local config = wezterm.config_builder()
 
+local function wsl_check(name)
+  -- WSLのディストリビューションの起動時のディレクトリを$HOMEに設定する
+  local matched = string.find(name, "^WSL:[%w%.%-]")
+  if matched ~= nil then
+    return true
+  end
+  return false
+end
+
 local wsl_domains = wezterm.default_wsl_domains()
 for _, dom in ipairs(wsl_domains) do
-  -- WSLのディストリビューションの起動時のディレクトリを$HOMEに設定する
-  local matched = string.find(dom.name, "^WSL:[%w%.]")
-  if matched ~= nil then
+  if wsl_check(dom.name) then
     dom.default_cwd = "~"
   end
 end
@@ -25,17 +32,27 @@ end
 --     return false
 -- end)
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local title = tab.active_pane.title
+wezterm.on("format-tab-title", function(tab, _, _, _, _, _) -- function(tab, tabs, panes, config, hover, max_width)
+  local tab_index = tab.tab_index + 1
+  local tab_title = tab.active_pane.title
+
+  local dom_name = tab.active_pane.domain_name
+  if wsl_check(dom_name) then
+    tab_title = string.gsub(dom_name, "WSL:", "")
+  end
+
+  local title = " " .. string.format("%d: %s", tab_index, tab_title) .. " "
   local background = "#5c6d74"
   local foreground = "#FFFFFF"
+
   if tab.is_active then
     background = "#ae8b2d"
   end
+
   return {
     { Background = { Color = background } },
     { Foreground = { Color = foreground } },
-    { Text = " " .. title .. " " },
+    { Text = title },
   }
 end)
 
@@ -128,10 +145,10 @@ local keys = {
 
 config.wsl_domains = wsl_domains
 config.font = wezterm.font_with_fallback({
-    { family = "HackGen Console NF" },
-    { family = "HackGen Console NF", assume_emoji_presentation = true },
-    { family = "SauceCodePro Nerd Font Mono" },
-    { family = "JetBrains Mono Nerd Font" },
+  { family = "HackGen Console NF" },
+  { family = "HackGen Console NF", assume_emoji_presentation = true },
+  { family = "SauceCodePro Nerd Font Mono" },
+  { family = "JetBrains Mono Nerd Font" },
 })
 config.font_size = 14.0
 config.adjust_window_size_when_changing_font_size = false
