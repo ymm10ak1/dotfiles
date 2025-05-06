@@ -2,7 +2,11 @@
 export GPG_TTY=$(tty)
 
 # mise
-eval "$($HOME/.local/bin/mise activate zsh)"
+if [[ -e /etc/debian_version ]]; then
+  eval "$($HOME/.local/bin/mise activate zsh)"
+elif [[ -e /etc/arch-release ]]; then
+  eval "$(mise activate zsh)"
+fi
 
 # aqua
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
@@ -37,12 +41,14 @@ setopt extended_history
 
 # alias
 if type -p "eza" > /dev/null 2>&1; then
-    alias ll='eza -aal -F=always --icons=always --group-directories-first'
+  alias ll='eza -aal -F=always --icons=always --group-directories-first'
 else
-    alias ll='ls -alF'
+  alias ll='ls -alF'
 fi
-alias uag='sudo apt update && sudo apt upgrade -y'
-alias auc='sudo apt autoremove && sudo apt clean -y'
+if [[ -e /etc/debian_version ]]; then
+  alias uag='sudo apt update && sudo apt upgrade -y'
+  alias auc='sudo apt autoremove && sudo apt clean -y'
+fi
 alias nv='nvim'
 alias nz='nvim ~/.zshrc'
 alias nzl='nvim ~/.zshrc.local'
