@@ -13,10 +13,12 @@ set incsearch " 検索文字列入力時に順次対象文字列にヒットさ�
 set wrapscan " 検索時に最後まで行ったら最初に戻る
 set hidden " バッファが編集中でもその他のファイルを開けるように
 set noswapfile
-set clipboard=unnamed,unnamedplus
+set clipboard=unnamedplus,unnamed
 set laststatus=2
 set background=dark
 set showmode
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " ========== keymap ========== 
 let g:mapleader = "\<Space>"
@@ -39,14 +41,16 @@ nnoremap <silent> sh <C-w>h
 nnoremap <silent> sj <C-w>j
 nnoremap <silent> sk <C-w>k
 nnoremap <silent> sl <C-w>l
-" 行の先頭/行末
-nnoremap <silent> H ^ 
+" 行頭/行末
+nnoremap <silent> H ^
 nnoremap <silent> L $
-vnoremap <silent> H ^ 
+vnoremap <silent> H ^
 vnoremap <silent> L g_
 " 消去専用レジスタを使う
 nnoremap <silent> x "_x
 xnoremap <silent> x "_x
+" リドゥ
+nnoremap U <C-r>
 
 " インサートモードのとき"jj"でノーマルモードへ
 inoremap <silent> jj <ESC>
@@ -56,3 +60,5 @@ syntax enable
 colorscheme habamax
 filetype indent on " ファイルタイプによるインデント
 filetype plugin on " ファイルタイプごとのプラグイン
+
+autocmd FileType * setlocal formatoptions-=cro
