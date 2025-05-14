@@ -51,6 +51,9 @@ nnoremap <silent> x "_x
 xnoremap <silent> x "_x
 " リドゥ
 nnoremap U <C-r>
+" jとkを表示行で移動
+nnoremap <expr> j v:count==0?'gj':'j'
+nnoremap <expr> k v:count==0?'gk':'k'
 
 " インサートモードのとき"jj"でノーマルモードへ
 inoremap <silent> jj <ESC>
@@ -61,4 +64,4 @@ colorscheme habamax
 filetype indent on " ファイルタイプによるインデント
 filetype plugin on " ファイルタイプごとのプラグイン
 
-autocmd FileType * setlocal formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

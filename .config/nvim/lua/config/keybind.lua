@@ -34,8 +34,8 @@ keymap("n", "sj", "<C-w>j", opts)
 keymap("n", "sk", "<C-w>k", opts)
 keymap("n", "sl", "<C-w>l", opts)
 -- 画面分割 <C-u>はコマンドラインに記述されている文字をすべて削除する
-keymap("n", "ss", ":<C-u>split<CR><C-w>j", opts)
-keymap("n", "sv", ":<C-u>vsplit<CR><C-w>l", opts)
+keymap("n", "<leader>ss", ":<C-u>split<CR><C-w>j", opts)
+keymap("n", "<leader>sv", ":<C-u>vsplit<CR><C-w>l", opts)
 -- ZZ, ZQを無効化する
 keymap("n", "ZZ", "<NOP>")
 keymap("n", "ZQ", "<NOP>")
@@ -52,5 +52,21 @@ keymap(
   [["_x]],
   { noremap = true, silent = true, desc = "レジスタに残さないように消去専用レジスタを使う" }
 )
--- insertモード中、jjでnormalモードに変更
+-- 表示行単位か普通の行単位にするかをv:countの値で決める
+-- v:count: 最後に実行されたノーマルモードに渡されたカウント数
+keymap({ "n", "x" }, "j", function()
+  if vim.v.count == 0 then
+    return "gj"
+  else
+    return "j"
+  end
+end, { noremap = true, expr = true, silent = true })
+keymap({ "n", "x" }, "k", function()
+  if vim.v.count == 0 then
+    return "gk"
+  else
+    return "k"
+  end
+end, { noremap = true, expr = true, silent = true })
+-- jjでインサートモードからノーマルモードに変更
 keymap("i", "jj", "<Esc>", opts)

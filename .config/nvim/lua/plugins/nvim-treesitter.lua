@@ -25,6 +25,7 @@ return {
         "toml",
         "yaml",
         "diff",
+        "latex",
       },
       sync_install = false,
       highlight = { enable = true },

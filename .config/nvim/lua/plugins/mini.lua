@@ -19,11 +19,14 @@ return {
       },
       custom_surroundings = {
         ["("] = { output = { left = "(", right = ")" } },
+        ["9"] = { output = { left = "(", right = ")" } },
         ["{"] = { output = { left = "{", right = "}" } },
         ["["] = { output = { left = "[", right = "]" } },
+        ["<"] = { output = { left = "<", right = ">" } },
         [")"] = { output = { left = "( ", right = " )" } },
         ["}"] = { output = { left = "{ ", right = " }" } },
         ["]"] = { output = { left = "[ ", right = " ]" } },
+        [">"] = { output = { left = "< ", right = " >" } },
       },
     })
     -- nvim-surroundと同じようにVisual Modeのときは"S"で囲むようにする
