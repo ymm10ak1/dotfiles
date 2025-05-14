@@ -46,13 +46,6 @@ install_packages() {
       fi
     fi
   elif [[ -e /etc/arch-release ]]; then
-    # wsl-archの場合は--disable-sandboxオプションをつける
-    # if [[ "$(uname -r)" == *microsoft* ]]; then
-    #   sudo pacman -Syyu --disable-sandbox
-    # else
-    #   sudo pacman -Syyu
-    # fi
-
     sudo pacman -Syyu
 
     for pkg in "${ARCH_INSTALL_LIST[@]}"; do
