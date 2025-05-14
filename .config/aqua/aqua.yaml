@@ -27,3 +27,4 @@ packages:
 - name: fastfetch-cli/fastfetch@2.42.0
 - name: suzuki-shunsuke/pinact@v3.1.0
 - name: neovim/neovim@v0.11.1
+- name: dandavison/delta@0.18.2
