@@ -12,7 +12,7 @@ opt.fileencodings = { "utf-8", "euc-jp", "cp932", "sjis" }
 opt.hidden = true
 -- スワップファイルを作成しない
 opt.swapfile = false
--- バックアップファイルを作成しない
+-- バックアップファイルの作成しない
 opt.backup = false
 
 -- ｢※｣などの記号を表示するためには"double"を設定
@@ -30,16 +30,17 @@ opt.laststatus = 3
 -- マウス有効化
 opt.mouse = "a"
 -- テキストの折り返し
-opt.wrap = false
+opt.wrap = true
 -- 記号列(gitsignsの記号等を表示する列)を常に表示する
 opt.signcolumn = "yes"
+-- コマンドラインが使用されてない限り表示されない
+opt.cmdheight = 0
 
 -- Tabキー押下時やインデントの際、半角スペースにするか
 opt.expandtab = true
 -- タブの表示幅
 opt.tabstop = 2
--- 自動インデントのときに何文字分のインデントを入れるか
--- 0にするとtabstopの値を使用
+-- 自動インデントのときに何文字分のインデントを入れるか(0にするとtabstopの値を使用)
 opt.shiftwidth = 2
 -- 改行するとき前の行のインデントから開始
 opt.autoindent = true
@@ -90,7 +91,6 @@ end
 -- 外部grepをripgrepに変える
 if vim.fn.executable("rg") == 1 then
   opt.grepprg = "rg --vimgrep --hidden --no-heading"
-  -- opt.grepformat = "%f:%l:c:%m"
 end
 
 -- Providerを無効
@@ -117,5 +117,5 @@ g.loaded_tarPlugin = 1
 g.loaded_loaded_2html_plugin = 1
 -- g.loaded_tutor_mode_plugin = 1
 
--- ft-markdown-plugin
+-- ft-markdown-plugin, markdownで推奨するインデントやタブの設定を無効
 g.markdown_recommended_style = 0
