@@ -40,3 +40,6 @@ apply = ["defer"]
 
 [plugins.compinit]
 inline = "autoload -Uz compinit && zsh-defer compinit"
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
