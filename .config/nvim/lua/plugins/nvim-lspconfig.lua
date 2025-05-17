@@ -25,6 +25,12 @@ return {
       filetypes = { "c", "cpp" },
     })
 
+    vim.lsp.config("pyright", {
+      -- ruffを使うのでpyrightのimport文の自動ソートとanalysisを無効
+      settings = { pyright = { disableOrganizeImports = true } },
+      python = { analysis = { igenore = { "*" } } },
+    })
+
     require("mason").setup({
       ui = {
         icons = {
@@ -35,7 +41,7 @@ return {
       },
     })
     require("mason-lspconfig").setup({
-      ensure_installed = { "lua_ls", "bashls", "clangd" },
+      ensure_installed = { "lua_ls", "bashls", "clangd", "pyright", "ruff" },
     })
 
     -- {{{ Mason v2でmason-lspconfigのsetup_handler()が削除されたのでコメントアウト
