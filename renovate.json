@@ -16,7 +16,8 @@
       "matchPackageNames": ["*", "!/^lua/", "!/^python/"],
       "matchFileNames": [
         ".config/aqua/aqua.yaml",
-        ".github/workflows/install-actions.yml"
+        ".github/workflows/install-actions.yml",
+        "renovate.json"
       ],
       "automerge": false,
       "automergeSchedule": ["* * * * 0,6"],
