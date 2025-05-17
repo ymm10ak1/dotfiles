@@ -19,8 +19,13 @@ eval "$(sheldon source)"
 # 言語を英語にする
 export LANG=en_US.UTF-8
 
-# エディタをvimにする
-export EDITOR=vim
+# エディタをnvimにする(nvimがなければvimにする)
+if type -p "nvim" > /dev/null 2>&1; then
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+export VISUAL=vim
 
 # 履歴
 export HISTFILE="$HOME/.zsh_history"
@@ -90,7 +95,8 @@ abbr -S gg='g++ -g -std=c++23 -O2 -Wall -Wextra' >>/dev/null
 # git
 abbr -S ga='git add' >>/dev/null
 abbr -S gb='git branch' >>/dev/null
-abbr -S gc='git commit' >>/dev/null
+abbr -S gc='git checkout' >>/dev/null
+abbr -S gi='git commit' >>/dev/null
 abbr -S gm='git commit -m' >>/dev/null
 abbr -S gp='git push' >>/dev/null
 abbr -S gss='git status -s' >>/dev/null
@@ -111,21 +117,21 @@ zle -N ghq-fzf
 bindkey '^g' ghq-fzf
 
 if type -p "ghq" > /dev/null 2>&1; then
-    ATCODER_CPP="$HOME/ghq/github.com/ymm10ak1/atcoder-cpp"
-    if [ -d "$ATCODER_CPP" ]; then
-        function adcp(){
-            source "$ATCODER_CPP/adcp.sh"
-        }
-        function mkcp(){
-            source "$ATCODER_CPP/mkcp.sh"
-        }
-        function ancp(){
-            source "$ATCODER_CPP/ancp.sh"
-        }
-        function ojcp(){
-            source "$ATCODER_CPP/ojcp.sh"
-        }
-    fi
+  ATCODER_CPP="$HOME/ghq/github.com/ymm10ak1/atcoder-cpp"
+  if [ -d "$ATCODER_CPP" ]; then
+    function adcp(){
+      "$ATCODER_CPP/adcp.sh"
+    }
+    function mkcp(){
+      "$ATCODER_CPP/mkcp.sh"
+    }
+    function ancp(){
+      "$ATCODER_CPP/ancp.sh"
+    }
+    function ojcp(){
+      "$ATCODER_CPP/ojcp.sh"
+    }
+  fi
 fi
 
 # online-judge-tools path
@@ -144,7 +150,7 @@ export BAT_PAGER="less -RF"
 if type -p "starship" > /dev/null 2>&1; then
     eval "$(starship init zsh)"
 else
-    PROMPT="%~ $ "
+    PROMPT="%n@%~ > "
 fi
 
 # zoxide
