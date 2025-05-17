@@ -1,4 +1,7 @@
 " ========== settings ========== 
+set encoding=utf-8
+set fileencoding=utf-8 " ファイル書き込み時の文字コード
+set fileencodings=utf-8,sjis,iso-2022-jp,euc-jp " 文字コードの自動判別(左側が優先される)
 set number
 set relativenumber
 set expandtab
