@@ -54,16 +54,9 @@ create_symlink_config() {
   fi
 }
 
-run_script() {
-  if [[ -f "$1" ]]; then
-    source "$1"
-  else
-    echo "$1 is not exist"
-  fi
-}
-
 command echo -e "\033[1;36mInstalling packages...\033[0m"
-run_script "$SCRIPT_DIR/scripts/install-packages.sh"
+chmod 755 "$SCRIPT_DIR/scripts/install-packages.sh"
+"$SCRIPT_DIR/scripts/install-packages.sh"
 command echo -e "\033[1;36mCreating symbolic link...\033[0m"
 create_symlink_dotfiles
 create_symlink_config
