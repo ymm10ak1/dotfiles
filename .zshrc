@@ -123,13 +123,16 @@ if type -p "ghq" > /dev/null 2>&1; then
       "$ATCODER_CPP/adcp.sh"
     }
     function mkcp(){
-      "$ATCODER_CPP/mkcp.sh"
+      "$ATCODER_CPP/mkcp.sh" $1
     }
     function ancp(){
-      "$ATCODER_CPP/ancp.sh"
+      "$ATCODER_CPP/ancp.sh" $1
     }
     function ojcp(){
       "$ATCODER_CPP/ojcp.sh"
+    }
+    function recp(){
+      "$ATCODER_CPP/recp.sh"
     }
   fi
 fi
