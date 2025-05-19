@@ -31,6 +31,15 @@ return {
       python = { analysis = { igenore = { "*" } } },
     })
 
+    vim.lsp.config("bashls", {
+      -- settings = {
+      --   bashIde = {
+      --     globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command|.zsh)",
+      --   },
+      -- },
+      filetypes = { "bash", "sh", "zsh" },
+    })
+
     require("mason").setup({
       ui = {
         icons = {
