@@ -3,8 +3,11 @@ return {
   version = false,
   event = "VeryLazy",
   config = function()
+    -- ############################## mini.icons ##############################
     require("mini.icons").setup({})
     MiniIcons.mock_nvim_web_devicons()
+
+    -- ############################## mini.surround ##############################
     require("mini.surround").setup({
       mappings = {
         add = "sa", -- Normal ModeとVisual Modeのとき文字列を括弧やクォーテーションで囲む
@@ -32,6 +35,8 @@ return {
     -- nvim-surroundと同じようにVisual Modeのときは"S"で囲むようにする
     vim.keymap.del("x", "sa")
     vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
+
+    -- ############################## mini.pairs ##############################
     require("mini.pairs").setup({
       mode = { insert = true, command = false, terminal = false },
       mappings = {
