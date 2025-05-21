@@ -1,9 +1,12 @@
 # gpg
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)のように1行で書いてしまうと$(tty)の戻り値が無視されてexportは常にtrueを返す
+# そうなると条件文やset -eなどが正しく動作しない可能性がある
+GPG_TTY=$(tty)
+export GPG_TTY
 
 # mise
 if [[ -e /etc/debian_version ]]; then
-  eval "$($HOME/.local/bin/mise activate zsh)"
+  eval "$("$HOME"/.local/bin/mise activate zsh)"
 elif [[ -e /etc/arch-release ]]; then
   eval "$(mise activate zsh)"
 fi
@@ -20,7 +23,7 @@ eval "$(sheldon source)"
 export LANG=en_US.UTF-8
 
 # エディタをnvimにする(nvimがなければvimにする)
-if type -p "nvim" > /dev/null 2>&1; then
+if type -p "nvim" >/dev/null 2>&1; then
   export EDITOR=nvim
 else
   export EDITOR=vim
@@ -65,7 +68,7 @@ setopt extended_history
 # alias clip='xsel -bi'
 
 # abbr
-if type -p "eza" > /dev/null 2>&1; then
+if type -p "eza" >/dev/null 2>&1; then
   abbr -S ll='eza -aal -F=always --icons=always --group-directories-first' >>/dev/null
 else
   alias ll='ls -alF'
@@ -75,63 +78,67 @@ if [[ -e /etc/debian_version ]]; then
   alias auc='sudo apt autoremove && sudo apt clean -y'
 fi
 # >>/dev/nullで標準出力(abbrの起動時メッセージ)を捨てる
-abbr -S nv='nvim' >>/dev/null
-abbr -S nz='nvim ~/.zshrc' >>/dev/null
-abbr -S nzl='nvim ~/.zshrc.local' >>/dev/null
-abbr -S sz='source ~/.zshrc' >>/dev/null
-abbr -S nt='nvim ~/.tmux.conf' >>/dev/null
-abbr -S st='tmux source ~/.tmux.conf' >>/dev/null
-abbr -S clip='xsel -bi' >>/dev/null
-abbr -S start='explorer.exe' >>/dev/null
-# oj
-abbr -S ojgo='oj t -c "go run main.go" -d ./test/' >>/dev/null
-abbr -S ojpy='oj t -c "python3 main.py" -d ./test/' >>/dev/null
-abbr -S asp1='acc s main.py -- -l 5063' >>/dev/null
-# cpp
-abbr -S a='./a.out' >>/dev/null
-abbr -S ain='./a.out < input.txt >| output.txt' >>/dev/null
-abbr -S g='g++ -std=c++23 -O2 -Wall -Wextra' >>/dev/null
-abbr -S gg='g++ -g -std=c++23 -O2 -Wall -Wextra' >>/dev/null
-# git
-abbr -S ga='git add' >>/dev/null
-abbr -S gb='git branch' >>/dev/null
-abbr -S gc='git checkout' >>/dev/null
-abbr -S gi='git commit' >>/dev/null
-abbr -S gm='git commit -m' >>/dev/null
-abbr -S gp='git push' >>/dev/null
-abbr -S gss='git status -s' >>/dev/null
-abbr -S gsa='git stash -u' >>/dev/null
-abbr -S gsl='git stash list' >>/dev/null
-abbr -S gsp='git stash pop' >>/dev/null
+{
+  abbr -S nv='nvim'
+  abbr -S nz='nvim ~/.zshrc'
+  abbr -S nzl='nvim ~/.zshrc.local'
+  abbr -S sz='source ~/.zshrc'
+  abbr -S nt='nvim ~/.tmux.conf'
+  abbr -S st='tmux source ~/.tmux.conf'
+  abbr -S clip='xsel -bi'
+  abbr -S start='explorer.exe'
+  # oj
+  abbr -S ojgo='oj t -c "go run main.go" -d ./test/'
+  abbr -S ojpy='oj t -c "python3 main.py" -d ./test/'
+  abbr -S asp1='acc s main.py -- -l 5063'
+  # cpp
+  abbr -S a='./a.out'
+  abbr -S ain='./a.out < input.txt >| output.txt'
+  abbr -S g='g++ -std=c++23 -O2 -Wall -Wextra'
+  abbr -S gg='g++ -g -std=c++23 -O2 -Wall -Wextra'
+  # git
+  abbr -S ga='git add'
+  abbr -S gb='git branch'
+  abbr -S gc='git checkout'
+  abbr -S gi='git commit'
+  abbr -S gm='git commit -m'
+  abbr -S gp='git push'
+  abbr -S gss='git status -s'
+  abbr -S gsa='git stash -u'
+  abbr -S gsl='git stash list'
+  abbr -S gsp='git stash pop'
+  abbr -S gpu='git pull'
+} >>/dev/null
 
 # functions
-function ghq-fzf(){
-    local src=$(ghq list | fzf --preview "ls -alF $(ghq root)/{} | awk '{print \$6\"/\"\$7 \" \" \$9\" \"\$10\" \"\$11}'")
-    if [ -n "$src" ]; then
-        BUFFER="cd $(ghq root)/$src"
-        zle accept-line
-    fi
-    zle -R -c
+function ghq-fzf() {
+  local src
+  src=$(ghq list | fzf --preview "ls -alF $(ghq root)/{} | awk '{print \$6\"/\"\$7 \" \" \$9\" \"\$10\" \"\$11}'")
+  if [ -n "$src" ]; then
+    BUFFER="cd $(ghq root)/$src"
+    zle accept-line
+  fi
+  zle -R -c
 }
 zle -N ghq-fzf
 bindkey '^g' ghq-fzf
 
-if type -p "ghq" > /dev/null 2>&1; then
+if type -p "ghq" >/dev/null 2>&1; then
   ATCODER_CPP="$HOME/ghq/github.com/ymm10ak1/atcoder-cpp"
   if [ -d "$ATCODER_CPP" ]; then
-    function adcp(){
+    function adcp() {
       "$ATCODER_CPP/adcp.sh"
     }
-    function mkcp(){
-      "$ATCODER_CPP/mkcp.sh" $1
+    function mkcp() {
+      "$ATCODER_CPP/mkcp.sh" "$1"
     }
-    function ancp(){
-      "$ATCODER_CPP/ancp.sh" $1
+    function ancp() {
+      "$ATCODER_CPP/ancp.sh" "$1"
     }
-    function ojcp(){
+    function ojcp() {
       "$ATCODER_CPP/ojcp.sh"
     }
-    function recp(){
+    function recp() {
       "$ATCODER_CPP/recp.sh"
     }
   fi
@@ -142,7 +149,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # rust
 if [ -e /etc/debian_version ] && [ -e /etc/lsb-release ]; then
- . "$HOME/.cargo/env"
+  . "$HOME/.cargo/env"
 fi
 
 # bat
@@ -150,10 +157,10 @@ export BAT_THEME="OneHalfDark"
 export BAT_PAGER="less -RF"
 
 # starship
-if type -p "starship" > /dev/null 2>&1; then
-    eval "$(starship init zsh)"
+if type -p "starship" >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
 else
-    PROMPT="%n@%~ > "
+  PROMPT="%n@%~ > "
 fi
 
 # zoxide
