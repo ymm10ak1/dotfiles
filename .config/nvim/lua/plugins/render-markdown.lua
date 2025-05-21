@@ -4,7 +4,7 @@ return {
   -- ft = "markdown",
   dependencies = {
     "nvim-treesitter/nvim-treesitter", -- Mandatory
-    -- "nvim-tree/nvim-web-devicons", -- Optional but recommended
+    "echasnovski/mini.nvim",
   },
   keys = {
     { "<M-r>", "<Cmd>RenderMarkdown toggle<CR>", desc = "Toggle RenderMarkdown" },
