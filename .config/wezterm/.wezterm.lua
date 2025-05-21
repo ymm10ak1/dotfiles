@@ -79,7 +79,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   })
 end
 
-local leader = { key = "f", mods = "CTRL", timeout_milliseconds = 1000 }
+local leader = { key = "f", mods = "ALT", timeout_milliseconds = 1000 }
 local keys = {
   -- 新しいWindow
   {
@@ -164,5 +164,14 @@ config.hide_tab_bar_if_only_one_tab = true
 config.leader = leader
 config.keys = keys
 config.launch_menu = launch_menu
+config.ssh_backend = "Ssh2"
+config.ssh_domains = {
+  {
+    name = "wsl-ssh",
+    remote_address = "localhost:22",
+    username = "ya10ma",
+    multiplexing = "None",
+  },
+}
 
 return config
