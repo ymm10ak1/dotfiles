@@ -5,15 +5,8 @@ return {
   keys = {
     { "<M-p>", "<Cmd>MarkdownPreviewToggle<CR>" },
   },
-  build = function()
-    vim.fn["mkdp#util#install"]()
-  end,
-
-  -- https://github.com/iamcco/markdown-preview.nvim/issues/690#issuecomment-2425301834
+  build = "cp app && yarn install",
   init = function()
-    vim.keymap.set("n", "<leader>mb", function()
-      vim.cmd([[Lazy load markdown-preview.nvim]])
-      vim.cmd([[Lazy build markdown-preview.nvim]])
-    end, { desc = "markdown-preview.nvimに対してlazy loadとlazy buildを行う" })
+    vim.g.mkdp_filetypes = { "markdown" }
   end,
 }
