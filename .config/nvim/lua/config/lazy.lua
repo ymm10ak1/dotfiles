@@ -17,11 +17,7 @@ local opts = {
   },
 }
 
-local not_vscode = require("utils").vscode_check
-
-if not_vscode then
-  require("lazy").setup("plugins", opts)
-else
+if vim.g.vscode then
   require("lazy").setup({
     spec = {
       { import = "plugins.mini" },
@@ -31,7 +27,8 @@ else
       { import = "plugins.dial" },
       { import = "plugins.flash" },
       { import = "plugins.camelcasemotion" },
-    }
+    },
   })
+else
+  require("lazy").setup("plugins", opts)
 end
-
