@@ -2,7 +2,8 @@ local opt = vim.opt
 local g = vim.g
 
 -- {{{ ==================== options ====================
-opt.tabstop = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.swapfile = false
 opt.smartindent = true
@@ -40,7 +41,7 @@ local keymap = vim.keymap.set
 local opts = { noremap = true }
 
 keymap("n", "L", "$", opts)
-keymap("v", "L", "$h", opts)
+keymap("v", "L", "g_", opts)
 keymap({ "n", "v" }, "H", "^", opts)
 keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
@@ -48,7 +49,7 @@ keymap("x", "<", "<gv", opts)
 keymap("x", ">", ">gv", opts)
 keymap("n", "sy", "<Cmd>%y<CR>", opts)
 keymap("n", "<leader>*", "*''cgn")
-keymap({"n", "v"}, "x", [["-x]])
+keymap({"n", "x"}, "x", [["_x]])
 keymap("n", "<leader><leader>", "<Cmd>lua require('vscode').call('workbench.action.quickOpen')<CR>")
 keymap("n", "<leader>fo", "<Cmd>lua require('vscode').action('editor.action.formatDocument')<CR>")
 keymap("n", "<leader>h", "<Cmd>lua require('vscode').call('workbench.action.navigateLeft')<CR>")
