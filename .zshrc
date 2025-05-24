@@ -103,11 +103,14 @@ fi
   abbr -S gi='git commit'
   abbr -S gm='git commit -m'
   abbr -S gp='git push'
+  abbr -S gst='git status'
   abbr -S gss='git status -s'
   abbr -S gsa='git stash -u'
   abbr -S gsl='git stash list'
   abbr -S gsp='git stash pop'
+  abbr -S gsd='git stash drop'
   abbr -S gpu='git pull'
+  abbr -S gpo='git pull origin main'
 } >>/dev/null
 
 # functions
